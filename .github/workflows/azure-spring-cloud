@@ -1,0 +1,41 @@
+name: Deploy to Azure Spring Cloud
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+
+      - name: Build with Maven
+        run: mvn clean package
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.afrpheocsecrets }}
+      
+      - name: Set Azure Subscription
+        run: az account set --subscription "ec6de091-2438-4d4e-a60a-e7aff6f2cbcd"
+
+      - name: Deploy to Azure Spring Cloud
+        run: az spring-cloud app deploy --name afrpheocnet --config-file azure-spring-cloud.yml
