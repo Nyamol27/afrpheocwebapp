@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="frontend-header :: head"></th:block>
+<body class="custom-cursor">
+
+    <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div>
+
+    <div class="preloader">
+        <div class="preloader__image" style="background-image: url(assets/images/loader.png);"></div>
+    </div>
+    <!-- /.preloader -->
+    <div class="page-wrapper">
+        <div th:replace="frontend-topbar"></div>
+        <header th:replace="frontend-header :: main-header"></header>
+        <section class="inspiring-one section-space" style="background-image: url('assets/images/backgrounds/inspiring-bg-1-1.png');">
+            <div class="container">
+                <div class="row gutter-y-50">
+                    <div class="col-xl-6">
+                        <div class="sec-title">
+
+                            <h6 class="sec-title__tagline @@extraClassName">Africa PHEOC-NET</h6><!-- /.sec-title__tagline -->
+
+                            <h3 class="sec-title__title">  Africa <span class="sec-title__title__inner"> PHEOC Network!</span></h3><!-- /.sec-title__title -->
+                        </div><!-- /.sec-title -->
+                        <p class="inspiring-one__text">Our network is a diverse community of dedicated individuals, organizations, and institutions committed to strengthening public health emergency response across the African Region. Whether you are a Member State, a regional organization, a partner, an individual professional, or an academic institution, there's a place for you in our network.</p><!-- /.inspiring-one__text -->
+                       
+                        
+                    </div><!-- /.col-xl-6 -->
+                    
+                    <div class="col-xl-6">
+                        <div class="inspiring-one__image">
+                            <div class="inspiring-one__image__inner inspiring-one__image__inner--one wow fadeInRight" data-wow-duration="1500ms" data-wow-delay="00ms">
+                                <img src="assets/images/inspiring/bg_pheoc.png" alt="inspiring">
+                            </div><!-- /.inspiring-one__image__one -->
+                            <div class="inspiring-one__image__inner inspiring-one__image__inner--two wow fadeInRight" data-wow-duration="1500ms" data-wow-delay="200ms">
+                                <img src="assets/images/inspiring/membership-1.JPG" alt="inspiring">
+                            </div><!-- /.inspiring-one__image__two -->
+                        </div><!-- /.inspiring-one__image -->
+                    </div><!-- /.col-xl-6 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+            <div class="inspiring-one__shapes">
+                <div class="inspiring-one__shape inspiring-one__shape--one"></div><!-- /.inspiring-one__shape__one -->
+                <div class="inspiring-one__shape inspiring-one__shape--two"></div><!-- /.inspiring-one__shape__one -->
+            </div><!-- /.inspiring-one__shape -->
+        </section><!-- /.inspiring-one-one section-space -->
+		 <section class="testimonials-one section-space" id="testimonial">
+            <div class="testimonials-one__bg cleenhearts-jarallax" data-jarallax data-speed="0.3" data-imgPosition="50% -100%" style="background-image: url(assets/images/backgrounds/WHO_054996.jpg);"></div><!-- /.testimonial-one__bg -->
+            <div class="container">
+                <div class="testimonials-one__wrapper">
+                    <div class="testimonials-one__top">
+                        <div class="row gutter-y-30 align-items-center">
+                            <div class="col-lg-7">
+                                <div class="sec-title">
+
+                                    <h6 class="sec-title__tagline @@extraClassName">Africa PHEOC-NET</h6><!-- /.sec-title__tagline -->
+
+                                    <h3 class="sec-title__title"> Benefits of <span class="sec-title__title__inner">Membership</span></h3><!-- /.sec-title__title -->
+                                </div><!-- /.sec-title -->
+                            </div><!-- /.col-lg-7 -->
+                           
+                        </div><!-- /.row gutter-y-40 -->
+                    </div><!-- /.testimonials-one__top -->
+                    <div class="testimonials-one__carousel cleenhearts-owl__carousel cleenhearts-owl__carousel--basic-nav owl-theme owl-carousel" data-owl-options='{
+                "items": 1,
+                "margin": 10,
+                "smartSpeed": 700,
+                "loop":true,
+                "autoplay": 6000,
+                "nav":false,
+                "dots":true,
+                "navText": ["<span class=\"icon-arrow-left\"></span>","<span class=\"icon-arrow-right\"></span>"],
+                "responsive":{
+                    "0":{
+                        "items": 1,
+                        "margin": 0
+                    },
+                    "575":{
+                        "items": 1,
+                        "margin": 0
+                    },
+                    "768":{
+                        "items": 1,
+                        "margin": 0
+                    },
+                    "992":{
+                        "items": 1,
+                        "margin": 0
+                    },
+                    "1200":{
+                        "items": 1,
+                        "margin": 0
+                    }
+                }
+                }'>
+                        <div class="item wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+                            <div class="testimonials-card">
+                                <div class="testimonials-card__bg" style="background-image: url('assets/images/backgrounds/testimonial-bg-2.png');"></div><!-- /.testimonials-card__bg -->
+                                <div class="testimonials-card__info">
+                                    <div class="testimonials-card__info__left">
+                                        <h4 class="testimonials-card__name">Being part of a network hosted by the WHO Health Emergencies Programme</h4><!-- /.testimonials-card__name -->
+                                    </div><!-- /.testimonials-card__info__left -->
+                                </div><!-- /.testimonials-card__info -->
+                                <div class="testimonials-card__content">
+                                    <p class="testimonials-card__text">Joining the WHO Health Emergencies Programme network empowers Member States to manage health crises and coordinate international responses effectively.<br> This collaboration ensures timely relief to affected populations and plays a pivotal role in PHEM across the African Region.</p><!-- /.testimonials-card__text -->
+                                    <div class="testimonials-card__quote">
+                                        <span class="icon-quote"></span>
+                                    </div><!-- /.testimonials-card__quote -->
+                                </div><!-- /.testimonials-card__content -->
+                            </div><!-- /.testimonials-card -->
+                        </div><!-- /.item-->
+                        <div class="item wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+                            <div class="testimonials-card">
+                                <div class="testimonials-card__bg" style="background-image: url('assets/images/backgrounds/testimonial-bg-2.png');"></div><!-- /.testimonials-card__bg -->
+                                <div class="testimonials-card__info">
+                                    <div class="testimonials-card__info__left">
+                                        <h4 class="testimonials-card__name">Networking and collaboration</h4><!-- /.testimonials-card__name -->
+                                    </div><!-- /.testimonials-card__info__left -->
+                                </div><!-- /.testimonials-card__info -->
+                                <div class="testimonials-card__content">
+                                    <p class="testimonials-card__text">The network facilitates collaboration among members, enhancing health security across Africa. <br> Through partnerships and cooperative efforts, members work together to address emerging health challenges and strengthen emergency response capabilities in the region.</p><!-- /.testimonials-card__text -->
+                                    <div class="testimonials-card__quote">
+                                        <span class="icon-quote"></span>
+                                    </div><!-- /.testimonials-card__quote -->
+                                </div><!-- /.testimonials-card__content -->
+                            </div><!-- /.testimonials-card -->
+                        </div><!-- /.item-->
+                        <div class="item wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+                            <div class="testimonials-card">
+                                <div class="testimonials-card__bg" style="background-image: url('assets/images/backgrounds/testimonial-bg-2.png');"></div><!-- /.testimonials-card__bg -->
+                                <div class="testimonials-card__info">
+                                    <div class="testimonials-card__info__left">
+                                        <h4 class="testimonials-card__name">Learning and mutual support</h4><!-- /.testimonials-card__name -->
+                                    </div><!-- /.testimonials-card__info__left -->
+                                </div><!-- /.testimonials-card__info -->
+                                <div class="testimonials-card__content">
+                                    <p class="testimonials-card__text">Members benefit from a supportive environment conducive to continuous learning, experience sharing, and innovation. <br> This fosters mutual support among members, enabling the exchange of best practices and insights to improve emergency preparedness and response efforts.</p><!-- /.testimonials-card__text -->
+                                    <div class="testimonials-card__quote">
+                                        <span class="icon-quote"></span>
+                                    </div><!-- /.testimonials-card__quote -->
+                                </div><!-- /.testimonials-card__content -->
+                            </div><!-- /.testimonials-card -->
+                        </div><!-- /.item-->
+                         <div class="item wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+                            <div class="testimonials-card">
+                                <div class="testimonials-card__bg" style="background-image: url('assets/images/backgrounds/testimonial-bg-2.png');"></div><!-- /.testimonials-card__bg -->
+                                <div class="testimonials-card__info">
+                                    <div class="testimonials-card__info__left">
+                                        <h4 class="testimonials-card__name">The Network resources and news</h4><!-- /.testimonials-card__name -->
+                                    </div><!-- /.testimonials-card__info__left -->
+                                </div><!-- /.testimonials-card__info -->
+                                <div class="testimonials-card__content">
+                                    <p class="testimonials-card__text">Access to the EOC website provides members with valuable resources and real-time updates on public health emergency operations. <br> This centralized platform serves as a hub for knowledge exchange and information sharing, enhancing the effectiveness of emergency response initiatives.</p><!-- /.testimonials-card__text -->
+                                    <div class="testimonials-card__quote">
+                                        <span class="icon-quote"></span>
+                                    </div><!-- /.testimonials-card__quote -->
+                                </div><!-- /.testimonials-card__content -->
+                            </div><!-- /.testimonials-card -->
+                        </div><!-- /.item-->
+                        
+                    </div><!-- /.testimonials-one__carousel -->
+                </div><!-- /.testimonials-one__wrapper -->
+            </div><!-- /.container -->
+            <div class="testimonials-one__shape">
+                <img src="assets/images/shapes/shape-1.png" alt="shape" class="testimonials-one__shape__one">
+                <img src="assets/images/shapes/shape-2.png" alt="shape" class="testimonials-one__shape__two">
+            </div><!-- /.testimonials-one__shape -->
+        </section><!-- /.testimonials-one section-space -->
+        
+        
+        <div th:replace="frontend-footer"></div>
+    </div><!-- /.page-wrapper -->
+
+    <div th:replace="frontend-mobile-nav"></div>
+    <div th:replace="frontend-search-popup"></div>
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top">
+        <span class="scroll-to-top__text">back top</span>
+        <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
+    </a>
+
+    <div th:replace="frontend-sidebar"></div>
+	<script th:src="@{/assets/vendors/jquery/jquery-3.7.0.min.js}"></script>
+	<script th:src="@{/assets/vendors/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/assets/vendors/bootstrap-select/bootstrap-select.min.js}"></script>
+	<script th:src="@{/assets/vendors/jarallax/jarallax.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-ui/jquery-ui.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-appear/jquery.appear.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-validate/jquery.validate.min.js}"></script>
+	<script th:src="@{/assets/vendors/nouislider/nouislider.min.js}"></script>
+	<script th:src="@{/assets/vendors/tiny-slider/tiny-slider.js}"></script>
+	<script th:src="@{/assets/vendors/wnumb/wNumb.min.js}"></script>
+	<script th:src="@{/assets/vendors/swiper/js/swiper-bundle.min.js}"></script>
+	<script th:src="@{/assets/vendors/owl-carousel/js/owl.carousel.min.js}"></script>
+	<script th:src="@{/assets/vendors/wow/wow.js}"></script>
+	<script th:src="@{/assets/vendors/imagesloaded/imagesloaded.min.js}"></script>
+	<script th:src="@{/assets/vendors/isotope/isotope.js}"></script>
+	<script th:src="@{/assets/vendors/countdown/countdown.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-circleType/jquery.circleType.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-lettering/jquery.lettering.min.js}"></script>
+	<!-- template js -->
+	<script th:src="@{/assets/js/cleenhearts.js}"></script>
+	
+</body>
+</html>

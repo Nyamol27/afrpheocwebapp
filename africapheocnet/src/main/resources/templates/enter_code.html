@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <base href="/">
+    <meta charset="utf-8" />
+    <title>Sign In | Africa PHEOC-Net</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Sign In" name="Connect to Africa PHEOC-Net" />
+    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="expires" content="0">
+
+    <!-- Bootstrap Css -->
+    <link href="css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+   	<meta name="_csrf" th:content="${_csrf.token}"/>
+	<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    
+</head>
+
+<body class="bg-white">
+
+    <div class="auth-page d-flex align-items-center min-vh-100">
+        <div class="container-fluid p-0">
+            <div class="row g-0">
+                <div class="col-xxl-3 col-lg-4 col-md-5">
+                    <div class="d-flex flex-column h-100 py-5 px-4">
+                        <div class="text-center text-muted mb-2">
+                            <div class="pb-3">
+                                <a href="/login">
+                                    <span class="logo-lg">
+                                        <img src="images/logo-sm.svg" alt="" height="24">
+                                        <span class="logo-txt">AFR PHEOC-NET</span>
+                                    </span>
+                                </a>
+                                <p class="text-muted font-size-15 w-75 mx-auto mt-3 mb-0">PHEOCs save lives...</p>
+                            </div>
+                        </div>
+
+                        <div class="my-auto">
+                            <div class="p-3 text-center">
+                                <img src="images/pheoc-net.png" alt="" class="img-fluid">
+                            </div>
+                        </div>
+
+                        <div class="mt-4 mt-md-5 text-center">
+                            <p class="mb-0">© <script>document.write(new Date().getFullYear())</script> Africa PHEOC-NET</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col -->
+
+                <div class="col-xxl-9 col-lg-8 col-md-7">
+                    <div class="auth-bg bg-light py-md-5 p-4 d-flex">
+                        <div class="bg-overlay-gradient"></div>
+                        <!-- end bubble effect -->
+                        <div class="row justify-content-center g-0 align-items-center w-100">
+                            <div class="col-xl-4 col-lg-8">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="px-3 py-3">
+                                            <div class="mb-4 mb-md-5">
+                                                <div class="avatar-lg mx-auto">
+                                                    <div class="avatar-title bg-primary-subtle text-primary display-5 rounded-circle">
+                                                        <i class="uil uil-envelope-alt"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-4 mb-md-5 text-center">
+                                                <h4>Enter Verification Code</h4>
+                                                <p class="text-muted">Please enter the 4 digit code</p>
+                                            </div>
+
+                                            <form id="verificationCodeForm">
+                                            	 <input type="hidden" name="email" value="${email}">
+                                                <div id="alertBox" class="alert alert-warning alert-top-border alert-dismissible fade show" role="alert" style="display: none;">
+                                                    <i class="uil uil-exclamation-triangle font-size-16 text-warning me-2"></i>
+                                                    <span class="alert-message">A simple border warning alert</span>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <div class="mb-3">
+                                                            <label for="digit1-input" class="visually-hidden">Digit 1</label>
+                                                            <input type="text" class="form-control form-control-lg text-center" onkeyup="moveToNext(this, 2)" maxLength="1" id="digit1-input">
+                                                        </div>
+                                                    </div><!-- end col -->
+
+                                                    <div class="col-3">
+                                                        <div class="mb-3">
+                                                            <label for="digit2-input" class="visually-hidden">Digit 2</label>
+                                                            <input type="text" class="form-control form-control-lg text-center" onkeyup="moveToNext(this, 3)" maxLength="1" id="digit2-input">
+                                                        </div>
+                                                    </div><!-- end col -->
+
+                                                    <div class="col-3">
+                                                        <div class="mb-3">
+                                                            <label for="digit3-input" class="visually-hidden">Digit 3</label>
+                                                            <input type="text" class="form-control form-control-lg text-center" onkeyup="moveToNext(this, 4)" maxLength="1" id="digit3-input">
+                                                        </div>
+                                                    </div><!-- end col -->
+
+                                                    <div class="col-3">
+                                                        <div class="mb-3">
+                                                            <label for="digit4-input" class="visually-hidden">Digit 4</label>
+                                                            <input type="text" class="form-control form-control-lg text-center" onkeyup="moveToNext(this, 4)" maxLength="1" id="digit4-input">
+                                                        </div>
+                                                    </div><!-- end col -->
+                                                </div><!-- end row -->
+
+                                                <div class="mt-4">
+                                                     <button type="submit" class="btn btn-primary w-100" onclick="submitVerificationCode(event)">Confirm</button>
+                                                </div>
+                                            </form><!-- end form -->
+
+                                            <div class="mt-4 pt-3 text-center">
+											    <p class="text-muted mb-0">Didn't receive a code? 
+											        <a  class="fw-semibold text-decoration-underline" id="resendVerification">Resend</a>
+											    </p>
+											</div>
+                                            
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container fluid -->
+    </div>
+    <!-- end authentication section -->
+
+    <!-- JAVASCRIPT -->
+    <script src="/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/libs/metismenujs/metismenujs.min.js"></script>
+    <script src="/libs/simplebar/simplebar.min.js"></script>
+    <script src="/libs/feather-icons/feather.min.js"></script>
+
+    <!-- two-step-verification js -->
+    <script src="/js/pages/two-step-verification.init.js"></script>
+    <script>
+ // Function to handle form submission
+    function submitVerificationCode(event) {
+        event.preventDefault(); // Prevent normal form submission
+
+        // Get the entered digits from the input fields
+        var digit1 = document.getElementById('digit1-input').value.trim();
+        var digit2 = document.getElementById('digit2-input').value.trim();
+        var digit3 = document.getElementById('digit3-input').value.trim();
+        var digit4 = document.getElementById('digit4-input').value.trim();
+
+        // Concatenate the digits to form the code
+        var verificationCode = digit1 + digit2 + digit3 + digit4;
+
+        // Validate the code
+        if (!validateDigits(verificationCode)) {
+            showAlert('error', 'Please enter a 4-digit code consisting only of digits.');
+            return;
+        }
+
+        // Retrieve the CSRF token from the page
+        var csrfTokenMetaTag = document.querySelector('meta[name="_csrf"]');
+        var csrfToken = csrfTokenMetaTag.getAttribute('content');
+
+        // Retrieve the email from the hidden input field
+        var email = document.querySelector('input[name="email"]').value;
+
+        // Create an Ajax request
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/verify-code?email=' + encodeURIComponent(email) + '&code=' + encodeURIComponent(verificationCode), true); // Pass email and code as query parameters
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader('X-CSRF-TOKEN', csrfToken); // Attach CSRF token to header
+
+     // Handle response from server
+        xhr.onload = function() {
+            var response = xhr.responseText.trim(); // Trim the response to remove extra whitespace
+            if (xhr.status === 200) {
+                // Handle success response
+                if (response === 'Verification successful') {
+                    // Code is valid, redirect to dashboard or perform other actions
+                    window.location.href = '/admin_dashboard';
+                } else {
+                    // Unexpected response from server
+                    showAlert('warning', 'Unexpected response from the server.');
+                }
+            } else if (xhr.status === 400) {
+                // Handle bad request response
+                showAlert('warning', response); 
+            } else {
+                // Handle other error responses
+                showAlert('warning', 'Error occurred while verifying the code.');
+            }
+        };
+
+
+        // Send the request
+        xhr.send();
+    }
+
+    // Function to validate the code format
+    function validateDigits(code) {
+        // Check if the code consists only of digits and has a length of 4
+        return /^\d{4}$/.test(code);
+    }
+
+    document.getElementById('resendVerification').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default action of following the link
+
+        // Retrieve the CSRF token from the page
+        var csrfTokenMetaTag = document.querySelector('meta[name="_csrf"]');
+        var csrfToken = csrfTokenMetaTag.getAttribute('content');
+
+        // Call the resend verification code endpoint with the CSRF token included
+        fetch('/resend-verification-code?_csrf=' + encodeURIComponent(csrfToken), {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+            // You can add additional parameters here if needed
+        })
+        .then(response => {
+            if (response.ok) {
+                // Handle success, show a success message to the user
+                showAlert('success', 'Verification code resent successfully');
+            } else {
+                // Handle errors, show an error message to the user
+                showAlert('error', 'Failed to resend verification code');
+            }
+        })
+        .catch(error => {
+            console.error('An error occurred:', error);
+            showAlert('error', 'An error occurred while processing your request');
+        });
+    });
+
+
+    function showAlert(type, message) {
+        var alertBox = $('#alertBox');
+        var alertMessage = alertBox.find('.alert-message');
+        var alertIcon = alertBox.find('.uil');
+
+        alertMessage.text(message);
+
+        if (type === 'success') {
+            alertBox.removeClass('alert-warning').addClass('alert-success');
+            alertIcon.removeClass('uil-exclamation-triangle').addClass('uil-check-circle');
+        } else {
+            alertBox.removeClass('alert-success').addClass('alert-warning');
+            alertIcon.removeClass('uil-check-circle').addClass('uil-exclamation-triangle');
+        }
+
+        alertBox.show();
+
+        setTimeout(function() {
+            alertBox.hide();
+        }, 10000); 
+    }
+    </script>
+
+</body>
+
+</html>

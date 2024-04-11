@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<head>
+    <!-- Add Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/css/bootstrap.min.css">
+    
+    <!-- Add DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+
+    <!-- Add jQuery and DataTables JS -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.6/js/dataTables.bootstrap5.min.js"></script>
+
+    <!-- Custom styles -->
+    <style>
+        .initials-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #6c757d;
+            color: #fff;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body data-topbar="dark">
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header justify-content-between d-flex align-items-center">
+                                <h4 class="card-title" th:text="'Members of TWG: ' + ${twgName}"></h4>
+                                <div class="row g-0 text-center text-sm-start mb-3">
+			                    <!-- Toggle buttons for switching between list view and grid view -->
+			                    <div class="col-12">
+			                        <button class="btn btn-outline-primary me-2" onclick="toggleListView()"><i class="fas fa-list"></i> List View</button>
+									<button class="btn btn-outline-primary" onclick="toggleGridView()"><i class="fas fa-th-large"></i> Grid View</button>
+
+			                    </div>
+			                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="gridView">
+                                    <!-- Grid view content -->
+                                    	<div th:each="member : ${members}" class="col">
+									    <div class="card h-100">
+									        <div class="card-body">
+									            <div class="initials-circle">
+									                <span th:text="${member.firstName.substring(0, 1)}"></span>
+									            </div>
+									            <h5 class="card-title" th:text="${member.firstName}"></h5>
+									            <p class="card-text"><span th:text="${member.nationality}"></span></p>
+									            <p class="card-text"><span class="badge bg-success-subtle text-success m-1" th:text="${member.position}"></span></p>
+									        </div>
+									    </div>
+									</div>
+                                    	
+                                    	
+                                    	
+                                </div>
+                                <div class="table-responsive" id="listView" style="display: none;">
+							    <!-- List view content -->
+							    <table id="dbdata" class="hover">
+							        <thead>
+							            <tr>
+							                <th>Name</th>
+							                <th>Nationality</th>
+							                <th>Position</th>
+							            </tr>
+							        </thead>
+							       <tbody>
+							    <tr th:each="member : ${members}">
+							        <td th:text="${member.firstName}"></td>
+							        <td th:text="${member.nationality}"></td>
+							        <td th:text="${member.position}"></td>
+							    </tr>
+							</tbody>
+							       
+
+							    </table>
+							</div>
+                                
+                            </div>
+                            <!-- Pagination controls -->
+                            <div class="col-sm-6">
+                                <ul class="pagination pagination-rounded justify-content-center justify-content-sm-end mb-sm-0">
+                                    <!-- Previous page link -->
+                                    <li th:classappend="${currentPage == 1 || totalPages == 0} ? 'page-item disabled' : 'page-item'">
+                                        <a href="#" class="page-link" th:href="@{'/members/view/' + ${twgName} + '?page=' + ${currentPage - 1}}"><i class="mdi mdi-chevron-left"></i></a>
+                                    </li>
+                                    <!-- Page numbers -->
+                                    <li th:each="pageNum : ${#numbers.sequence(1, totalPages)}" th:classappend="${pageNum == currentPage} ? 'page-item active' : 'page-item'">
+                                        <a href="#" class="page-link" th:text="${pageNum}" th:href="@{'/members/view/' + ${twgName} + '?page=' + ${pageNum}}"></a>
+                                    </li>
+                                    <!-- Next page link -->
+                                    <li th:classappend="${currentPage == totalPages || totalPages == 0} ? 'page-item disabled' : 'page-item'">
+                                        <a href="#" class="page-link" th:href="@{'/members/view/' + ${twgName} + '?page=' + ${currentPage + 1}}"><i class="mdi mdi-chevron-right"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+    
+    <!-- JAVASCRIPT -->
+    <script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/libs/metismenujs/metismenujs.min.js}"></script>
+    <script th:src="@{/libs/simplebar/simplebar.min.js}"></script>
+    <script th:src="@{/libs/feather-icons/feather.min.js}"></script>
+    <!-- swiper js -->
+    <script th:src="@{/libs/swiper/swiper-bundle.min.js}"></script>
+    <script th:src="@{/js/app.js}"></script>
+    <script>
+        // Function to toggle visibility of list view and grid view
+        function toggleListView() {
+            document.getElementById("gridView").style.display = "none";
+            document.getElementById("listView").style.display = "block";
+        }
+
+        function toggleGridView() {
+            document.getElementById("listView").style.display = "none";
+            document.getElementById("gridView").style.display = "block";
+        }
+    </script>
+     <script>
+  new DataTable('#dbdata');
+</script>
+</body>
+</html>

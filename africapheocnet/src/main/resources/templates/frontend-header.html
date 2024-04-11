@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <base href="/">
+    <meta charset="utf-8" />
+    <title th:text="${pageTitle}"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- favicons Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png" />
+    <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
+    <meta name="description" content="AfricaPheocNet is a sophisticated platform designed for the African Emergency Operations Center (EOC) Network, facilitating inter-agency collaboration, data management, and resource coordination during public health emergencies across the African continent. Built with modern technologies and industry best practices, AfricaPheocNet empowers individuals, organizations, and NGOs involved in public health emergency management to make informed decisions and respond effectively to crises." />
+	<meta name="_csrf" th:content="${_csrf.token}"/>
+	<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+	
+	<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="expires" content="0">
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">
+
+   	<link th:href="@{/assets/vendors/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+	<link th:href="@{/assets/vendors/bootstrap-select/bootstrap-select.min.css}" rel="stylesheet" />
+	<link th:href="@{/assets/vendors/animate/animate.min.css}" rel="stylesheet" />
+	<link th:href="@{/assets/vendors/fontawesome/css/all.min.css}" rel="stylesheet" />
+	<link th:href="@{/assets/vendors/jquery-ui/jquery-ui.css}" rel="stylesheet" />
+	<link th:href="@{/assets/vendors/jarallax/jarallax.css}" rel="stylesheet" />
+	<link th:href="@{/assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css}" rel="stylesheet" />
+	<link th:href="@{/assets/vendors/nouislider/nouislider.min.css}" rel="stylesheet" />
+	<link th:href="@{/assets/vendors/nouislider/nouislider.pips.css}" rel="stylesheet" />
+	<link th:href="@{/assets/vendors/tiny-slider/tiny-slider.css}" rel="stylesheet" />
+	<link th:href="@{/assets/vendors/cleenhearts-icons/style.css}" rel="stylesheet" />
+	<link th:href="@{/assets/vendors/swiper/css/swiper-bundle.min.css}" rel="stylesheet" />
+	<link th:href="@{/assets/vendors/owl-carousel/css/owl.carousel.min.css}" rel="stylesheet" />
+	<link th:href="@{/assets/vendors/owl-carousel/css/owl.theme.default.min.css}" rel="stylesheet" />
+	
+	<!-- template styles -->
+	<link th:href="@{/assets/css/cleenhearts.css}" rel="stylesheet" />
+   
+</head>
+<body class="custom-cursor">
+    
+        <header th:fragment="main-header" class="main-header sticky-header sticky-header--normal">
+            <div class="container-fluid">
+                <div class="main-header__inner">
+                    <div class="main-header__logo">
+                        <a href="/home">
+                            <img src="assets/images/pheoc-net.png" alt="Cleenhearts HTML" width="159">
+                        </a>
+                        
+                    </div><!-- /.main-header__logo -->
+                    <div class="main-header__right">
+                        <nav class="main-header__nav main-menu">
+                            <ul class="main-menu__list">
+                            
+                                <li >
+                                    <a href="/home">Home</a>
+                                </li>
+                                <li>
+                                    <a href="/about">About Us</a>
+                                </li>
+                                
+                                 <li>
+                                    <a href="/membership">Membership</a>
+                                </li>
+                                 <li>
+                                    <a href="/partnership">Partnership</a>
+                                </li>
+                                <li>
+                                    <a href="/events">Events</a>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="#">Resources</a>
+                                    <ul>
+                                        <li><a href="/advocacy">Advocacy</a></li>
+                                        <li><a href="/country-materials">Country specific materials</a></li>
+                                        <li><a href="/publications">Publications</a></li>
+                                        <li><a href="/scientific-papers">Scientific papers</a></li>
+                                        <li><a href="/standard-training">Standard training materials</a></li>
+                                    </ul>
+                                </li>
+								
+                                <li>
+                                    <a href="/contact">Contact Us</a>
+                                </li>
+                            </ul>
+                        </nav><!-- /.main-header__nav -->
+                        <div class="mobile-nav__btn mobile-nav__toggler">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div><!-- /.mobile-nav__toggler -->
+                         <div class="main-header__cart">
+                            <a href="/login" class="main-header__cart__link">
+                                   <i class="fas fa-user"></i>
+                            </a>
+                            <span class="main-header__cart__quantity">Login</span>
+                        </div><!-- /.main-header__cart -->
+                        <a href="/application-form" class="cleenhearts-btn main-header__btn">
+                            <div class="cleenhearts-btn__icon-box">
+                                <div class="cleenhearts-btn__icon-box__inner"><span class="icon-donate"></span></div>
+                            </div>
+                            <span class="cleenhearts-btn__text">Join now</span>
+                        </a><!-- /.thm-btn main-header__btn -->
+                    </div><!-- /.main-header__right -->
+                </div><!-- /.main-header__inner -->
+            </div><!-- /.container -->
+        </header><!-- /.main-header -->
+   
+</body>
+</html>

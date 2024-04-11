@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<body data-topbar="dark">
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="alertBoxMain" class="alert alert-warning alert-top-border alert-dismissible fade show" role="alert" style="display: none;">
+                            <i class="uil uil-exclamation-triangle font-size-16 text-warning me-2"></i>
+                            <span class="alert-message"></span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header justify-content-between d-flex align-items-center">
+                                <h4 class="card-title">PHEOC Regional Roster - Deployment</h4>
+                            </div>
+                            <div class="card-body">
+                                <!-- deployments/edit.html -->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="card">
+                                            <div class="card-header justify-content-between d-flex align-items-center">
+                                                <h4 class="card-title">Edit Deployment Details</h4>
+                                            </div>
+                                            <div class="card-body">
+                                      <div class="mb-3">
+    <label for="deployment-country-input" class="form-label">Country:</label>
+    <select class="form-select" id="deployment-country-input" name="country" required>
+        <option value="" selected disabled>Select Country</option>
+       
+        <option th:each="country : ${T(net.pheocnetafr.africapheocnet.util.AutoFilledData).getAllAfricanCountries()}"
+                th:value="${country}" th:text="${country}" th:selected="${country == deployment.country}"></option>
+    </select>
+</div>
+
+                                            
+                <div class="mb-3">
+    <label for="deployment-role-input" class="form-label">Role / Position:</label>
+    <input type="text" class="form-control" id="deployment-role-input" name="role" th:value="${deployment?.role}" required>
+</div>
+
+<div class="mb-3">
+    <label for="deployment-status-input" class="form-label">Status:</label>
+    <select class="form-select" id="deployment-status-input" name="status" required>
+        <option value="" selected disabled>Select Status</option>
+        <option th:each="status : ${T(net.pheocnetafr.africapheocnet.util.AutoFilledData).getDeploymentStatus()}"
+                th:value="${status}" th:text="${status}" th:selected="${status == deployment?.status}"></option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="deployment-type-input" class="form-label">Type:</label>
+    <select class="form-select" id="deployment-type-input" name="type" required>
+        <option value="" selected disabled>Select Type</option>
+        <option th:each="type : ${T(net.pheocnetafr.africapheocnet.util.AutoFilledData).getDeploymentTypeList()}"
+                th:value="${type}" th:text="${type}" th:selected="${type == deployment?.type}"></option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="deployment-expertise-input" class="form-label">Expertise:</label>
+    <select class="form-select" id="deployment-expertise-input" name="expertise" required>
+        <option value="" selected disabled>Select Expertise</option>
+        <option th:each="expertise : ${T(net.pheocnetafr.africapheocnet.util.AutoFilledData).getExpertiseList()}"
+                th:value="${expertise}" th:text="${expertise}" th:selected="${expertise == deployment?.expertise}"></option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="deployment-organism-input" class="form-label">Deploying Organism:</label>
+    <select class="form-select" id="deployment-organism-input" name="organism" required>
+        <option value="" selected disabled>Select Deploying Organism</option>
+        <option th:each="organism : ${T(net.pheocnetafr.africapheocnet.util.AutoFilledData).getDeploymentEntitiesList()}"
+                th:value="${organism}" th:text="${organism}" th:selected="${organism == deployment?.deployingOrganism}"></option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="deployment-start-date-input" class="form-label">Start Date:</label>
+    <input type="date" class="form-control" id="deployment-start-date-input" name="startDate" th:value="${#temporals.format(deployment?.startDate, 'yyyy-MM-dd')}" required>
+</div>
+
+<div class="mb-3">
+    <label for="deployment-end-date-input" class="form-label">End Date:</label>
+    <input type="date" class="form-control" id="deployment-end-date-input" name="endDate" th:value="${#temporals.format(deployment?.endDate, 'yyyy-MM-dd')}" required>
+</div>
+ <div id="alertBox" class="alert alert-warning alert-top-border alert-dismissible fade show" role="alert" style="display: none;">
+																						  <i class="uil uil-exclamation-triangle font-size-16 text-warning me-2"></i>
+																						  <span class="alert-message">A simple border warning alert</span>
+																						  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+																						</div>
+ <input type="hidden" id="deploymentIdInput" name="deploymentId" th:value="${deployment.id}" />
+<button type="button" class="btn btn-primary w-sm" onclick="submitEditDeployment()">Update Deployment</button>
+<button type="button" class="btn btn-secondary w-sm" onclick="cancelEdit()">Back</button>
+<script type="text/javascript">
+function cancelEdit() {
+    history.back(); 
+}
+
+</script>
+
+                                       
+
+                               				
+                                                
+                                              
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+
+    <!-- JAVASCRIPT -->
+    <script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <!-- Other script references... -->
+    <script th:src="@{/js/app.js}"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head">
+</head>
+<body data-topbar="dark">
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header justify-content-between d-flex align-items-center">
+                                <h4 class="card-title">Notification Setting</h4>
+                            </div>
+                            <div class="card-body">
+						    <p>Receive email notifications for new publications. If you disable email notifications, you won't receive alerts for any new content.<br> However, we'll save your preferences in case you decide to re-enable them later.</p>
+						    <i class="ion ion-ios-mail me-2"></i> <span class="align-middle">Email notification</span>
+						    <br>
+						    <div th:if="${isEnabled}">
+						        <div class="form-check form-switch">
+						            <input class="form-check-input" type="checkbox" id="switch1" value="Disable" th:onclick="savePrefs();" checked>
+						            
+						            <label for="switch1" data-on-label="On" data-off-label="Off" class="mb-0">Disable email notification</label>
+						        </div>
+						    </div>
+						    <div th:unless="${isEnabled}">
+						        <div class="form-check form-switch">
+						            <input class="form-check-input" type="checkbox" id="switch1" value="Enable" th:onclick="savePrefs();">
+						            <label for="switch1" data-on-label="On" data-off-label="Off" class="mb-0">Enable email notification</label>
+						        </div>
+						    </div>
+							<br>
+						    <div id="alertBox" class="alert alert-warning alert-top-border alert-dismissible fade show" role="alert" style="display: none;">
+                                    <i class="uil uil-exclamation-triangle font-size-16 text-warning me-2"></i>
+                                    <span class="alert-message">A simple border warning alert</span>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+						</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+
+    <!-- JAVASCRIPT -->
+    <script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/libs/metismenujs/metismenujs.min.js}"></script>
+    <script th:src="@{/libs/simplebar/simplebar.min.js}"></script>
+    <script th:src="@{/libs/feather-icons/feather.min.js}"></script>
+    <script th:src="@{/js/app.js}"></script>
+    
+    <script src="/js/pages/form-advanced.init.js"></script>
+    <script src="/libs/choices.js/public/assets/scripts/choices.min.js"></script>
+</body>
+</html>

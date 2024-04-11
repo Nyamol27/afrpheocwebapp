@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<head>
+ <meta name="_csrf" th:content="${_csrf.token}"/>
+ <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+<body data-topbar="dark">
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+    <div class="main-content">
+        <div class="page-content">
+        	<div class="container-fluid">
+                <div class="row">
+                <div class="col-lg-12">
+                 <div id="alertBox" class="alert alert-warning alert-top-border alert-dismissible fade show" role="alert" style="display: none;">
+				    <i class="uil uil-exclamation-triangle font-size-16 text-warning me-2"></i>
+				   <span class="alert-message">A simple border warning alert</span>
+				    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+                </div>
+                    <div class="col-lg-12">
+                    <div class="card-body">
+    <!-- Announcement form -->
+<form id="editAnnouncementForm" th:object="${announcement}" method="post" enctype="multipart/form-data" th:action="@{'/announcement/update/' + ${announcement.id}}">
+    <!-- Form fields and content -->
+    <div class="mb-3">
+        <label for="announcementTitle" class="form-label">Title:</label>
+        <input type="text" class="form-control" id="announcementTitle" name="announcementTitle" th:value="${announcement.subject}" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="announcementContent" class="form-label">Content:</label>
+        <textarea class="form-control" id="announcementContent" name="announcementContent" th:text="${announcement.content}" required></textarea>
+    </div>
+
+    <!-- If attachment is available, allow updating it -->
+    <div class="mb-3" th:if="${announcement.attachmentAvailable}">
+        <label for="attachment" class="form-label">Update Attachment:</label>
+        <input type="file" class="form-control" id="attachment" name="attachment">
+    </div>
+
+    <!-- If no attachment is present, allow adding a new attachment -->
+    <div class="mb-3" th:unless="${announcement.attachmentAvailable}">
+        <label for="attachment" class="form-label">Add Attachment:</label>
+        <input type="file" class="form-control" id="attachment" name="attachment">
+    </div>
+
+    <!-- Hidden field for announcement ID -->
+    <input type="hidden" id="announcementId" name="announcementId" th:value="${announcement.id}">
+
+    <!-- Form submission buttons -->
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Update Announcement</button>
+        <a href="javascript:history.back()" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+  
+</div>
+                    
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+    
+     <!-- JAVASCRIPT -->
+	<script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/libs/metismenujs/metismenujs.min.js}"></script>
+	<script th:src="@{/libs/simplebar/simplebar.min.js}"></script>
+	<script th:src="@{/libs/feather-icons/feather.min.js}"></script>
+	
+	
+	
+	<script th:src="@{/js/app.js}"></script>
+</body>
+</html>

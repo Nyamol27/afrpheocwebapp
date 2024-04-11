@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="frontend-header :: head"></th:block>
+<body class="custom-cursor">
+
+    <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div>
+
+    <div class="preloader">
+        <div class="preloader__image" style="background-image: url(assets/images/loader.png);"></div>
+    </div>
+    <!-- /.preloader -->
+    <div class="page-wrapper">
+        <div th:replace="frontend-topbar"></div>
+        <header th:replace="frontend-header :: main-header"></header>
+        <section class="events-page section-space">
+            <div class="container">
+                <div class="row gutter-y-30">
+                
+                       <div class="col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+    <div class="event-card-grid @@extraClassName">
+        <a href="#" class="event-card-grid__image">
+            <img src="assets/images/events/tot2023.jpg" alt="EOC Training Workshop">
+            <div class="event-card-grid__date-wrapper">
+                <div class="event-card-grid__time">
+                    <span class="event-card-grid__time__icon fa fa-clock"></span>2  – 14 May 2023
+                </div>
+                <div class="event-card-grid__date">PHEOC experts ToT workshop</div>
+            </div>
+        </a>
+        <div class="event-card-grid__content">
+            <h4 class="event-card-grid__title"><a href="#">PHEOC Training Workshop</a></h4>
+            <ul class="event-card-grid__meta">
+                <li>
+                    <h5 class="event-card-grid__meta__title">Location</h5>
+                    Seychelles
+                </li>
+                <li>
+                    <h5 class="event-card-grid__meta__title">Organizer</h5>
+                    WHO and partners
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+                
+                     <div class="col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+    <div class="event-card-grid @@extraClassName">
+        <a href="#" class="event-card-grid__image">
+            <img src="assets/images/events/Picture2.png" alt="PHEOC Exercise">
+            <div class="event-card-grid__date-wrapper">
+                <div class="event-card-grid__time">
+                    <span class="event-card-grid__time__icon fa fa-clock"></span>6 – 7 Dec, 2022
+                </div>
+                <div class="event-card-grid__date">Regional Functional SIMEX</div>
+            </div>
+        </a>
+        <div class="event-card-grid__content">
+            <h4 class="event-card-grid__title"><a href="#">PHEOC Exercise</a></h4>
+            <ul class="event-card-grid__meta">
+                <li>
+                    <h5 class="event-card-grid__meta__title">Location</h5>
+                    Brazzaville (SIMCELL)
+                </li>
+                <li>
+                    <h5 class="event-card-grid__meta__title">Organizer</h5>
+                    WHO and partners
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+                
+                
+                
+                <div class="col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+    <div class="event-card-grid @@extraClassName">
+        <a href="#" class="event-card-grid__image">
+            <img src="assets/images/events/kenya.jpg" alt="EOC Training Workshop">
+            <div class="event-card-grid__date-wrapper">
+                <div class="event-card-grid__time">
+                    <span class="event-card-grid__time__icon fa fa-clock"></span>29 Nov – 09 Dec 2020
+                </div>
+                <div class="event-card-grid__date">PHEOC experts ToT workshop</div>
+            </div>
+        </a>
+        <div class="event-card-grid__content">
+            <h4 class="event-card-grid__title"><a href="#">PHEOC Training Workshop</a></h4>
+            <ul class="event-card-grid__meta">
+                <li>
+                    <h5 class="event-card-grid__meta__title">Location</h5>
+                    Kenya
+                </li>
+                <li>
+                    <h5 class="event-card-grid__meta__title">Organizer</h5>
+                    WHO and partners
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+           
+                   <!-- Event 1: WHO supports 17 African countries to conduct public health emergency operations centre exercise -->
+<div class="col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+    <div class="event-card-grid @@extraClassName">
+        <a href="https://www.afro.who.int/news/seventeen-african-countries-conducting-exercise-test-readiness-public-health-emergency" class="event-card-grid__image">
+            <img src="assets/images/events/ex.jpeg" alt="PHEOC Exercise">
+            <div class="event-card-grid__date-wrapper">
+                <div class="event-card-grid__time">
+                    <span class="event-card-grid__time__icon fa fa-clock"></span>4 – 5 Dec, 2019
+                </div>
+                <div class="event-card-grid__date">Regional Functional SIMEX</div>
+            </div>
+        </a>
+        <div class="event-card-grid__content">
+            <h4 class="event-card-grid__title"><a href="#">PHEOC Exercise</a></h4>
+            <ul class="event-card-grid__meta">
+                <li>
+                    <h5 class="event-card-grid__meta__title">Location</h5>
+                    Brazzaville (SIMCELL)
+                </li>
+                <li>
+                    <h5 class="event-card-grid__meta__title">Organizer</h5>
+                    WHO and partners
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Event 2: Public health EOC experts training of trainers workshop -->
+<div class="col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+    <div class="event-card-grid @@extraClassName">
+        <a href="#" class="event-card-grid__image">
+            <img src="assets/images/events/ethiopia.jpg" alt="EOC Training Workshop">
+            <div class="event-card-grid__date-wrapper">
+                <div class="event-card-grid__time">
+                    <span class="event-card-grid__time__icon fa fa-clock"></span>20 May – 3 Jul 2019
+                </div>
+                <div class="event-card-grid__date">PHEOC experts ToT workshop</div>
+            </div>
+        </a>
+        <div class="event-card-grid__content">
+            <h4 class="event-card-grid__title"><a href="#">PHEOC Training Workshop</a></h4>
+            <ul class="event-card-grid__meta">
+                <li>
+                    <h5 class="event-card-grid__meta__title">Location</h5>
+                    Ethiopia
+                </li>
+                <li>
+                    <h5 class="event-card-grid__meta__title">Organizer</h5>
+                    WHO and partners
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Event 3: Public health EOC software development meeting on specification requirements -->
+<div class="col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+    <div class="event-card-grid @@extraClassName">
+        <a href="" class="event-card-grid__image">
+            <img src="assets/images/events/shoc.jpg" alt="EOC Software Development Meeting">
+            <div class="event-card-grid__date-wrapper">
+                <div class="event-card-grid__time">
+                    <span class="event-card-grid__time__icon fa fa-clock"></span>19 – 21 Nov 2019
+                </div>
+                <div class="event-card-grid__date">EOC Software Development </div>
+            </div>
+        </a>
+        <div class="event-card-grid__content">
+            <h4 class="event-card-grid__title"><a href="#">PHEOC software development meeting on specification requirements</a></h4>
+            <ul class="event-card-grid__meta">
+                <li>
+                    <h5 class="event-card-grid__meta__title">Location</h5>
+                    Oman
+                </li>
+                <li>
+                    <h5 class="event-card-grid__meta__title">Organizer</h5>
+                    WHO and partners
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Event 4: WHO Regional Director for Africa visits South Sudan -->
+<div class="col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+    <div class="event-card-grid @@extraClassName">
+        <a href="https://www.afro.who.int/news/whos-regional-director-africa-dr-matshidiso-moeti-concludes-4-day-mission-pledge-scale-efforts" class="event-card-grid__image">
+            <img src="assets/images/events/juba.jpg" alt="Visit to South Sudan">
+            <div class="event-card-grid__date-wrapper">
+                <div class="event-card-grid__time">
+                    <span class="event-card-grid__time__icon fa fa-clock"></span>23 Oct 2018
+                </div>
+                <div class="event-card-grid__date">PHEOC in South Sudan</div>
+            </div>
+        </a>
+        <div class="event-card-grid__content">
+            <h4 class="event-card-grid__title"><a href="#">Inauguration of the first ever PHEOC in South Sudan.</a></h4>
+            <ul class="event-card-grid__meta">
+                <li>
+                    <h5 class="event-card-grid__meta__title">Location</h5>
+                    Juba, South Sudan
+                </li>
+                <li>
+                    <h5 class="event-card-grid__meta__title">Organizer</h5>
+                    World Health Organization (WHO)
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Event 5: Full-scale simulation exercise in Rwanda -->
+<div class="col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+    <div class="event-card-grid @@extraClassName">
+        <a href="#" class="event-card-grid__image">
+            <img src="assets/images/events/simex.jpeg" alt="Simulation Exercise">
+            <div class="event-card-grid__date-wrapper">
+                <div class="event-card-grid__time">
+                    <span class="event-card-grid__time__icon fa fa-clock"></span>Aug 2018
+                </div>
+                <div class="event-card-grid__date">Full-scale simulation exercise</div>
+            </div>
+        </a>
+        <div class="event-card-grid__content">
+            <h4 class="event-card-grid__title"><a href="#">Simulation Exercise</a></h4>
+            <ul class="event-card-grid__meta">
+                <li>
+                    <h5 class="event-card-grid__meta__title">Location</h5>
+                    Kigali, Rwanda
+                </li>
+                <li>
+                    <h5 class="event-card-grid__meta__title">Organizer</h5>
+                    World Health Organization (WHO)
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Event 6: Joint health emergency operations exercise in Dakar, Senegal -->
+<div class="col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+    <div class="event-card-grid @@extraClassName">
+        <a href="https://www.afro.who.int/news/who-supports-six-african-countries-conduct-first-joint-health-emergency-operations-exercise" class="event-card-grid__image">
+            <img src="assets/images/events/joint.jpg" alt="Joint Exercise">
+            <div class="event-card-grid__date-wrapper">
+                <div class="event-card-grid__time">
+                    <span class="event-card-grid__time__icon fa fa-clock"></span>8 – 9 May 2018
+                </div>
+                <div class="event-card-grid__date">Joint Exercise </div>
+            </div>
+        </a>
+        <div class="event-card-grid__content">
+            <h4 class="event-card-grid__title"><a href="#">Joint health emergency operations exercise</a></h4>
+            <ul class="event-card-grid__meta">
+                <li>
+                    <h5 class="event-card-grid__meta__title">Location</h5>
+                    Dakar, Senegal
+                </li>
+                <li>
+                    <h5 class="event-card-grid__meta__title">Organizer</h5>
+                    World Health Organization (WHO)
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Event 7: PHEOC Training in Dakar, Senegal -->
+<div class="col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+    <div class="event-card-grid @@extraClassName">
+        <a href="" class="event-card-grid__image">
+            <img src="assets/images/events/dakar.PNG" alt="PHEOC Training">
+            <div class="event-card-grid__date-wrapper">
+                <div class="event-card-grid__time">
+                    <span class="event-card-grid__time__icon fa fa-clock"></span>14 – 18 May 2018
+                </div>
+                <div class="event-card-grid__date">PHEOC Training</div>
+            </div>
+        </a>
+        <div class="event-card-grid__content">
+            <h4 class="event-card-grid__title"><a href="#"> Intermediate level training on PHEOC operations and management</a></h4>
+            <ul class="event-card-grid__meta">
+                <li>
+                    <h5 class="event-card-grid__meta__title">Location</h5>
+                    Dakar, Senegal
+                </li>
+                <li>
+                    <h5 class="event-card-grid__meta__title">Organizer</h5>
+                    WHO and Africa CDC
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Event 8: PHEOC Training in Nairobi, Kenya -->
+<div class="col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+    <div class="event-card-grid @@extraClassName">
+        <a href="" class="event-card-grid__image">
+            <img src="assets/images/events/tanzania.jpg" alt="PHEOC Training">
+            <div class="event-card-grid__date-wrapper">
+                <div class="event-card-grid__time">
+                    <span class="event-card-grid__time__icon fa fa-clock"></span>28 May – 01 Jun 2018
+                </div>
+                <div class="event-card-grid__date">PHEOC Training</div>
+            </div>
+        </a>
+        <div class="event-card-grid__content">
+            <h4 class="event-card-grid__title"><a href="#"> WHO in partnership with Africa CDC provided PHEOC training to 12 Anglophone countries</a></h4>
+            <ul class="event-card-grid__meta">
+                <li>
+                    <h5 class="event-card-grid__meta__title">Location</h5>
+                    Nairobi, Kenya
+                </li>
+                <li>
+                    <h5 class="event-card-grid__meta__title">Organizer</h5>
+                    WHO and Africa CDC
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Event 9: East African Regional PHEOC Training Workshop -->
+<div class="col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+    <div class="event-card-grid @@extraClassName">
+        <a href="https://www.afro.who.int/news/east-african-regional-public-health-emergency-operations-centre-incident-management-workshop-kicks-off-tanzania" class="event-card-grid__image">
+            <img src="assets/images/events/Tanzania.jpg" alt="Regional Workshop">
+            <div class="event-card-grid__date-wrapper">
+                <div class="event-card-grid__time">
+                    <span class="event-card-grid__time__icon fa fa-clock"></span>31 Jul - 4 Aug 2017
+                </div>
+                <div class="event-card-grid__date">Regional Workshop</div>
+            </div>
+        </a>
+        <div class="event-card-grid__content">
+            <h4 class="event-card-grid__title"><a href="#">East African Regional PHEOC Training Workshop</a></h4>
+            <ul class="event-card-grid__meta">
+                <li>
+                    <h5 class="event-card-grid__meta__title">Location</h5>
+                    Dar es Salaam, United Republic of Tanzania
+                </li>
+                <li>
+                    <h5 class="event-card-grid__meta__title">Organizer</h5>
+                    World Health Organization (WHO)
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Event 10: Simulation Exercise in Uganda -->
+<div class="col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+    <div class="event-card-grid @@extraClassName">
+        <a href="" class="event-card-grid__image">
+            <img src="assets/images/events/uganda.jpg" alt="Simulation Exercise">
+            <div class="event-card-grid__date-wrapper">
+                <div class="event-card-grid__time">
+                    <span class="event-card-grid__time__icon fa fa-clock"></span>Aug 2018
+                </div>
+                <div class="event-card-grid__date">Simulation Exercise</div>
+            </div>
+        </a>
+        <div class="event-card-grid__content">
+            <h4 class="event-card-grid__title"><a href="#">Uganda hosted a simulation exercise including PHEOC on disease outbreak management for the African Region</a></h4>
+            <ul class="event-card-grid__meta">
+                <li>
+                    <h5 class="event-card-grid__meta__title">Location</h5>
+                    Kampala, Uganda
+                </li>
+                <li>
+                    <h5 class="event-card-grid__meta__title">Organizer</h5>
+                    World Health Organization (WHO)
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Event 11: Launch of the African Public Health Emergency Operations Centres Network -->
+<div class="col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+    <div class="event-card-grid @@extraClassName">
+        <a href="https://www.afro.who.int/fr/node/6983" class="event-card-grid__image">
+            <img src="assets/images/events/eoc-net.jpg" alt="Network Launch">
+            <div class="event-card-grid__date-wrapper">
+                <div class="event-card-grid__time">
+                    <span class="event-card-grid__time__icon fa fa-clock"></span>12 Nov 2015
+                </div>
+                <div class="event-card-grid__date">Launch of the Africa PHEOCs Network</div>
+            </div>
+        </a>
+        <div class="event-card-grid__content">
+            <h4 class="event-card-grid__title"><a href="#">Network Launch</a></h4>
+            <ul class="event-card-grid__meta">
+                <li>
+                    <h5 class="event-card-grid__meta__title">Location</h5>
+                    Brazzaville, Republic of the Congo
+                </li>
+                <li>
+                    <h5 class="event-card-grid__meta__title">Organizer</h5>
+                    World Health Organization (WHO)
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+                   
+                    
+                    
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section><!-- /.events-page section-space -->
+        
+       
+        <div th:replace="frontend-footer"></div>
+    </div><!-- /.page-wrapper -->
+
+    <div th:replace="frontend-mobile-nav"></div>
+    <div th:replace="frontend-search-popup"></div>
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top">
+        <span class="scroll-to-top__text">back top</span>
+        <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
+    </a>
+
+    <div th:replace="frontend-sidebar"></div>
+	<script th:src="@{/assets/vendors/jquery/jquery-3.7.0.min.js}"></script>
+	<script th:src="@{/assets/vendors/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/assets/vendors/bootstrap-select/bootstrap-select.min.js}"></script>
+	<script th:src="@{/assets/vendors/jarallax/jarallax.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-ui/jquery-ui.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-appear/jquery.appear.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-validate/jquery.validate.min.js}"></script>
+	<script th:src="@{/assets/vendors/nouislider/nouislider.min.js}"></script>
+	<script th:src="@{/assets/vendors/tiny-slider/tiny-slider.js}"></script>
+	<script th:src="@{/assets/vendors/wnumb/wNumb.min.js}"></script>
+	<script th:src="@{/assets/vendors/swiper/js/swiper-bundle.min.js}"></script>
+	<script th:src="@{/assets/vendors/owl-carousel/js/owl.carousel.min.js}"></script>
+	<script th:src="@{/assets/vendors/wow/wow.js}"></script>
+	<script th:src="@{/assets/vendors/imagesloaded/imagesloaded.min.js}"></script>
+	<script th:src="@{/assets/vendors/isotope/isotope.js}"></script>
+	<script th:src="@{/assets/vendors/countdown/countdown.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-circleType/jquery.circleType.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-lettering/jquery.lettering.min.js}"></script>
+	<!-- template js -->
+	<script th:src="@{/assets/js/cleenhearts.js}"></script>
+	
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<head>
+    <!-- Add Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/css/bootstrap.min.css">
+    
+    <!-- Add DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+
+    <!-- Add jQuery and DataTables JS -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.6/js/dataTables.bootstrap5.min.js"></script>
+
+</head>
+<body data-topbar="dark">
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+   <div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+            
+                <div class="col-lg-12">
+                    <div class="card">
+                            <div class="card-header justify-content-between d-flex align-items-center">
+							    <h4 class="card-title">Announcement List</h4>
+
+						</div>
+						
+                        <div class="card-body">
+                         <div id="alertBox" class="alert alert-warning alert-top-border alert-dismissible fade show" role="alert" style="display: none;">
+								    <i class="uil uil-exclamation-triangle font-size-16 text-warning me-2"></i>
+								   <span class="alert-message">A simple border warning alert</span>
+								    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+						<div class="table-responsive" >
+                	  <table class="hover" id="dbdata">
+					    <thead>
+					        <tr>
+					            <th scope="col">#</th>
+					            <th scope="col">ID</th>
+					            <th scope="col">Publication Date</th>
+					            <th scope="col">Subject</th>
+					        </tr>
+					    </thead>
+					    <tbody>
+					        <tr th:each="announcement, iterStat : ${announcements}">
+					            <td th:text="${iterStat.count}">...</td>
+					            <td th:text="${announcement.id}">...</td>
+					            <td>
+					                <i class="bx bx-calendar me-1"></i> 
+					                <span th:text="${announcement.publicationDate}"></span>
+					            </td>
+					              <td>
+                                                    <a href="#" class="announcement-link" data-bs-toggle="modal" data-bs-target="#announcementModal"
+                                                        th:attr="data-subject=${announcement.subject}, 
+                                                                 data-content=${announcement.content}, 
+                                                                 data-date=${#dates.format(announcement.publicationDate, 'yyyy-MM-dd')}, 
+                                                                 data-attachment=${announcement.attachment != null ? announcement.attachment : ''}">
+                                                        <i class="bx bxs-megaphone me-1"></i>
+                                                        <span th:text="${announcement.subject}"></span>
+                                                    </a>
+                                 </td>
+					        </tr>
+					    </tbody>
+					</table>
+                  <!-- Modal -->
+				<div class="modal fade" id="announcementModal" tabindex="-1" aria-labelledby="announcementModalLabel" aria-hidden="true">
+				  <div class="modal-dialog modal-lg">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				         <h5 class="modal-title" id="announcementModalLabel">
+					          <i class="bx bxs-megaphone me-2"></i> Announcement Details
+					        </h5>
+				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				      </div>
+				      <div class="modal-body">
+				        <h3 id="announcementSubject"></h3>
+				        <p><i class="bx bxs-calendar me-1"></i> <span id="announcementDate"></span></p>
+				      
+				         <div id="announcementContent"></div>
+				        <!-- Display attachment if available -->
+				        <p><i class="bx bxs-paperclip me-1"></i> <a href="#" id="attachmentLink" download></a></p>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				
+                            
+                        </div>
+                        <!-- end card body -->
+                    </div>
+                    <!-- end card -->
+                </div>
+                <!-- end col -->
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+   
+    
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+    
+     <!-- JAVASCRIPT -->
+	<script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/libs/metismenujs/metismenujs.min.js}"></script>
+	<script th:src="@{/libs/simplebar/simplebar.min.js}"></script>
+	<script th:src="@{/libs/feather-icons/feather.min.js}"></script>
+	
+	
+	
+	<!-- swiper js -->
+	<script th:src="@{/libs/swiper/swiper-bundle.min.js}"></script>
+	<script th:src="@{/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js}"></script>
+	
+	<script th:src="@{/js/pages/email-editor.init.js}"></script>
+	
+	
+	<script th:src="@{/js/app.js}"></script>
+	
+	
+	<script>
+  new DataTable('#dbdata');
+</script>
+
+    <script>
+        $(document).ready(function() {
+            new DataTable('#dbdata');
+
+            // Handle click on announcement link
+            $(document).on('click', '.announcement-link', function() {
+                var subject = $(this).data('subject');
+                var content = $(this).data('content');
+                var date = $(this).data('date');
+                var attachment = $(this).data('attachment');
+
+                // Update modal content
+                $('#announcementSubject').text(subject);
+                $('#announcementContent').html(content);
+                $('#announcementDate').text('Publication Date: ' + date);
+
+                // If attachment available, update attachment link
+                if (attachment) {
+                    $('#attachmentLink').attr('href', attachment).text('Download Attachment');
+                } else {
+                    $('#attachmentLink').removeAttr('href').text('');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

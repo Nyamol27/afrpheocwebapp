@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="frontend-header :: head"></th:block>
+<body class="custom-cursor">
+
+    <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div>
+
+    <div class="preloader">
+        <div class="preloader__image" style="background-image: url(assets/images/loader.png);"></div>
+    </div>
+    <!-- /.preloader -->
+    <div class="page-wrapper">
+        <div th:replace="frontend-topbar"></div>
+        <header th:replace="frontend-header :: main-header"></header>
+         <div class="blog-two section-space-top" id="blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-7 col-md-9">
+                        <div class="sec-title">
+
+                            <h6 class="sec-title__tagline @@extraClassName">Our latest news</h6><!-- /.sec-title__tagline -->
+
+                            <h3 class="sec-title__title">Latest News & <span class="sec-title__title__inner">Articles</span> Africa PHEOC-NET</h3><!-- /.sec-title__title -->
+                        </div><!-- /.sec-title -->
+                    </div><!-- /.col-xl-6 col-lg-7 col-md-9 -->
+                </div><!-- /.row -->
+                <div class="blog-two__carousel cleenhearts-owl__carousel cleenhearts-owl__carousel--basic-nav owl-theme owl-carousel" data-owl-options='{
+            "items": 3,
+            "margin": 30,
+            "smartSpeed": 700,
+            "loop":true,
+            "autoplay": 6000,
+            "nav":false,
+            "dots":true,
+            "navText": ["<span class=\"icon-arrow-left\"></span>","<span class=\"icon-arrow-right\"></span>"],
+            "responsive":{
+                "0":{
+                    "items": 1,
+                    "margin": 20
+                },
+                "575":{
+                    "items": 1,
+                    "margin": 30
+                },
+                "768":{
+                    "items": 1,
+                    "margin": 30
+                },
+                "992":{
+                    "items": 2,
+                    "margin": 30
+                },
+                "1200":{
+                    "items": 2,
+                    "margin": 30
+                }
+            }
+            }'>
+                    <div class="item">
+                        <div class="blog-card-two" style="background-image: url('assets/images/blog/blog-bg-2-1.png');">
+                            <div class="blog-card-two__image">
+                                <a href="https://bmjopen.bmj.com/content/13/6/e068934" class="blog-card-two__image__link">
+                                    <img src="assets/images/blog/bg_pheoc.png" alt="Assessment of PHEOCs in Africa">
+                                    <span class="blog-card-two__image__icon"></span>
+                                </a><!-- /.blog-card-two__image__link -->
+                                <div class="blog-card-two__date">
+                                    <h4 class="blog-card-two__date__day blog-card-two__date__text">2023</h4><!-- /.blog-card-two__date__day -->
+                                    <h4 class="blog-card-two__date__month blog-card-two__date__text">June</h4><!-- /.blog-card-two__date__month -->
+                                </div><!-- /.blog-card-two__date -->
+                            </div><!-- /.blog-card-two__image -->
+                            <div class="blog-card-two__content">
+                                <h3 class="blog-card-two__title"><a href="https://bmjopen.bmj.com/content/13/6/e068934">Assessment of PHEOCs in Africa: Implementation Status and Improvement Opportunities</a></h3><!-- /.blog-card-two__title -->
+                                <p class="blog-card-two__text">Public health emergency operations centres in Africa: a cross-sectional study assessing the implementation status of core components and areas for improvement, December 2021</p><!-- /.blog-card-two__text -->
+                                <a href="https://bmjopen.bmj.com/content/13/6/e068934" class="blog-card-two__link">
+                                    <i class="icon-duble-arrow"></i>
+                                    <span>Read More</span>
+                                </a><!-- /.blog-card-tow__link -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card-two -->
+                    </div><!-- /.item -->
+                    <div class="item">
+                        <div class="blog-card-two" style="background-image: url('assets/images/blog/blog-bg-2-1.png');">
+                            <div class="blog-card-two__image">
+                                <a href="https://journals.plos.org/globalpublichealth/article?id=10.1371/journal.pgph.0001386" class="blog-card-two__image__link">
+                                    <img src="assets/images/blog/bg_pheoc.png" alt="Strengthening COVID-19 pandemic response">
+                                    <span class="blog-card-two__image__icon"></span>
+                                </a><!-- /.blog-card-two__image__link -->
+                                <div class="blog-card-two__date">
+                                    <h4 class="blog-card-two__date__day blog-card-two__date__text">2023</h4><!-- /.blog-card-two__date__day -->
+                                    <h4 class="blog-card-two__date__month blog-card-two__date__text">June</h4><!-- /.blog-card-two__date__month -->
+                                </div><!-- /.blog-card-two__date -->
+                            </div><!-- /.blog-card-two__image -->
+                            <div class="blog-card-two__content">
+                                <h3 class="blog-card-two__title"><a href="https://journals.plos.org/globalpublichealth/article?id=10.1371/journal.pgph.0001386">Improving COVID-19 Response: Review of African PHEOCs Knowledge Management</a></h3><!-- /.blog-card-two__title -->
+                                <p class="blog-card-two__text">Strengthening COVID-19 pandemic response coordination through public health emergency operations centres (PHEOC) in Africa</p><!-- /.blog-card-two__text -->
+                                <a href="https://journals.plos.org/globalpublichealth/article?id=10.1371/journal.pgph.0001386" class="blog-card-two__link">
+                                    <i class="icon-duble-arrow"></i>
+                                    <span>Read More</span>
+                                </a><!-- /.blog-card-tow__link -->
+                            </div><!-- /.blog-card-two__content -->
+                        </div><!-- /.blog-card-two -->
+                    </div><!-- /.item -->
+                   
+                   
+                   
+                </div><!-- /.blog-two__carousel -->
+            </div><!-- /.container -->
+        </div><!-- /.blog-two section-space-top -->
+        
+        
+
+       
+        <div th:replace="frontend-footer"></div>
+    </div><!-- /.page-wrapper -->
+
+    <div th:replace="frontend-mobile-nav"></div>
+    <div th:replace="frontend-search-popup"></div>
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top">
+        <span class="scroll-to-top__text">back top</span>
+        <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
+    </a>
+
+    <div th:replace="frontend-sidebar"></div>
+	<script th:src="@{/assets/vendors/jquery/jquery-3.7.0.min.js}"></script>
+	<script th:src="@{/assets/vendors/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/assets/vendors/bootstrap-select/bootstrap-select.min.js}"></script>
+	<script th:src="@{/assets/vendors/jarallax/jarallax.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-ui/jquery-ui.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-appear/jquery.appear.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-validate/jquery.validate.min.js}"></script>
+	<script th:src="@{/assets/vendors/nouislider/nouislider.min.js}"></script>
+	<script th:src="@{/assets/vendors/tiny-slider/tiny-slider.js}"></script>
+	<script th:src="@{/assets/vendors/wnumb/wNumb.min.js}"></script>
+	<script th:src="@{/assets/vendors/swiper/js/swiper-bundle.min.js}"></script>
+	<script th:src="@{/assets/vendors/owl-carousel/js/owl.carousel.min.js}"></script>
+	<script th:src="@{/assets/vendors/wow/wow.js}"></script>
+	<script th:src="@{/assets/vendors/imagesloaded/imagesloaded.min.js}"></script>
+	<script th:src="@{/assets/vendors/isotope/isotope.js}"></script>
+	<script th:src="@{/assets/vendors/countdown/countdown.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-circleType/jquery.circleType.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-lettering/jquery.lettering.min.js}"></script>
+	<!-- template js -->
+	<script th:src="@{/assets/js/cleenhearts.js}"></script>
+	
+</body>
+</html>

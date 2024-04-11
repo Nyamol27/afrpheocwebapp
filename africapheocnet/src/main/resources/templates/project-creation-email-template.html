@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Project Created</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        li span {
+            font-weight: bold;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        .footer {
+            font-size: 12px;
+            text-align: center;
+            color: #666;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>New Project Created</h2>
+        <p>Dear Member,</p>
+        <p>We are pleased to inform you that a new project has been created for the Technical Working Group. Here are the details:</p>
+        <ul>
+            <li><span>Project Name:</span> <span th:text="${project.projectName}"></span></li>
+            <li><span>Start Date:</span> <span th:text="${project.startDate}"></span></li>
+            <li><span>End Date:</span> <span th:text="${project.endDate}"></span></li>
+        </ul>
+        <p>Thank you for your attention.</p>
+    </div>
+    <!-- Footer -->
+    <div class="footer">
+        <p>This is an automated email. Please do not reply.</p>
+        <p>Best regards,<br>AFRICA PHEOC-NET</p>
+    </div>
+</body>
+</html>

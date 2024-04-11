@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- Sidebar content -->
+<div class="vertical-menu" th:fragment="menu">
+     <div class="vertical-menu">
+
+
+             <!-- LOGO -->
+             <div class="navbar-brand-box">
+                <a href="/admin_dashboard" class="logo logo-dark">
+                    <span class="logo-sm">
+                        <img src="images/logo-sm.svg" alt="" height="26">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="images/logo-sm.svg" alt="" height="26"> <span class="logo-txt">AFR PHEOC-NET</span>
+                    </span>
+                </a>
+
+                <a href="/admin_dashboard" class="logo logo-light">
+                    <span class="logo-sm">
+                        <img src="images/logo-sm.svg" alt="" height="26">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="images/logo-sm.svg" alt="" height="26"> <span class="logo-txt">AFR PHEOC-NET</span>
+                    </span>
+                </a>
+            </div>
+
+            <button type="button" class="btn btn-sm px-3 font-size-16 header-item vertical-menu-btn">
+                <i class="fa fa-fw fa-bars"></i>
+            </button>
+
+            <div data-simplebar class="sidebar-menu-scroll">
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <!-- Left Menu Start -->
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <li class="menu-title" data-key="t-menu">Menu</li>
+
+                        <li>
+                            <a href="/admin_dashboard">
+                                <i class="bx bx-home-circle nav-icon"></i>
+                                <span class="menu-item" data-key="t-dashboard">Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li class="menu-title" data-key="t-applications">Main Navigation</li>
+
+                       
+                        <li>
+                            <a href="/api/topic/forum">
+                                <i class="bx bx-chat nav-icon"></i>
+                                <span class="menu-item" data-key="t-chat">Online Forum</span>
+                                <span class="badge rounded-pill text-danger bg-danger-subtle" data-key="t-hot">Hot</span>
+                            </a>
+                        </li>
+                        
+                         <li>
+                            <a href="/twg-membership-requests/membership-requests">
+                                <i class="bx bx-group nav-icon"></i>
+                                <span class="menu-item" data-key="t-chat">Working Group</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://worldhealthorg.sharepoint.com/sites/AF-online/afro_eocnet" target="_blank">
+                                <i class="bx bx-folder nav-icon"></i>
+                                <span class="menu-item" data-key="t-filemanager">SharePoint</span>
+                            </a>
+                        </li>
+						<li>
+                           <a href="/apps-invite">
+                                <i class="bx bx-mail-send nav-icon"></i>
+                                <span class="menu-item" data-key="t-email">Invite a friend</span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                           <a href="/apps-tot-club">
+                                <i class="bx bxs-graduation nav-icon"></i>
+                                <span class="menu-item" data-key="t-email">ToT Club</span>
+                            </a>
+                        </li>
+                        <li>
+						    <a href="/roster/settings">
+						        <i class="bx bx-user-check nav-icon"></i>
+						        <span class="menu-item" data-key="t-email">Availability & CV Management</span>
+						    </a>
+						</li>
+                        
+                        <li>
+                           <a href="admin/apps-administration">
+                                <i class="bx bx-cog nav-icon"></i>
+                                <span class="menu-item" data-key="t-email">Management Dashboard</span>
+                            </a>
+                        </li>
+						<li class="menu-title" data-key="t-layouts">Community</li>
+						
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow">
+                                <i class="bx bx-dialpad nav-icon"></i>
+                                <span class="menu-item" data-key="t-contacts">Contacts</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a  href="/members/list" data-key="t-user-list">Members List</a></li>
+                                <li><a href="/contacts/list-contact" data-key="t-user-list">National F.P List</a></li>
+                            </ul>
+                        </li>
+						 
+                        <li>
+                           <a href="https://chat.whatsapp.com/E31L8qUP85rKJHcVHPae0I" target="_blank">
+                                <i class="bx bxl-whatsapp nav-icon"></i>
+                                <span class="menu-item" data-key="t-email">Join WhatsApp Group </span>
+                            </a>
+                        </li>
+                        
+                         <li>
+                           <a href="/announcement/list-announcement">
+                                <i class="bx bx-user-voice nav-icon"></i>
+                                <span class="menu-item" data-key="t-email">Announcement </span>
+                            </a>
+                        </li>
+                         
+                       
+                        <li class="menu-title" data-key="t-layouts">Support</li>
+                		<li>
+                           <a href="/apps-faq">
+                                 <i class="bx bx-question-mark nav-icon"></i>
+                                <span class="menu-item" data-key="t-email">FAQ </span>
+                            </a>
+                        </li>
+                        <li>
+                           <a href="/apps-feedback">
+                                 <i class="bx bx-award nav-icon"></i>
+                                <span class="menu-item" data-key="t-email">Feedback </span>
+                            </a>
+                        </li>
+                        
+                        
+
+                    </ul>
+                </div>
+                <!-- Sidebar -->
+            </div>
+        </div>
+</div>
+
+</html>

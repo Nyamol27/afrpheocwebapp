@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="frontend-header :: head"></th:block>
+<body class="custom-cursor">
+
+    <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div>
+
+    <div class="preloader">
+        <div class="preloader__image" style="background-image: url(assets/images/loader.png);"></div>
+    </div>
+    <!-- /.preloader -->
+    <div class="page-wrapper">
+        <div th:replace="frontend-topbar"></div>
+        <header th:replace="frontend-header :: main-header"></header>
+       <section class="inspiring-one section-space" style="background-image: url('assets/images/backgrounds/inspiring-bg-1-1.png');">
+            <div class="container">
+                <div class="row gutter-y-50">
+                    <div class="col-xl-6">
+                        <div class="sec-title">
+
+                            <h6 class="sec-title__tagline @@extraClassName">Africa PHEOC-NET</h6><!-- /.sec-title__tagline -->
+
+                            <h3 class="sec-title__title"> Join Us in Advocating for <span class="sec-title__title__inner">PHEOCs</span></h3><!-- /.sec-title__title -->
+                        </div><!-- /.sec-title -->
+                        <p class="inspiring-one__text">At the WHO African EOC Network, we believe in the crucial role of PHEOCs in national emergency management. PHEOCs are essential for effectively managing emergency mitigation, preparedness, response, and recovery activities. We advocate for the integration of traditional public health services into a comprehensive emergency management model, ensuring preparedness and capacity building are at the forefront.</p><!-- /.inspiring-one__text -->
+                       
+                        
+                    </div><!-- /.col-xl-6 -->
+                    
+                    <div class="col-xl-6">
+                        <div class="inspiring-one__image">
+                            <div class="inspiring-one__image__inner inspiring-one__image__inner--one wow fadeInRight" data-wow-duration="1500ms" data-wow-delay="00ms">
+                                <img src="assets/images/inspiring/bg_pheoc.png" alt="inspiring">
+                            </div><!-- /.inspiring-one__image__one -->
+                            <div class="inspiring-one__image__inner inspiring-one__image__inner--two wow fadeInRight" data-wow-duration="1500ms" data-wow-delay="200ms">
+                                <img src="assets/images/inspiring/membership-1.JPG" alt="inspiring">
+                            </div><!-- /.inspiring-one__image__two -->
+                        </div><!-- /.inspiring-one__image -->
+                    </div><!-- /.col-xl-6 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+            <div class="inspiring-one__shapes">
+                <div class="inspiring-one__shape inspiring-one__shape--one"></div><!-- /.inspiring-one__shape__one -->
+                <div class="inspiring-one__shape inspiring-one__shape--two"></div><!-- /.inspiring-one__shape__one -->
+            </div><!-- /.inspiring-one__shape -->
+        </section><!-- /.inspiring-one-one section-space -->
+
+         <div class="blog-one section-space">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-7 col-md-9">
+                        <div class="sec-title">
+
+                            <h6 class="sec-title__tagline @@extraClassName">AFRICA PHEOC-NET</h6><!-- /.sec-title__tagline -->
+
+                            <h3 class="sec-title__title">Recent Advocacy  <span class="sec-title__title__inner"> Initiatives</span></h3><!-- /.sec-title__title -->
+                        </div><!-- /.sec-title -->
+                    </div><!-- /.col-xl-6 col-lg-7 col-md-9 -->
+                </div><!-- /.row -->
+                <div class="blog-one__carousel cleenhearts-owl__carousel cleenhearts-owl__carousel--basic-nav owl-theme owl-carousel" data-owl-options='{
+            "items": 3,
+            "margin": 30,
+            "smartSpeed": 700,
+            "loop":true,
+            "autoplay": 6000,
+            "nav":false,
+            "dots":true,
+            "navText": ["<span class=\"icon-arrow-left\"></span>","<span class=\"icon-arrow-right\"></span>"],
+            "responsive":{
+                "0":{
+                    "items": 1,
+                    "margin": 20
+                },
+                "575":{
+                    "items": 1,
+                    "margin": 30
+                },
+                "768":{
+                    "items": 2,
+                    "margin": 30
+                },
+                "992":{
+                    "items": 3,
+                    "margin": 30
+                },
+                "1200":{
+                    "items": 3,
+                    "margin": 30
+                }
+            }
+            }'>
+                    <div class="item">
+                        <div class="blog-card wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='000ms'>
+                            <a href="blog-details-right.html" class="blog-card__image">
+                                <img src="assets/images/blog/rc-2016.jpg" alt="Regional Health Security Strategy">
+                                <div class="blog-card__date"><span>2016</span>
+                                    </div><!-- /.blog-card__date -->
+                            </a><!-- /.blog-card__image -->
+                            <div class="blog-card__content" style="background-image: url('assets/images/blog/blog-bg-1-1.png');">
+                                <h3 class="blog-card__title"><a href="https://iris.who.int/handle/10665/252834">Regional Health Security Strategy 2016–2020</a></h3><!-- /.blog-card__title -->
+                                <a href="blog-details-right.html" class="blog-card__link">
+                                    <span class="blog-card__link__front"><span class="icon-duble-arrow"></span></span>
+                                    <span class="blog-card__link__back"><span class="icon-duble-arrow"></span>Read More</span>
+                                </a><!-- /.blog-card__link -->
+                            </div><!-- /.blog-card__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.item -->
+                    <div class="item">
+                        <div class="blog-card wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='200ms'>
+                            <a href="blog-details-right.html" class="blog-card__image">
+                                <img src="assets/images/blog/cal-to-action.jpg" alt="Call to action">
+                                <div class="blog-card__date"><span>2022</span>
+                                    </div><!-- /.blog-card__date -->
+                            </a><!-- /.blog-card__image -->
+                            <div class="blog-card__content" style="background-image: url('assets/images/blog/blog-bg-1-1.png');">
+                                <h3 class="blog-card__title"><a href="https://africacdc.org/news-item/call-to-action-strengthening-public-health-emergency-operations-centres-in-africa/">Call to Action: Enhancing PHEOCs in Africa</a></h3><!-- /.blog-card__title -->
+                                <a href="blog-details-right.html" class="blog-card__link">
+                                    <span class="blog-card__link__front"><span class="icon-duble-arrow"></span></span>
+                                    <span class="blog-card__link__back"><span class="icon-duble-arrow"></span>Read More</span>
+                                </a><!-- /.blog-card__link -->
+                            </div><!-- /.blog-card__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.item -->
+                    <div class="item">
+                        <div class="blog-card wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='400ms'>
+                            <a href="blog-details-right.html" class="blog-card__image">
+                                <img src="assets/images/blog/scoping-missions.jpg" alt="Scoping Missions">
+                                <div class="blog-card__date"><span>2022</span>
+                                    </div><!-- /.blog-card__date -->
+                            </a><!-- /.blog-card__image -->
+                            <div class="blog-card__content" style="background-image: url('assets/images/blog/blog-bg-1-1.png');">
+                                <h3 class="blog-card__title"><a href="">Scoping Missions: Evaluating African emergency response capabilities, identifying areas for improvement.</a></h3><!-- /.blog-card__title -->
+                                <a href="blog-details-right.html" class="blog-card__link">
+                                    <span class="blog-card__link__front"><span class="icon-duble-arrow"></span></span>
+                                    <span class="blog-card__link__back"><span class="icon-duble-arrow"></span>Read More</span>
+                                </a><!-- /.blog-card__link -->
+                            </div><!-- /.blog-card__content -->
+                        </div><!-- /.blog-card -->
+                    </div><!-- /.item -->
+                </div><!-- /.blog-one__carousel -->
+            </div><!-- /.container -->
+        </div><!-- /.blog-one section-space -->
+        <div th:replace="frontend-footer"></div>
+    </div><!-- /.page-wrapper -->
+
+    <div th:replace="frontend-mobile-nav"></div>
+    <div th:replace="frontend-search-popup"></div>
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top">
+        <span class="scroll-to-top__text">back top</span>
+        <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
+    </a>
+
+    <div th:replace="frontend-sidebar"></div>
+	<script th:src="@{/assets/vendors/jquery/jquery-3.7.0.min.js}"></script>
+	<script th:src="@{/assets/vendors/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/assets/vendors/bootstrap-select/bootstrap-select.min.js}"></script>
+	<script th:src="@{/assets/vendors/jarallax/jarallax.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-ui/jquery-ui.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-appear/jquery.appear.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-validate/jquery.validate.min.js}"></script>
+	<script th:src="@{/assets/vendors/nouislider/nouislider.min.js}"></script>
+	<script th:src="@{/assets/vendors/tiny-slider/tiny-slider.js}"></script>
+	<script th:src="@{/assets/vendors/wnumb/wNumb.min.js}"></script>
+	<script th:src="@{/assets/vendors/swiper/js/swiper-bundle.min.js}"></script>
+	<script th:src="@{/assets/vendors/owl-carousel/js/owl.carousel.min.js}"></script>
+	<script th:src="@{/assets/vendors/wow/wow.js}"></script>
+	<script th:src="@{/assets/vendors/imagesloaded/imagesloaded.min.js}"></script>
+	<script th:src="@{/assets/vendors/isotope/isotope.js}"></script>
+	<script th:src="@{/assets/vendors/countdown/countdown.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-circleType/jquery.circleType.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-lettering/jquery.lettering.min.js}"></script>
+	<!-- template js -->
+	<script th:src="@{/assets/js/cleenhearts.js}"></script>
+	
+</body>
+</html>

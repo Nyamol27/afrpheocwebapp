@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<body data-topbar="dark">
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header justify-content-between d-flex align-items-center">
+                                <h4 class="card-title">Working Groups</h4>
+                            </div><!-- end card header -->
+                            <div class="card-body">
+                                <!-- Working Group Details -->
+                                <!-- Display the working group name and total members -->
+								<h3>Working Group: <span th:text="${twgName}"></span></h3>
+								<p>Total Members: <span th:text="${totalMembers}"></span></p>
+
+                                
+                                <!-- Links to Projects, Forum, Members, and Files -->
+                                <div class="row">
+                                    <div class="col-3">
+                                        <div class="card border-primary">
+                                            <div class="card-body">
+                                                <i class="fas fa-tasks fa-3x"></i>
+                                                <h5 class="card-title mt-3">Projects</h5>
+                                            <a th:href="@{/projects/working-group/view/{twg}(twg=${twgName})}" class="btn btn-primary">View Projects</a>
+                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-3">
+                                        <div class="card border-info">
+                                            <div class="card-body">
+                                                <i class="fas fa-users fa-3x"></i>
+                                                <h5 class="card-title mt-3">Members</h5>
+                                                <a th:href="@{/twg-membership-requests/members/view/{twg}(twg=${twgName})}" class="btn btn-info">View Members</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="card border-success">
+                                            <div class="card-body">
+                                                <i class="fas fa-folder fa-3x"></i>
+                                                <h5 class="card-title mt-3">Files</h5>
+                                                <a th:href="@{/files/working-group/}" class="btn btn-success">View Files</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- end card-body -->
+                        </div><!-- end card -->
+                    </div><!-- end col-lg-12 -->
+                </div><!-- end row -->
+            </div><!-- end container-fluid -->
+        </div><!-- end page-content -->
+    </div><!-- end main-content -->
+    
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+    
+    <!-- JAVASCRIPT -->
+    <script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/libs/metismenujs/metismenujs.min.js}"></script>
+    <script th:src="@{/libs/simplebar/simplebar.min.js}"></script>
+    <script th:src="@{/libs/feather-icons/feather.min.js}"></script>
+    <!-- swiper js -->
+    <script th:src="@{/libs/swiper/swiper-bundle.min.js}"></script>
+    <script th:src="@{/js/app.js}"></script>
+</body>
+</html>

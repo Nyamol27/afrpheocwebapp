@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<body data-topbar="dark">
+<header th:replace="header :: page-topbar"></header>
+<div th:replace="sidebar :: menu"></div>
+
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+               
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header justify-content-between d-flex align-items-center">
+                            <h4 class="card-title">Edit Task Details</h4>
+                        </div>
+                        <div class="card-body">
+                            <form id="updateTaskForm">
+							    <div id="alertBox" class="alert alert-warning alert-top-border alert-dismissible fade show" role="alert"
+							        style="display: none;">
+							        <i class="uil uil-exclamation-triangle font-size-16 text-warning me-2"></i>
+							        <span class="alert-message">A simple border warning alert</span>
+							        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+							    </div>
+							    <div class="mb-3">
+							        <label for="taskNameInput" class="form-label">Task:</label>
+							        <input type="text" class="form-control" id="taskNameInput" name="task" th:value="${task.Task}" required>
+							    </div>
+							    <div class="mb-3">
+							        <label for="startDateInput" class="form-label">Start Date:</label>
+							        <input type="date" class="form-control" id="startDateInput" name="startDate" th:value="${task.startDate}"
+							            required>
+							    </div>
+							    <div class="mb-3">
+							        <label for="endDateInput" class="form-label">End Date:</label>
+							        <input type="date" class="form-control" id="endDateInput" name="targetDate" th:value="${task.targetDate}"
+							            required>
+							    </div>
+							    <div class="mb-3">
+							        <label for="prioritySelect" class="form-label">Priority:</label>
+							        <select class="form-select" id="prioritySelect" name="priority" required>
+							            <option th:each="priority : ${T(net.pheocnetafr.africapheocnet.util.AutoFilledData).getTaskPriorityList()}"
+							                th:value="${priority}" th:text="${priority}" th:selected="${priority == task.priority}"></option>
+							        </select>
+							    </div>
+							    <div class="mb-3">
+							        <label for="responsibleInput" class="form-label">Responsible Person:</label>
+							        <input type="text" class="form-control" id="responsibleInput" name="responsible" th:value="${task.responsible}" required>
+							    </div>
+							    <div class="mb-3">
+							        <label for="statusSelect" class="form-label">Status:</label>
+							        <select class="form-select" id="statusSelect" name="status" required>
+							            <option th:each="status : ${T(net.pheocnetafr.africapheocnet.util.AutoFilledData).getTaskStatusList()}"
+							                th:value="${status}" th:text="${status}" th:selected="${status == task.status}"></option>
+							        </select>
+							    </div>
+							    <div class="mb-3">
+							        <button type="button" class="btn btn-primary w-sm" onclick="updateTask()">Update</button>
+							        <button type="button" class="btn btn-secondary w-sm" onclick="cancelUpdate()">Cancel</button>
+							        <script>
+							            // Function to cancel the update and navigate back
+							            function cancelUpdate() {
+							                window.history.back();
+							            }
+							        </script>
+							    </div>
+							    <input type="hidden" id="taskIdInput" name="taskId" th:value="${task.id}">
+							</form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="footer :: footer-content"></footer>
+<footer th:replace="rightbar :: right-bar"></footer>
+
+<!-- JAVASCRIPT -->
+<script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/libs/metismenujs/metismenujs.min.js}"></script>
+<script th:src="@{/libs/simplebar/simplebar.min.js}"></script>
+<script th:src="@{/libs/feather-icons/feather.min.js}"></script>
+<script th:src="@{/js/app.js}"></script>
+
+</body>
+</html>

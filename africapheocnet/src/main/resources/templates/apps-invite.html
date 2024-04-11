@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<script>
+function checkEntry() {
+    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+    // Get input values
+    var inputName = document.getElementById("inputName").value;
+    var inputEmail = document.getElementById("inputEmail").value;
+
+    if (inputName === "") {
+        // Display message in the alertBox
+        document.getElementById("alertBox").innerHTML = "<strong>Error:</strong> Please provide the name.";
+        document.getElementById("alertBox").style.display = "block";
+        return false;
+    } else if (inputEmail === "") {
+        // Display message in the alertBox
+        document.getElementById("alertBox").innerHTML = "<strong>Error:</strong> Please provide the email.";
+        document.getElementById("alertBox").style.display = "block";
+        return false;
+    } else if (!inputEmail.match(validRegex)) {
+        // Display message in the alertBox
+        document.getElementById("alertBox").innerHTML = "<strong>Error:</strong> Invalid email address!";
+        document.getElementById("alertBox").style.display = "block";
+        return false;
+    } else {
+        // If everything is fine, hide the alertBox and proceed with sending invite
+        document.getElementById("alertBox").style.display = "none";
+        sendInvite();
+        return true;
+    }
+}
+
+</script>
+<body data-topbar="dark">
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+							
+							<div class="row">
+								<div class="col-12">
+									<div class="card">
+										<div class="card-header">
+											Invite a friend or colleague
+										</div>
+										<div class="card-body">
+											
+											<p class="card-subtitle text-muted">You should only invite people that you know personally. Under no circumstance you should use the form below to send unsolicited invitations to third parties that are not known to you.</p>
+											
+												<div id="alertBox" class="alert alert-warning alert-top-border alert-dismissible fade show" role="alert" style="display: none;">
+												    <i class="uil uil-exclamation-triangle font-size-16 text-warning me-2"></i>
+												   <span class="alert-message">A simple border warning alert</span>
+												    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+												</div>
+												
+												<div class="mb-3">
+													<label class="form-label"> Name</label>
+													<input type ="text"  id = "inputName" name = "fname" class="form-control" placeholder="Name" >
+												</div>
+												<div class="mb-3">
+													<label class="form-label">Email address</label>
+													<input type="email" id = "inputEmail" class="form-control" name = "email" placeholder="Email">
+												</div>
+												<div class="mb-3">
+													<button type="submit" class="btn btn-primary" onclick="checkEntry();"> <i class="fa fa-envelope"></i> Send </button>	
+												</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+        </div>
+    </div>
+    
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+    
+     <!-- JAVASCRIPT -->
+	<script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/libs/metismenujs/metismenujs.min.js}"></script>
+	<script th:src="@{/libs/simplebar/simplebar.min.js}"></script>
+	<script th:src="@{/libs/feather-icons/feather.min.js}"></script>
+	
+	<!-- apexcharts -->
+	<script th:src="@{/libs/apexcharts/apexcharts.min.js}"></script>
+	
+	<!-- Vector map-->
+	<script th:src="@{/libs/jsvectormap/js/jsvectormap.min.js}"></script>
+	<script th:src="@{/libs/jsvectormap/maps/world-merc.js}"></script>
+	
+	<!-- swiper js -->
+	<script th:src="@{/libs/swiper/swiper-bundle.min.js}"></script>
+	
+	<script th:src="@{/js/pages/dashboard.init.js}"></script>
+	
+	<script th:src="@{/js/app.js}"></script>
+</body>
+</html>

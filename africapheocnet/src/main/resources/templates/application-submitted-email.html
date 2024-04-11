@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Application Submitted</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+        .signature {
+            margin-top: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+        .automated {
+            color: #999;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <p>Dear <span th:text="${firstName}"></span>,</p>
+        <p>Thank you for taking the time to fill out the application form. Your submission has been received successfully.</p>
+        <p>Your application is currently under review by our team. We will notify you of the outcome as soon as possible.</p>
+        <p>If you have any questions or need further clarification, please don't hesitate to contact us.</p>
+        <p class="automated">This is an automated email. Please do not reply.</p>
+        <p>Best regards,<br> The Africa PHEOC-Net Team</p>
+    </div>
+    <div class="signature">
+        <p>"PHEOCs save lives."</p>
+    </div>
+</body>
+</html>

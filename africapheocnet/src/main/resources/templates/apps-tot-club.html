@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<body data-topbar="dark">
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+							
+							<div class="row">
+								<div class="col-12">
+									<div class="card">
+										<div class="card-header">
+											ToT Club
+										</div>
+										<div class="card-body">
+    <p class="card-subtitle text-muted">Welcome to the ToT Club Forum!</p>
+    <p>
+        Dear ToT Graduates,
+    </p>
+    <p>
+        We extend a warm welcome to you all to our exclusive forum designed for graduates of the Training of Trainers (ToT) program, focusing on strengthening and establishing Public Health Emergency Operations Centers (PHEOCs) in Africa.
+    </p>
+    <p>
+        This forum serves as a dynamic platform where ToT graduates from diverse backgrounds, experiences, and corners of the continent come together to share insights, strategies, and challenges encountered in their efforts to fortify PHEOCs within their respective countries.
+    </p>
+    <p>
+        As esteemed graduates, you bring a wealth of knowledge and hands-on experience to the table. Whether you're a seasoned veteran in emergency management or a recent graduate eager to make a difference, this forum is your hub for collaboration, learning, and innovation.
+    </p>
+    <p>
+        Here, you can engage in discussions on a wide array of topics related to PHEOC establishment and enhancement, including:
+    </p>
+  <table class = "table">
+    <tr>
+        <td>
+            <i class="fas fa-check fa-lg mr-2"></i> Best practices in PHEOC design and implementation
+        </td>
+        <td>
+            <i class="fas fa-lightbulb fa-lg mr-2"></i> Strategies for effective emergency response coordination
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <i class="fas fa-exclamation-triangle fa-lg mr-2"></i> Overcoming common challenges in PHEOC management
+        </td>
+        <td>
+            <i class="fas fa-cogs fa-lg mr-2"></i> Integrating new technologies and methodologies for enhanced preparedness
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <i class="fas fa-map-signs fa-lg mr-2"></i> Navigating regulatory frameworks and policy implications
+        </td>
+        <td>
+            <i class="fas fa-hands-helping fa-lg mr-2"></i> Building resilient community partnerships and fostering public engagement
+        </td>
+    </tr>
+</table>
+  
+
+
+    <p>
+        Our forum is not just a space for sharing successes, but also a platform for seeking advice, brainstorming solutions, and supporting one another through the complexities of emergency preparedness and response.
+    </p>
+    <p>
+        We encourage you to actively participate, ask questions, share your experiences, and contribute your unique perspectives to our vibrant community. Together, we can drive meaningful change, strengthen Africa's resilience, and empower our communities to face any emergency with confidence.
+    </p>
+    <p>
+        Thank you for being part of our ToT Club Forum. Let's embark on this journey of knowledge exchange, collaboration, and continuous improvement together.
+    </p>
+    <p>
+        Warm regards,
+        <br>Africa PHEOC-NET Management Team
+    </p>
+    
+    <!-- Link to the Forum with Icon -->
+    <p>
+        <a th:href="@{/forum/view/ToT}">
+            <i class="fas fa-comments"></i> Join the Discussion Forum
+        </a>
+    </p>
+</div>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+        </div>
+    </div>
+    
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+    
+     <!-- JAVASCRIPT -->
+	<script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/libs/metismenujs/metismenujs.min.js}"></script>
+	<script th:src="@{/libs/simplebar/simplebar.min.js}"></script>
+	<script th:src="@{/libs/feather-icons/feather.min.js}"></script>
+	
+	<!-- apexcharts -->
+	<script th:src="@{/libs/apexcharts/apexcharts.min.js}"></script>
+	
+	<!-- Vector map-->
+	<script th:src="@{/libs/jsvectormap/js/jsvectormap.min.js}"></script>
+	<script th:src="@{/libs/jsvectormap/maps/world-merc.js}"></script>
+	
+	<!-- swiper js -->
+	<script th:src="@{/libs/swiper/swiper-bundle.min.js}"></script>
+	
+	<script th:src="@{/js/pages/dashboard.init.js}"></script>
+	
+	<script th:src="@{/js/app.js}"></script>
+</body>
+</html>

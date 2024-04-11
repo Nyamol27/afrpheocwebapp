@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="frontend-header :: head"></th:block>
+<body class="custom-cursor">
+
+    <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div>
+
+    <div class="preloader">
+        <div class="preloader__image" style="background-image: url(assets/images/loader.png);"></div>
+    </div>
+    <!-- /.preloader -->
+    <div class="page-wrapper">
+        <div th:replace="frontend-topbar"></div>
+        <header th:replace="frontend-header :: main-header"></header>
+        <section class="pricing-page section-space">
+            <div class="container">
+                <div class="row gutter-y-30">
+                    <div class="col-xl-4 col-md-6  wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="000ms">
+                        <div class="pricing-card" style="background-image: url('assets/images/backgrounds/pricing-bg-1-1.jpg');">
+                            <div class="pricing-card__image" style="background-image: url('assets/images/pricing/Flag_of_Kenya.png');">
+                                <div class="pricing-card__image__content">
+                                   
+                                    <h2 class="pricing-card__title">Kenya</h2><!-- /.pricing-card__title -->
+                                </div><!-- /.pricing-card__image__content -->
+                            </div><!-- /.pricing-card__image -->
+                            <div class="pricing-card__content">
+                                <ul class="pricing-card__list">
+                                    <li>
+                                        <span class="pricing-card__list__icon icon-duble-arrow"></span>
+                                        <span class="pricing-card__list__text">KENYA PUBLIC HEALTH EMERGENCY OPERATIONS CENTER (KPHEOC) HANDBOOK</span>
+                                    </li>
+                                   
+                                </ul><!-- /.pricing-card__list -->
+                                <div class="pricing-card__price">
+                                    <div class="pricing-card__price__inner">
+                                        <h3 class="pricing-card__price__title">Read</h3><!-- /.pricing-card__price__title -->
+                                        
+                                    </div><!-- /.pricing-card__price__inner -->
+                                    <a href="http://guidelines.health.go.ke:8000/media/Kenya_Public_Health_Emergency_Operations_Center_KPHEOC_Handbook_-_March_2021.pdf" class="pricing-card__button"><span class="icon-duble-arrow"></span></a><!-- /.pricing-card__button -->
+                                </div><!-- /.pricing-card__price -->
+                            </div><!-- /.pricing-card__content -->
+                        </div><!-- /.pricing-card -->
+                    </div><!-- /.col-xl-4 col-md-6  -->
+                     <div class="col-xl-4 col-md-6  wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="000ms">
+                        <div class="pricing-card" style="background-image: url('assets/images/backgrounds/pricing-bg-1-1.jpg');">
+                            <div class="pricing-card__image" style="background-image: url('assets/images/pricing/Flag_of_Nigeria.png');">
+                                <div class="pricing-card__image__content">
+                                   
+                                    <h2 class="pricing-card__title">Nigeria</h2><!-- /.pricing-card__title -->
+                                </div><!-- /.pricing-card__image__content -->
+                            </div><!-- /.pricing-card__image -->
+                            <div class="pricing-card__content">
+                                <ul class="pricing-card__list">
+                                    <li>
+                                        <span class="pricing-card__list__icon icon-duble-arrow"></span>
+                                        <span class="pricing-card__list__text">Multi-Hazard Emergency Preparedness and Response Plan</span>
+                                    </li>
+                                   
+                                </ul><!-- /.pricing-card__list -->
+                                <div class="pricing-card__price">
+                                    <div class="pricing-card__price__inner">
+                                        <h3 class="pricing-card__price__title">Read</h3><!-- /.pricing-card__price__title -->
+                                        
+                                    </div><!-- /.pricing-card__price__inner -->
+                                    <a href="https://ncdc.gov.ng/themes/common/docs/protocols/289_1634040134.pdf" class="pricing-card__button"><span class="icon-duble-arrow"></span></a><!-- /.pricing-card__button -->
+                                </div><!-- /.pricing-card__price -->
+                            </div><!-- /.pricing-card__content -->
+                        </div><!-- /.pricing-card -->
+                    </div><!-- /.col-xl-4 col-md-6  -->
+                    
+                      <div class="col-xl-4 col-md-6  wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="000ms">
+                        <div class="pricing-card" style="background-image: url('assets/images/backgrounds/pricing-bg-1-1.jpg');">
+                            <div class="pricing-card__image" style="background-image: url('assets/images/pricing/Senegal-01-1.svg');">
+                                <div class="pricing-card__image__content">
+                                   
+                                    <h2 class="pricing-card__title">Senegal</h2><!-- /.pricing-card__title -->
+                                </div><!-- /.pricing-card__image__content -->
+                            </div><!-- /.pricing-card__image -->
+                            <div class="pricing-card__content">
+                                <ul class="pricing-card__list">
+                                    <li>
+                                        <span class="pricing-card__list__icon icon-duble-arrow"></span>
+                                        <span class="pricing-card__list__text">Centre des Opérations d'Urgence Sanitaire</span>
+                                    </li>
+                                   
+                                </ul><!-- /.pricing-card__list -->
+                                <div class="pricing-card__price">
+                                    <div class="pricing-card__price__inner">
+                                        <h3 class="pricing-card__price__title">Visit</h3><!-- /.pricing-card__price__title -->
+                                        
+                                    </div><!-- /.pricing-card__price__inner -->
+                                    <a href="https://www.cousenegal.sn/" class="pricing-card__button"><span class="icon-duble-arrow"></span></a><!-- /.pricing-card__button -->
+                                </div><!-- /.pricing-card__price -->
+                            </div><!-- /.pricing-card__content -->
+                        </div><!-- /.pricing-card -->
+                    </div><!-- /.col-xl-4 col-md-6  -->
+                    
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+            
+            
+        </section><!-- /.pricing-page -->
+
+        <div th:replace="frontend-footer"></div>
+    </div><!-- /.page-wrapper -->
+
+    <div th:replace="frontend-mobile-nav"></div>
+    <div th:replace="frontend-search-popup"></div>
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top">
+        <span class="scroll-to-top__text">back top</span>
+        <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
+    </a>
+
+    <div th:replace="frontend-sidebar"></div>
+	<script th:src="@{/assets/vendors/jquery/jquery-3.7.0.min.js}"></script>
+	<script th:src="@{/assets/vendors/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/assets/vendors/bootstrap-select/bootstrap-select.min.js}"></script>
+	<script th:src="@{/assets/vendors/jarallax/jarallax.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-ui/jquery-ui.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-appear/jquery.appear.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-validate/jquery.validate.min.js}"></script>
+	<script th:src="@{/assets/vendors/nouislider/nouislider.min.js}"></script>
+	<script th:src="@{/assets/vendors/tiny-slider/tiny-slider.js}"></script>
+	<script th:src="@{/assets/vendors/wnumb/wNumb.min.js}"></script>
+	<script th:src="@{/assets/vendors/swiper/js/swiper-bundle.min.js}"></script>
+	<script th:src="@{/assets/vendors/owl-carousel/js/owl.carousel.min.js}"></script>
+	<script th:src="@{/assets/vendors/wow/wow.js}"></script>
+	<script th:src="@{/assets/vendors/imagesloaded/imagesloaded.min.js}"></script>
+	<script th:src="@{/assets/vendors/isotope/isotope.js}"></script>
+	<script th:src="@{/assets/vendors/countdown/countdown.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-circleType/jquery.circleType.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-lettering/jquery.lettering.min.js}"></script>
+	<!-- template js -->
+	<script th:src="@{/assets/js/cleenhearts.js}"></script>
+	
+</body>
+</html>

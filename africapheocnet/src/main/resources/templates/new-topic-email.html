@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Topic Posted</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #f8f8f8;
+            border-collapse: collapse;
+        }
+        .content {
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            font-size: 12px;
+            text-align: center;
+            color: #666;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <table class="container">
+        <tr>
+            <td>
+                <h2>New Topic Posted</h2>
+            </td>
+        </tr>
+        <tr>
+            <td class="content">
+			    <p>Dear Member,</p>
+			    <p>We are excited to inform you that a new topic has been posted on our forum titled "<strong th:text="${topicTitle}"></strong>". This topic might interest you, considering your engagement and participation in our community discussions.</p>
+			    <p>Here are some details about the new topic:</p>
+			    <ul>
+			        <li><strong>Title:</strong> <span th:text="${topicTitle}"></span></li>
+			        <li><strong>Category:</strong> <span th:text="${categoryName}"></span></li>
+			    </ul>
+			    <p>You can view the topic and join the discussion by clicking the following link:</p>
+			    <p><a th:href="@{${topicLink}}">Link to the Topic</a></p>
+			    <p>Thank you for being a valuable member of our community. Your contributions and insights are greatly appreciated.</p>
+			    <p>If you have any questions or need further assistance, please feel free to reach out to us.</p>
+			    <p class="footer">This is an automated email. Please do not reply.</p>
+			    <p class="footer">Best regards,<br>AFRICA PHEOC-NET</p>
+			</td>
+            
+        </tr>
+    </table>
+</body>
+</html>

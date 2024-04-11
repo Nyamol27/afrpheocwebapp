@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+
+<body data-topbar="dark">
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                               <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                   <h5 class="card-title">Member List <span class="text-muted fw-normal ms-2" th:text="|(${totalMembers})|"></span></h5>
+
+                                                </div>
+                                            </div><!-- end col -->
+                
+                                            <div class="col-md-6">
+                                            <div class="d-flex flex-wrap align-items-start justify-content-md-end mt-2 mt-md-0 gap-2 mb-3">
+					<div class="row">
+					
+					<!-- Add a Reset button next to the search input field -->
+<div class="col-md-12">
+    <form id="searchForm">
+        <div class="input-group mb-10">
+            <input type="text" class="form-control" id="searchInput" name="query" placeholder="Search for a member" aria-label="Search" aria-describedby="search-button">
+            <button class="btn btn-outline-secondary" type="submit" id="search-button">Search</button>
+            <!-- Add a Reset button -->
+            <button class="btn btn-outline-secondary" type="button" id="reset-button">Reset</button>
+        </div>
+    </form>
+</div>
+					
+
+
+    
+</div>
+
+
+</div>
+              </div></div>                 
+                                            
+                              <div class="row">
+                          
+<div id="memberListContainer">
+    <div class="row">
+        <div id="alertBox" class="alert alert-warning alert-top-border alert-dismissible fade show" role="alert" style="display: none;">
+            <i class="uil uil-exclamation-triangle font-size-16 text-warning me-2"></i>
+            <span class="alert-message">A simple border warning alert</span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div th:each="member, memberIndex : ${members}" 
+             th:if="${memberIndex.index >= startEntry - 1 and memberIndex.index < endEntry}" 
+             class="col-xl-4 col-sm-6">
+            <div class="card">
+                <div class="card-body p-4">
+                    <!-- Member Details -->
+                    <div class="d-flex align-items-start">
+                        <!-- Member Photo -->
+                       <div class="flex-shrink-0 avatar rounded-circle me-3">
+    <div th:if="${member.photo != null}">
+    <img th:if="${member.base64Photo != null}" 
+         th:src="'data:image/jpg;base64,' + ${member.base64Photo}" 
+         alt="Member Photo" 
+         class="img-fluid rounded-circle">
+    <img th:unless="${member.base64Photo != null}" 
+         src="/path/to/default/photo.jpg" 
+         alt="Default Photo" 
+         class="img-fluid rounded-circle">
+</div>
+<div th:unless="${member.photo != null}" 
+     class="rounded-circle" 
+     style="width: 50px; height: 50px; background-color: #9370DB; color: white; text-align: center; line-height: 50px;">
+    <span th:text="${member.firstName[0]} + ${member.lastName[0]}" style="text-transform: uppercase;"></span>
+</div>
+    
+</div>
+                       
+                        
+                        <!-- Member Name and Expertise -->
+                        <div class="flex-grow-1 overflow-hidden">
+                            <h5 class="font-size-15 mb-1 text-truncate">
+                                <a href="pages-profile.html" class="text-reset" th:text="${member.firstName} + ' ' + ${member.lastName}"></a>
+                            </h5>
+                            <span class="badge bg-success-subtle text-success mb-0" th:text="${member.expertise}"></span>
+                             <span class="badge bg-success-subtle text-info mb-0" th:text="${member.nationality}"></span>
+                        </div>
+                       
+                    </div>
+                    <br>
+                    <!-- Contact and Profile Buttons -->
+                    <div class="pt-2">
+                        <button type="button" class="btn btn-soft-primary btn-sm w-md text-truncate" onclick="location.href='mailto:' + '${member.email}'">
+                            <i class="bx bx-user me-1 align-middle"></i> Contact
+                        </button>
+                        <button type="button" class="btn btn-primary btn-sm w-md text-truncate ms-2 profile-button" th:attr="data-email=${member.email}">
+                            <i class="bx bx-message-square-dots me-1 align-middle"></i> Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:if="${isSearchResult == null ? false : !isSearchResult}">
+    <div class="row g-0 text-center text-sm-start" th:fragment="pagination">
+        <div class="col-sm-6">
+            <div>
+                <p class="mb-sm-0" th:if="${totalMembers > 0}" th:text="'Showing ' + ${startEntry} + ' to ' + ${endEntry} + ' of ' + ${totalMembers} + ' members'"></p>
+                <p class="mb-sm-0" th:if="${totalMembers <= 0}">No members found</p>
+            </div>
+        </div>
+        <!-- end col -->
+        <div class="col-sm-6" th:if="${totalMembers > pageSize}">
+            <ul class="pagination pagination-rounded justify-content-center justify-content-sm-end mb-sm-0">
+                <li th:class="${currentPage == 1} ? 'page-item disabled' : 'page-item'">
+                    <a href="#" class="page-link" th:if="${currentPage > 1}" th:href="@{${pageUrl}(page=1)}"><i class="mdi mdi-chevron-left"></i></a>
+                    <span class="page-link" th:if="${currentPage <= 1}"><i class="mdi mdi-chevron-left"></i></span>
+                </li>
+                <li th:each="pageNum : ${#numbers.sequence(1, totalPages)}" th:class="${pageNum == currentPage} ? 'page-item active' : 'page-item'">
+                    <a href="#" class="page-link" th:text="${pageNum}" th:href="@{${pageUrl}(page=${pageNum})}"></a>
+                </li>
+                <li th:class="${currentPage == totalPages} ? 'page-item disabled' : 'page-item'">
+                    <a href="#" class="page-link" th:if="${currentPage < totalPages}" th:href="@{${pageUrl}(page=${totalPages})}"><i class="mdi mdi-chevron-right"></i></a>
+                    <span class="page-link" th:if="${currentPage >= totalPages}"><i class="mdi mdi-chevron-right"></i></span>
+                </li>
+            </ul>
+        </div><!-- end col -->
+    </div><!-- end row -->
+</div>
+
+
+
+							
+							
+							
+							</div>
+
+                    
+               </div>
+                            </div>
+                            <!-- end card body -->
+                        </div>
+                        <!-- end card -->
+                    </div>
+                    <!-- end col -->
+                </div>
+            </div>
+       </div>
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+    
+    <!-- JAVASCRIPT -->
+    <script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/libs/metismenujs/metismenujs.min.js}"></script>
+    <script th:src="@{/libs/simplebar/simplebar.min.js}"></script>
+    <script th:src="@{/libs/feather-icons/feather.min.js}"></script>
+    <script type="text/javascript">
+    
+    $(".profile-button").click(function(event) {
+        // Prevent the default behavior of the anchor element
+        event.preventDefault();
+
+        // Get the email value from the data-email attribute
+        var email = $(this).data("email");
+        console.log(email);
+
+        // Make an AJAX request to view the member's profile using the retrieved email
+        $.ajax({
+            url: "/members/view/" + email,
+            method: "GET",
+            success: function(data) {
+                // Handle the API response data here
+                console.log(data);
+
+                // Redirect to the member-profile page with the email as a parameter
+                window.location.href = "/members/view/" + email;
+            },
+            error: function(xhr, status, error) {
+                
+                console.error("AJAX Error: " + error);
+
+                
+                alert("Failed to load member's profile. Please try again later.");
+            }
+        });
+    });
+
+    
+    
+    </script>
+
+</body>
+</html>

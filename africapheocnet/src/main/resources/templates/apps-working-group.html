@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<body data-topbar="dark">
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+             <div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title"><i class="fas fa-user"></i> My Space</h5>
+            </div>
+            <div class="card-body">
+                <div class="tables">
+                    <div class="bs-example widget-shadow" data-example-id="hoverable-table"> 
+                        <div id="alert-container3" style="display: none; padding: 5px"> </div>
+                        <table id="datatables-fixed-header" class="table table-striped" style="width:100%"> 
+                            	<tbody>
+    <tr th:each="membershipRequest : ${membershipRequests}">
+        <td>
+            <span th:if="${membershipRequest.status == 'Pending'}">
+                <span class="disabled-link">
+                    <i class="fas fa-info-circle"></i> <span th:text="${membershipRequest.twg}"></span>
+                </span>
+            </span>
+            <span th:unless="${membershipRequest.status == 'Pending'}">
+                <a th:href="@{'/twg-membership-requests/view/' + ${membershipRequest.twg}}">
+                    <i class="fas fa-info-circle"></i> <span th:text="${membershipRequest.twg}"></span>
+                </a>
+            </span>
+        </td>
+        <td>
+            <span th:if="${membershipRequest.status == 'Approved'}">
+                <!-- Form to leave group -->
+                <form class="leave-form" action="/twg-membership-requests/leave" method="post">
+                    <input type="hidden" name="requestId" th:value="${membershipRequest.id}" />
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fas fa-sign-out-alt"></i> Leave
+                    </button>
+                </form>
+            </span>
+            <span th:if="${membershipRequest.status == 'Pending'}">
+                <!-- Form to cancel request -->
+                <form class="cancel-form" action="/twg-membership-requests/cancel" method="post">
+                    <input type="hidden" name="requestId" th:value="${membershipRequest.id}" />
+                    <!-- Add Font Awesome icon and text to the button -->
+                    <button type="submit" class="btn btn-secondary">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                </form>
+            </span>
+        </td>
+    </tr>
+    <!-- If the user has not joined any group, display a message -->
+    <tr th:if="${#lists.isEmpty(membershipRequests)}">
+        <td colspan="2">
+            <p>You have not joined any group!</p>
+        </td>
+    </tr>
+</tbody>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    $(document).ready(function() {
+        $('.disabled-link').on('click', function(event) {
+            event.preventDefault(); 
+            return false; 
+        });
+    });
+    /*]]>*/
+</script>
+                            	
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title"><i class="fas fa-users"></i> Working Groups</h5>
+            </div>
+            <div class="card-body">
+                <div class="tables">
+                    <div class="bs-example widget-shadow" data-example-id="hoverable-table"> 
+                        <div id="alert-container3" style="display: none; padding: 5px"> </div>
+                        <div id="alertBox" class="alert alert-warning alert-top-border alert-dismissible fade show" role="alert" style="display: none;">
+                    <i class="uil uil-exclamation-triangle font-size-16 text-warning me-2"></i>
+                    <span class="alert-message">A simple border warning alert</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                       		<table id="datatables-fixed-header" class="table table-striped" style="width:100%">
+   <tbody>
+    <tr>
+        <td>
+            <a><i class="fas fa-book"></i> PHEOC Legal instruments, plans, and procedures</a>
+        </td>
+        <td>
+            <!-- Form for joining the group -->
+            <form id="joinForm1" action="/twg-membership-requests/join" method="post">
+                <!-- CSRF token -->
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                <!-- Hidden field for working group ID -->
+                <input type="hidden" name="working_group_id" value="1" />
+                <!-- Button to join the group -->
+                <button type="button" class="join-button" data-form-id="joinForm1">
+                    <span class="badge bg-success"><i class="fas fa-user-plus"></i> Join</span>
+                </button>
+            </form>
+        </td>
+        <td>
+            <!-- Term of Reference column -->
+            <a href="/ToR/ToR.pdf" download><i class="fas fa-download"></i> Download ToR</a>
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a ><i class="fas fa-users"></i> PHEOC workforce development</a>
+        </td>
+        <td>
+            <!-- Form for joining the group -->
+            <form id="joinForm2" action="/twg-membership-requests/join" method="post">
+                <!-- CSRF token -->
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                <!-- Hidden field for working group ID -->
+                <input type="hidden" name="working_group_id" value="2" />
+                <!-- Button to join the group -->
+                <button type="button" class="join-button" data-form-id="joinForm2">
+                    <span class="badge bg-success"><i class="fas fa-user-plus"></i> Join</span>
+                </button>
+            </form>
+        </td>
+        <td>
+            <!-- Term of Reference column -->
+            <a href="/ToR/ToR.pdf" download><i class="fas fa-download"></i> Download ToR</a>
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a ><i class="fas fa-chart-pie"></i> Technology infrastructure and Information management</a>
+        </td>
+        <td>
+            <!-- Form for joining the group -->
+            <form id="joinForm3" action="/twg-membership-requests/join" method="post">
+                <!-- CSRF token -->
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                <!-- Hidden field for working group ID -->
+                <input type="hidden" name="working_group_id" value="3" />
+                <!-- Button to join the group -->
+                <button type="button" class="join-button" data-form-id="joinForm3">
+                    <span class="badge bg-success"><i class="fas fa-user-plus"></i> Join</span>
+                </button>
+            </form>
+        </td>
+        <td>
+            <!-- Term of Reference column -->
+            <a href="/ToR/ToR.pdf" download><i class="fas fa-download"></i> Download ToR</a>
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a><i class="fas fa-home"></i> PHEOC Centers of Excellence</a>
+        </td>
+        <td>
+            <!-- Form for joining the group -->
+            <form id="joinForm4" action="/twg-membership-requests/join" method="post">
+                <!-- CSRF token -->
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                <!-- Hidden field for working group ID -->
+                <input type="hidden" name="working_group_id" value="4" />
+                <!-- Button to join the group -->
+                <button type="button" class="join-button" data-form-id="joinForm4">
+                    <span class="badge bg-success"><i class="fas fa-user-plus"></i> Join</span>
+                </button>
+            </form>
+        </td>
+        <td>
+            <!-- Term of Reference column -->
+            <a href="/ToR/ToR.pdf" download><i class="fas fa-download"></i> Download ToR</a>
+
+        </td>
+    </tr>
+</tbody>
+   
+   
+    
+    
+</table>
+                       		
+                    </div>
+                </div>
+            </div>                                      
+        </div>
+    </div>
+</div>
+             
+             
+  </div> 
+  </div> 
+  </div> 
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+    
+     <!-- JAVASCRIPT -->
+	<script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/libs/metismenujs/metismenujs.min.js}"></script>
+	<script th:src="@{/libs/simplebar/simplebar.min.js}"></script>
+	<script th:src="@{/libs/feather-icons/feather.min.js}"></script>
+	
+	<!-- apexcharts -->
+	<script th:src="@{/libs/apexcharts/apexcharts.min.js}"></script>
+	
+	<!-- Vector map-->
+	<script th:src="@{/libs/jsvectormap/js/jsvectormap.min.js}"></script>
+	<script th:src="@{/libs/jsvectormap/maps/world-merc.js}"></script>
+	
+	<!-- swiper js -->
+	<script th:src="@{/libs/swiper/swiper-bundle.min.js}"></script>
+	
+	<script th:src="@{/js/pages/dashboard.init.js}"></script>
+	
+	<script th:src="@{/js/app.js}"></script>
+</body>
+</html>

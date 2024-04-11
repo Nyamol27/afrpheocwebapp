@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<body data-topbar="dark">
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+             <div class="row">
+             <div class="col-lg-12">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h4 class="card-title">Technical Working Groups - Management</h4>
+        </div>
+        <div class="card-body">
+            <div class="row">
+               
+               <div class="col-12 col-lg-3 mb-3">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">PHEOC plans, procedures, and legal instruments</h5>
+        </div>
+        <div class="card-body">
+            <a class="agile-icon" th:href="@{/projects/list/PHEOC Legal instruments, plans, and procedures}">
+                <button class="btn btn-outline-secondary">
+                    <i class="fas fa-suitcase"></i> Manage
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Technology infrastructure and Information -->
+<div class="col-12 col-lg-3 mb-3">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Technology infrastructure and Information</h5>
+        </div>
+        <div class="card-body">
+            <a class="agile-icon" th:href="@{/projects/list/Technology infrastructure and Information management}">
+                <button class="btn btn-outline-secondary">
+                    <i class="fas fa-suitcase"></i> Manage
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- PHEOC Workforce development -->
+<div class="col-12 col-lg-3 mb-3">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">PHEOC Workforce development</h5>
+        </div>
+        <div class="card-body">
+            <a class="agile-icon" th:href="@{/projects/list/PHEOC workforce development}">
+                <button class="btn btn-outline-secondary">
+                    <i class="fas fa-suitcase"></i> Manage
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- PHEOC Centers of Excellence -->
+<div class="col-12 col-lg-3 mb-3">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">PHEOC Centers of Excellence</h5>
+        </div>
+        <div class="card-body">
+            <a class="agile-icon" th:href="@{/projects/list/PHEOC Centers of Excellence}">
+                <button class="btn btn-outline-secondary">
+                    <i class="fas fa-suitcase"></i> Manage
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="col-12 col-lg-3 mb-3">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Applications Management</h5>
+        </div>
+        <div class="card-body">
+            <a class="agile-icon" th:href="@{/twg-membership-requests/list}">
+                <button class="btn btn-outline-primary">
+                    <i class="fa fa-list"></i> Show applications
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+             
+  </div>  
+  </div> 
+  </div> 
+  </div> 
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+    
+     <!-- JAVASCRIPT -->
+	<script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/libs/metismenujs/metismenujs.min.js}"></script>
+	<script th:src="@{/libs/simplebar/simplebar.min.js}"></script>
+	<script th:src="@{/libs/feather-icons/feather.min.js}"></script>
+	
+	<!-- apexcharts -->
+	<script th:src="@{/libs/apexcharts/apexcharts.min.js}"></script>
+	
+	<!-- Vector map-->
+	<script th:src="@{/libs/jsvectormap/js/jsvectormap.min.js}"></script>
+	<script th:src="@{/libs/jsvectormap/maps/world-merc.js}"></script>
+	
+	<!-- swiper js -->
+	<script th:src="@{/libs/swiper/swiper-bundle.min.js}"></script>
+	
+	<script th:src="@{/js/pages/dashboard.init.js}"></script>
+	
+	<script th:src="@{/js/app.js}"></script>
+</body>
+</html>

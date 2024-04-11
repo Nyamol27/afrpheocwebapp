@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<head>
+ <style>
+        .avatar-initials {
+            width: 250px;
+            height: 120px;
+            background-color: #9370DB;
+            color: white;
+            text-align: center;
+            line-height: 120px;
+            font-size: 36px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body data-topbar="dark">
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+    <div class="main-content">
+        <div class="page-content">
+             <div class="container-fluid">
+             <div class="row">
+    <div class="col-xl-8">
+        <div class="card">
+            <div class="card-body p-0">
+                <div class="user-profile-img">
+                    <img src="images/pattern-bg.jpg" class="profile-img profile-foreground-img rounded-top" style="height: 120px;" alt="">
+                    <div class="overlay-content rounded-top">
+                        <div>
+                        	
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-n5 position-relative">
+                   <div class="text-center">
+    <!-- Display member's photo or initials -->
+    <div th:if="${member.photo != null}">
+        <img th:if="${member.base64Photo != null}" th:src="'data:image/jpg;base64,' + ${member.base64Photo}" alt="Member Photo" class="img-fluid rounded-circle" style="max-width: 200px; max-height: 200px; border-radius: 50%;">
+    </div>
+
+    <div th:unless="${member.photo != null}">
+        <span th:text="${member.firstName[0]} + ${member.lastName[0]}" class="user-initials rounded-circle" style="width: 200px; height: 200px; border-radius: 50%; background-color: #C3B1E1; color: #fff; line-height: 200px; font-weight: bold; font-size: 32px; text-transform: uppercase; display: inline-block;"></span>
+    </div>
+    <!-- End display member's photo or initials -->
+
+    <div class="mt-4">
+        <h2 class="mb-1" th:text="${#strings.capitalize(member.firstName)} + ' ' + ${#strings.capitalize(member.lastName)}"></h2>
+		<h5 class="mb-1" th:text="${#strings.capitalize(member.position)}"></h5>
+        <div th:each="expertise : ${member.expertise}">
+            <a class="badge bg-success-subtle text-success m-1" th:text="${expertise}"></a>
+        </div>
+        <div th:each="nationality : ${member.nationality}">
+            <a class="badge bg-success-subtle text-success m-1" th:text="${nationality}"></a>
+        </div>
+        <div class="mt-3">
+            <a th:href="'mailto:' + ${member.email}" class="btn btn-primary waves-effect waves-light btn-sm"><i class="bx bx-send me-1 align-middle"></i> Send Message</a>
+        </div>
+    </div>
+</div>
+                   
+                </div>
+                
+                    <div th:if="${member.bio != null}">
+					    <p class="text-muted" th:text="${member.bio}"></p>
+					</div>
+					<div th:unless="${member.bio != null}">
+					    <div class="alert alert-primary" role="alert">
+					       
+					            This user hasn't shared any bio information yet.
+					      
+					    </div>
+					</div>
+                <div class="p-3 mt-3">
+                                            <div class="row text-center">
+                                                <div class="col-6 border-end">
+                                                    <div class="p-1">
+                                      
+                                                        <p class="text-muted mb-0">AFR PHEOC-Net</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-1">
+                                                        
+                                                        <p class="text-muted mb-0">Member</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+            </div>
+        </div>
+    </div>
+  
+    </div>
+</div>
+
+        </div>
+        </div>
+   
+    
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+    
+     <!-- JAVASCRIPT -->
+	<script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/libs/metismenujs/metismenujs.min.js}"></script>
+	<script th:src="@{/libs/simplebar/simplebar.min.js}"></script>
+	<script th:src="@{/libs/feather-icons/feather.min.js}"></script>
+	
+	<!-- apexcharts -->
+	<script th:src="@{/libs/apexcharts/apexcharts.min.js}"></script>
+	
+	<!-- Vector map-->
+	<script th:src="@{/libs/jsvectormap/js/jsvectormap.min.js}"></script>
+	<script th:src="@{/libs/jsvectormap/maps/world-merc.js}"></script>
+	
+	<!-- swiper js -->
+	<script th:src="@{/libs/swiper/swiper-bundle.min.js}"></script>
+	
+	<script th:src="@{/js/pages/dashboard.init.js}"></script>
+	
+	<script th:src="@{/js/app.js}"></script>
+	<!-- profile init -->
+	<script th:src="@{/js/pages/profile.init.js}"></script>
+</body>
+</html>

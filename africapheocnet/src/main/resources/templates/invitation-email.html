@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Invitation Email</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+        a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+   <div class="container">
+    <h1>Invitation to Join</h1>
+    <p>Dear <span th:text="${receiverName}"></span>,</p>
+    <p>You've been invited by <span th:text="${senderName}"></span> to join our network.</p>
+    <p>The Africa Emergency Operations Center (EOC) Network, established in November 2015 by the WHO Regional Office for Africa in collaboration with the WHO Health Emergencies Programme, serves as a vital regional platform for collaboration, communication, and the exchange of information. Our goal is to enhance the quality and efficiency of public health emergency management across Africa.</p>
+    <p>To learn more about the network, please visit our official website <a href="https://www.afro.who.int/health-topics/emergencies">here</a>.</p>
+    <p>To accept the invitation and register, kindly click the button below:</p>
+    <p><a th:href="${inviteLink}" target="_blank">Join Now</a></p>
+    <p>Thank you for considering this opportunity to contribute to our mission.</p>
+    <p>Sincerely,<br/>The Africa PHEOC Network Team</p>
+    <p class="footer"><i>This is an automated email. Please do not reply.</i></p>
+</div>
+</body>
+</html>

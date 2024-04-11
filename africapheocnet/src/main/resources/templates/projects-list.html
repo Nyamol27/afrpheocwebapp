@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<head>
+    <!-- Add Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/css/bootstrap.min.css">
+    
+    <!-- Add DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+
+    <!-- Add jQuery and DataTables JS -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.6/js/dataTables.bootstrap5.min.js"></script>
+
+</head>
+<body data-topbar="dark">
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+   <div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+            
+                <div class="col-lg-12">
+    <div class="card">
+        <div class="card-header justify-content-between d-flex align-items-center">
+            <h4 class="card-title">Projects List</h4>
+            <!-- Button to trigger modal -->
+            <div class="col-md-6 d-flex justify-content-end align-items-center">
+                <div class="d-flex flex-wrap align-items-start gap-2 mb-3">
+                    <div>
+                        <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addAnnouncementModal">
+                            <i class="uil uil-plus me-1"></i> Add New
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="addAnnouncementModal" tabindex="-1" aria-labelledby="addAnnouncementModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addAnnouncementModalLabel">Add Project</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        
+                       <form id="addProjectForm">
+                       		<div id="alertBox" class="alert alert-warning alert-top-border alert-dismissible fade show" role="alert" style="display: none;">
+                            <i class="uil uil-exclamation-triangle font-size-16 text-warning me-2"></i>
+                            <span class="alert-message">A simple border warning alert</span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+		                    <!-- Project name -->
+		                    <div class="mb-3">
+		                        <label for="projectName" class="form-label">Project Name</label>
+		                        <input type="text" class="form-control" id="projectName" name="projectName" required>
+		                    </div>
+		                    <!-- Start Date -->
+		                    <div class="mb-3">
+		                        <label for="startDate" class="form-label">Start Date</label>
+		                        <input type="date" class="form-control" id="startDate" name="startDate" required>
+		                    </div>
+		                    <!-- End Date -->
+		                    <div class="mb-3">
+		                        <label for="endDate" class="form-label">End Date</label>
+		                        <input type="date" class="form-control" id="endDate" name="endDate" required>
+		                    </div>
+		                    <!-- Working Group -->
+						    <div class="mb-3">
+						        <label for="workingGroup" class="form-label">Working Group</label>
+						        <select class="form-select" id="workingGroup" name="workingGroup" required>
+						            <option value="" disabled selected>Select Working Group</option>
+						            <!-- Populate options from AutoFilledData -->
+						            <option th:each="group : ${T(net.pheocnetafr.africapheocnet.util.AutoFilledData).getTwgGroupList()}" th:text="${group}"></option>
+						        </select>
+						    </div>
+		                    
+		                    <!-- Submit button -->
+		                    <button type="submit" class="btn btn-primary">Add Project</button>
+		                </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            
+            <div class="table-responsive">
+                <table class="hover" id="dbdata">
+				    <thead>
+				        <tr>
+				            <th scope="col">#</th>
+				            <th scope="col">ID</th>
+				            <th scope="col">Start Date</th>
+				            <th scope="col">End Date</th>
+				            <th scope="col">Project Name</th>
+				             <th scope="col">Ongoing Tasks</th>
+				            <th scope="col">Status</th>
+				            <th scope="col">Action</th>
+				        </tr>
+				    </thead>
+				    <tbody>
+				        <tr th:each="project, iterStat : ${projects}">
+				            <td th:text="${iterStat.count}">...</td>
+				            <td th:text="${project.projectId}">...</td>
+				            <td>
+				                <i class="mdi mdi-calendar me-1"></i>
+				                <span th:text="${#dates.format(project.startDate, 'yyyy-MM-dd')}"></span>
+				            </td>
+				            <td>
+				                <i class="mdi mdi-calendar me-1"></i>
+				                <span th:text="${#dates.format(project.endDate, 'yyyy-MM-dd')}"></span>
+				            </td>
+				            <td th:text="${project.projectName}">...</td>
+				            <td>
+							    
+								<span th:text="${tasksCount}"></span>
+
+
+							</td>
+				            <td>
+							    <span th:text="${project.status}" 
+							          th:class="${project.status eq 'Ongoing' ? 'badge rounded-pill badge-soft-primary' : (project.status eq 'Completed' ? 'badge rounded-pill badge-soft-success' : (project.status eq 'Not yet filled' ? 'badge rounded-pill badge-soft-warning' : 'badge rounded-pill badge-soft-danger'))}"></span>
+							</td>
+
+				            <td>
+				                <div class="dropdown">
+				                    <a class="btn btn-link text-reset dropdown-toggle shadow-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				                        <i class="uil uil-ellipsis-h"></i>
+				                    </a>
+				                    <ul class="dropdown-menu dropdown-menu-end">
+				                        <li><a class="dropdown-item" th:href="@{'/projects/details/' + ${project.projectId}}">View / Update</a></li>
+				                        <li><a class="dropdown-item delete-project-btn" href="#" th:data-project-id="${project.projectId}">Delete</a></li>
+				                        
+
+				                    </ul>
+				                </div>
+				            </td>
+				        </tr>
+				    </tbody>
+				</table>
+
+            </div>
+        </div>
+        <!-- end card body -->
+    </div>
+    <!-- end card -->
+</div>
+<!-- end col-lg-12 -->
+                
+        </div>
+    </div>
+</div>
+</div>
+   
+    
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+    
+     <!-- JAVASCRIPT -->
+	<script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/libs/metismenujs/metismenujs.min.js}"></script>
+	<script th:src="@{/libs/simplebar/simplebar.min.js}"></script>
+	<script th:src="@{/libs/feather-icons/feather.min.js}"></script>
+	
+	
+	
+	<!-- swiper js -->
+	<script th:src="@{/libs/swiper/swiper-bundle.min.js}"></script>
+	<script th:src="@{/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js}"></script>
+	
+	<script th:src="@{/js/pages/email-editor.init.js}"></script>
+	
+	
+	<script th:src="@{/js/app.js}"></script>
+	
+	
+	<script>
+  new DataTable('#dbdata');
+</script>
+</body>
+</html>

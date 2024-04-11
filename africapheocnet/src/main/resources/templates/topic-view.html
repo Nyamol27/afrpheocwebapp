@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<head>
+<!-- quill css -->
+<link rel="stylesheet" type="text/css" th:href="@{/libs/quill/quill.core.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/libs/quill/quill.bubble.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/libs/quill/quill.snow.css}" />
+
+<style>
+		.comments-section {
+    margin-top: 20px;
+}
+
+.comment-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.comment-meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.user-avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-info .user-name {
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.comment-timestamp {
+    font-size: 12px;
+    color: #999;
+}
+
+.comment-content {
+    margin-bottom: 10px;
+}
+
+.translation-button {
+    background-color: #0073b1;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.comment-options-trigger {
+    background-color: #fff;
+    border: 1px solid #0073b1;
+    color: #0073b1;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.social-actions button {
+    background-color: transparent;
+    border: none;
+    color: #0073b1;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.user-initials {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #DE73FF;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+</style>
+</head>
+<body >
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+    <div class="main-content">
+        <div class="page-content">
+        		<div class="container-fluid">
+        		<div class="row">
+        		<div class="col-12">
+        		<div class="card">
+			        <div class="card-header justify-content-between d-flex align-items-center">
+			        <h4 class="card-title">Online Forum</h4>
+			        <button type="button" class="btn btn-secondary w-sm" onclick="cancelUpdate()">Back</button>
+			        <script>
+			    function cancelUpdate() {
+			        
+			        window.history.back();
+			    }
+			</script>
+			        </div>
+	<div class="card-body">
+    <div class="col-12 col-lg-12">
+        <div>
+            <h2 th:text="${topic.title}"></h2>
+             <!-- Display author's name and post date -->
+                <p>
+				    Posted by 
+				    <i class="fas fa-user"></i>
+				    <span th:text="${topic.user != null ? topic.user.firstName + ' ' + topic.user.lastName : 'Unknown'}"></span> 
+				    on 
+				    <i class="far fa-calendar-alt"></i>
+				    <span th:text="${#dates.format(topic.createdAt, 'dd/MM/yyyy HH:mm')}"></span>
+				</p>
+            <p th:text="${topic.content}"></p>
+            <div>
+                <span>
+                    <i class="mdi mdi-comment-outline"></i> Replies: <span th:text="${numReplies}"></span>
+                </span>
+                <span style="margin-left: 20px;">
+				    <i class="mdi mdi-thumb-up-outline"></i> Likes: <span id="like-count" th:text="${numLikes}"></span>
+				</span>
+				<span th:if="${currentUserId != null && topic.user != null && currentUserId == topic.user.id}" style="margin-left: 20px;">
+				    <i class="mdi mdi-pencil" ></i>
+				    <a href="#" class="edit-topic" th:href="@{/api/topic/edit-topic/{topicId}(topicId=${topic.id})}" style="text-decoration: none; color: #336699;">Edit</a>
+				</span>
+				
+                <!-- Like button -->
+                <form class="like-form" method="post" style="display: inline-block; margin-left: 20px;">
+			        <input type="hidden" name="postId" th:value="${topic.id}" />
+			        <button type="submit" class="btn btn-outline-primary">
+			            <i class="mdi mdi-thumb-up"></i> Like
+			        </button>
+			    </form>
+                
+
+                <script>
+				    function scrollToBottom() {
+				        window.scrollTo({
+				            top: document.body.scrollHeight,
+				            behavior: 'smooth'
+				        });
+				    }
+				</script>
+				
+				<button type="button" class="btn btn-outline-primary" onclick="scrollToBottom()">
+				    <i class="mdi mdi-reply"></i> Reply
+				</button>
+                
+					
+					
+                <!-- Display attachment if it exists -->
+                <div th:if="${topic.attachment != null}" style="margin-top: 20px;">
+   				 <a th:href="@{'/api/topic/attachment/' + ${topic.id}}" style="text-decoration: none;">
+
+        <i class="fas fa-download"></i> 
+
+        <span th:text="${topic.attachmentName}">Download Attachment</span>
+    </a>
+</div>
+                
+
+                <div>
+		</div>
+                
+               
+            </div>
+        </div>
+        <hr>
+      	<!-- Comments section -->
+<div>
+    <h4>Comments</h4>
+    <div class="comments-section">
+	    
+        <ul>
+            <li th:if="${noComments}" class="no-comments">
+            	
+                <p>No comments yet. Be the first to comment!</p>
+                
+                
+            </li>
+            
+            <li th:each="comment : ${comments}" class="comment-item">
+                <div class="comment-meta">
+                    <div class="user-initials">
+                        <span th:text="${comment.user != null ? comment.user.firstName.substring(0,1) + comment.user.lastName.substring(0,1) : 'UU'}"></span>
+                    </div>
+                    
+                    <div class="user-info">
+                        <span class="user-name" th:text="${comment.user != null ? comment.user.firstName + ' ' + comment.user.lastName : 'Unknown'}"></span>
+                        <i class="far fa-calendar-alt"></i>
+                        <span class="comment-timestamp" th:text="${#dates.format(comment.createdAt, 'dd/MM/yyyy HH:mm')}"></span>
+                    </div>
+                </div>
+            <div class="comment-content">
+			    <p th:text="${comment.content}"></p>
+			   
+			    <div th:if="${comment.attachment != null}" class="attachment" style="margin-top: 20px;">
+    
+    <a th:href="@{'/api/comments/attachment/' + ${comment.id}}" style="text-decoration: none;">
+        <!-- File Icon -->
+        <i class="fas fa-file"></i> 
+
+        <span th:text="${comment.attachmentName}">Download Attachment</span>
+    </a>
+</div>
+
+			    
+<!-- Assuming currentUserId is the ID of the currently authenticated user -->
+<p th:if="${currentUserId != null && comment.user != null && currentUserId == comment.user.id}">
+    <a href="#" class="edit-comment" th:href="@{/api/forum/comments/edit-comment/{commentId}(commentId=${comment.id})}">Edit Comment</a>
+</p>
+
+
+
+
+
+
+			</div>
+            
+               
+                
+            </li>
+            
+        </ul>
+       <div class="form-floating">
+		    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+		    <label for="floatingTextarea2">Comments</label>
+		</div>
+		<div class="mb-3">
+		    <label for="formFileSm" class="form-label">Attach file</label>
+		    <input class="form-control form-control-sm" id="formFileSm" type="file">
+		</div>
+		<button id="comment-button" class="btn btn-outline-primary">
+		    <i class="mdi mdi-comment-plus"></i> Add Comment
+		</button>
+		
+		    </div>
+		    
+		    <input type="hidden" id="topicId" th:value="${topic.id}">
+		</div>
+
+<!-- Pagination links -->
+<div th:if="${not noComments}" style="margin-top: 20px;">
+    <nav aria-label="...">
+        <ul class="pagination pagination-rounded">
+            <li class="page-item disabled">
+                <span class="page-link"><i class="mdi mdi-chevron-left"></i></span>
+            </li>
+            <li class="page-item" th:each="pageNumber : ${#numbers.sequence(1, totalPages)}">
+                <a class="page-link" th:href="@{'/api/topic/view/' + ${topic.id} + '?page=' + ${pageNumber}}" th:text="${pageNumber}" th:classappend="${pageNumber == currentPage} ? 'active' : ''"></a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" th:href="@{'/api/topic/view/' + ${topic.id} + '?page=' + (currentPage + 1)}"><i class="mdi mdi-chevron-right"></i></a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+      	
+
+    </div>
+</div>
+	
+	 </div> 
+        </div>    
+        </div>
+    </div>
+ </div>  
+ </div>  
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+    
+     <!-- JAVASCRIPT -->
+	<script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/libs/metismenujs/metismenujs.min.js}"></script>
+	<script th:src="@{/libs/simplebar/simplebar.min.js}"></script>
+	<script th:src="@{/libs/feather-icons/feather.min.js}"></script>
+	<!-- ckeditor -->
+	<script th:src="@{/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js}"></script>
+	
+	
+	<!-- init js -->
+	<script th:src="@{/js/pages/form-editor.init.js}"></script>
+	
+	
+	<script th:src="@{/js/app.js}"></script>
+	
+</body>
+</html>

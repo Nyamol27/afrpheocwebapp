@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<body data-topbar="dark">
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="row">
+                  
+                        <div class="col-lg-12">
+    <div class="card">
+        <div class="card-header justify-content-between d-flex align-items-center">
+            <h4 class="card-title">Member's Profile</h4>
+        </div>
+       <div class="card-body">
+    
+    <!-- Profile section HTML -->
+    <div class="card-body d-flex">
+       	 <!-- Profile Picture -->
+		 <div class="me-4">
+		    <div class="user-profile-img">
+		        <!-- Display member's photo or default profile picture -->
+		        <div id="profilePictureContainer" th:if="${member.photo != null}">
+		            
+		             <img th:if="${member.base64Photo != null}" th:src="'data:image/jpg;base64,' + ${member.base64Photo}" alt="Member Photo" id="existingProfilePicture" class="img-fluid rounded-circle" style="max-width: 200px; max-height: 200px;border-radius: 50%;" >
+		        </div>
+		        <div th:unless="${member.photo != null}">
+		            <span th:text="${member.firstName[0]} + ${member.lastName[0]}" class="user-initials rounded-circle" style="width: 150px; height: 150px; border-radius: 50%; background-color: #C3B1E1; color: #fff; display: flex; justify-content: center; align-items: center; font-weight: bold; font-size: 32px; text-transform: uppercase;"></span>
+		        </div>
+		        
+		        <!-- Image Preview -->
+		        <img id="imagePreview"  src="#" alt="Image Preview" style="display: none; max-width: 200px; max-height: 200px;border-radius: 50%;" >
+		        
+		        <br>
+		        <!-- Input for uploading profile picture -->
+		        <input type="file" name="photo" accept="image/png,image/jpeg" required th:disabled="${profileEditable}" onchange="previewProfilePicture(event)">
+		    </div>
+		</div>
+ 
+     
+
+        <!-- Personal Information -->
+        <div class="flex-grow-1 me-4">
+            <h5><i class="mdi mdi-account-details text-primary me-2"></i> Personal Information</h5>
+            <hr>
+            <!-- First Name and Last Name in the same line -->
+            <div class="mb-3 row">
+                <div class="col-md-6">
+                    <label for="inputFirstName">First Name</label>
+                    <input type="text" class="form-control" id="inputFirstName" th:value="${member.firstName}" th:disabled="${profileEditable}" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputLastName">Last Name</label>
+                    <input type="text" class="form-control" id="inputLastName" th:value="${member.lastName}" th:disabled="${profileEditable}" required>
+                </div>
+            </div>
+            <!-- Sex -->
+            <div class="mb-3">
+			    <label for="inputSex">Sex</label>
+			    <select id="inputGender" class="form-control" th:disabled="${profileEditable}" required>
+			        <option th:each="gender : ${T(net.pheocnetafr.africapheocnet.util.AutoFilledData).getGenderList()}"
+			                th:value="${gender}"
+			                th:text="${gender}"
+			                th:selected="${gender == member.gender}"></option>
+			    </select>
+			</div>
+            
+            <!-- Nationality -->
+           <div class="mb-3">
+		    <label for="inputNationality">Nationality</label>
+		    <select id="inputNationality" class="form-control" th:disabled="${profileEditable}" required>
+		        <option th:each="nationality : ${T(net.pheocnetafr.africapheocnet.util.AutoFilledData).getAllAfricanCountries()}"
+		                th:value="${nationality}"
+		                th:text="${nationality}"
+		                th:selected="${nationality == member.nationality}"></option>
+		    </select>
+		</div>
+           
+        </div>
+
+        <!-- Work Information -->
+        <div class="flex-grow-1">
+            <h5><i class="mdi mdi-briefcase text-primary me-2"></i> Work Information</h5>
+            <hr>
+            <!-- Position and Affiliation on the same line -->
+            <div class="row">
+                <!-- Position -->
+                <div class="mb-3 col-md-6">
+                    <label for="inputPosition">Position</label>
+                    <input type="text" class="form-control" id="inputPosition" th:value="${member.position}" th:disabled="${profileEditable}" required>
+                </div>
+                <!-- Affiliation -->
+                <div class="mb-3 col-md-6">
+			    <label for="inputAffiliation">Affiliation</label>
+			    <select id="inputAffiliation" class="form-control" th:disabled="${profileEditable}" required>
+			        <option th:each="affiliation : ${T(net.pheocnetafr.africapheocnet.util.AutoFilledData).getOrganizationList()}"
+			                th:value="${affiliation}"
+			                th:text="${affiliation}"
+			                th:selected="${affiliation == member.organization}"></option>
+			    </select>
+			</div>
+                
+            </div>
+
+            <!-- Expertise -->
+            <div class="mb-3">
+			    <label for="inputExpertise">Expertise</label>
+			    <select id="inputExpertise" class="form-control" th:disabled="${profileEditable}" required>
+			        <option th:each="expertise : ${T(net.pheocnetafr.africapheocnet.util.AutoFilledData).getExpertiseList()}"
+			                th:value="${expertise}"
+			                th:text="${expertise}"
+			                th:selected="${expertise == member.expertise}"></option>
+			    </select>
+			</div>
+            
+
+            <!-- Profession -->
+            <div class="mb-3">
+			    <label for="inputProfession">Profession</label>
+			    <select id="inputProfession" class="form-control" th:disabled="${profileEditable}" required>
+			        <option th:each="profession : ${T(net.pheocnetafr.africapheocnet.util.AutoFilledData).getProfessionList()}"
+			                th:value="${profession}"
+			                th:text="${profession}"
+			                th:selected="${profession == member.profession}"></option>
+			    </select>
+			</div>
+            
+        </div>
+    </div>
+	<!-- Bio -->
+<div class="mt-4">
+    <h5><i class="mdi mdi-account-details text-primary me-2"></i> Bio</h5>
+    <hr>
+    <div class="mb-3">
+        <label for="inputBio">Bio</label>
+        <textarea class="form-control" id="inputBio" rows="5" th:text="${member.bio}" th:disabled="${profileEditable}" required></textarea>
+    </div>
+</div>
+<!-- Buttons -->
+<div class="row mt-4" id="buttonContainer">
+    <div class="col-md-6 offset-md-3">
+        <div class="d-flex justify-content-center">
+            <button id="editProfile" type="button" class="btn btn-warning me-2" onclick="enableEdit()">Edit Profile</button>
+            <div id="saveCancelButtons" style="display: none;">
+                <button id="saveProfile" type="submit" class="btn btn-primary me-2" onclick="saveChanges()">Save Changes</button>
+                <button id="cancelEdit" type="button" class="btn btn-warning" onclick="cancelEdit()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="alertBox" class="alert alert-warning alert-top-border alert-dismissible fade show" role="alert" style="display: none;">
+        <i class="uil uil-exclamation-triangle font-size-16 text-warning me-2"></i>
+        <span class="alert-message">A simple border warning alert</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+
+</div>
+       
+    </div>
+</div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+
+    <!-- JAVASCRIPT -->
+    <script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/libs/metismenujs/metismenujs.min.js}"></script>
+    <script th:src="@{/libs/simplebar/simplebar.min.js}"></script>
+    <script th:src="@{/libs/feather-icons/feather.min.js}"></script>
+    <script th:src="@{/js/app.js}"></script>
+<script>
+function enableEdit() {
+    // Enable input fields
+    document.querySelectorAll('input, select, textarea').forEach(function(element) {
+        element.disabled = false;
+    });
+
+    // Show the save and cancel buttons, and hide the edit button
+    document.getElementById('saveCancelButtons').style.display = 'flex';
+    document.getElementById('editProfile').style.display = 'none';
+}
+
+    function saveChanges() {
+        // Logic to save the changes made by the user
+        // This function should be implemented based on your application's requirements
+    }
+
+    function cancelEdit() {
+        // Disable all input fields again
+        document.querySelectorAll('input, select, textarea').forEach((element) => {
+            element.setAttribute('disabled', 'disabled');
+        });
+
+        // Show the edit button
+        document.getElementById('editProfile').style.display = 'inline-block';
+
+        // Hide the save and cancel buttons
+        document.getElementById('saveProfile').style.display = 'none';
+        document.getElementById('cancelEdit').style.display = 'none';
+    }
+</script>
+
+    
+</body>
+</html>

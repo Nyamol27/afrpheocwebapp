@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<body data-topbar="dark">
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+    <div class="main-content">
+        <div class="page-content">
+        	<div class="container-fluid">
+                <div class="row">
+                <div class="col-lg-12">
+                 <div id="alertBox" class="alert alert-warning alert-top-border alert-dismissible fade show" role="alert" style="display: none;">
+				    <i class="uil uil-exclamation-triangle font-size-16 text-warning me-2"></i>
+				   <span class="alert-message">A simple border warning alert</span>
+				    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+                </div>
+                    <div class="col-lg-12">
+                     <div class="card">
+    	<div class="card-header justify-content-between d-flex align-items-center">
+        <h4 class="card-title">Edit Project's details</h4>
+        </div>
+        <div class="card-body">
+		   <form id="updateProjectForm">
+		   <div class="mb-3">
+			    <label for="twgSelect" class="form-label">Technical Working Group:</label>
+			    <select class="form-select" id="twgSelect" name="twg" required>
+			        <option th:each="twg : ${twgGroups}" th:text="${twg}" th:value="${twg}">Technical Working Group</option>
+			    </select>
+			</div>
+
+		   	
+		    <div class="mb-3">
+		        <label for="projectNameInput" class="form-label">Project Name:</label>
+		        <input type="text" class="form-control" id="projectNameInput" name="projectName" th:value="${project.projectName}" required>
+		    </div>
+		
+		    <div class="mb-3">
+		        <label for="startDateInput" class="form-label">Start Date:</label>
+		        <input type="date" class="form-control" id="startDateInput" name="startDate" th:value="${project.startDate}" required>
+		    </div>
+		
+		    <div class="mb-3">
+		        <label for="endDateInput" class="form-label">End Date:</label>
+		        <input type="date" class="form-control" id="endDateInput" name="endDate" th:value="${project.endDate}" required>
+		    </div>
+		
+		    <div class="mb-3">
+		    <label for="statusSelect" class="form-label">Status:</label>
+		    <select class="form-select" id="statusSelect" name="status" required>
+		        <option value="Ongoing" th:selected="${project.status == 'Ongoing'}">Ongoing</option>
+		        <option value="Completed" th:selected="${project.status == 'Completed'}">Completed</option>
+		        <option value="Delayed" th:selected="${project.status == 'Delayed'}">Delayed</option>
+		    </select>
+		</div>
+
+		
+		    <div class="mb-3">
+		        <button type="button" class="btn btn-primary w-sm" onclick="updateProject()">Update</button>
+		        <button type="button" class="btn btn-secondary w-sm" onclick="cancelUpdate()">Cancel</button>
+		    </div>
+		    <input type="hidden" id="projectIdInput" name="projectId" th:value="${project.id}">
+		    
+		</form>
+
+</div>
+
+<script>
+    function cancelUpdate() {
+        window.history.back();
+    }
+</script>
+        
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+    
+     <!-- JAVASCRIPT -->
+	<script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/libs/metismenujs/metismenujs.min.js}"></script>
+	<script th:src="@{/libs/simplebar/simplebar.min.js}"></script>
+	<script th:src="@{/libs/feather-icons/feather.min.js}"></script>
+	
+	
+	
+	<script th:src="@{/js/app.js}"></script>
+</body>
+</html>

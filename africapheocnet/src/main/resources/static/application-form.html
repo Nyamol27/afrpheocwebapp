@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        
+        <meta charset="utf-8" />
+        <title> Membership Application | Africa PHEOC-Net</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Sign In" name="Join Africa PHEOC-Net" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="images/favicon.ico">
+
+        <!-- Bootstrap Css -->
+        <link href="css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="css/icons.min.css" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+
+    </head>
+
+    <body class="bg-white">
+
+        <div class="auth-page d-flex align-items-center min-vh-100">
+            <div class="container-fluid p-0">
+                <div class="row g-0">
+                    <div class="col-xxl-3 col-lg-4 col-md-5">
+                            <div class="d-flex flex-column h-100 py-5 px-4">
+                                <div class="text-center text-muted mb-2">
+                                    <div class="pb-3">
+                                        <a href="index.html">
+                                            <span class="logo-lg">
+                                                <img src="images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">AFR PHEOC-NET</span>
+                                            </span>
+                                        </a>
+                                        <p class="text-muted font-size-15 w-75 mx-auto mt-3 mb-0">PHEOCs save lives...</p>
+                                    </div>
+                                </div>
+        
+                                <div class="my-auto">
+                                    <div class="p-3 text-center">
+                                       <img src="images/pheoc-net.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+        
+                                <div class="mt-4 mt-md-5 text-center">
+                                        <p class="mb-0">© <script>document.write(new Date().getFullYear())</script> Africa PHEOC-NET</p>
+                                </div>
+                            </div>
+                        
+                        <!-- end auth full page content -->
+                    </div>
+                    <!-- end col -->
+    
+                    <div class="col-xxl-9 col-lg-8 col-md-7">
+                        <div class="auth-bg bg-light py-md-5 p-4 d-flex">
+                            <div class="bg-overlay-gradient"></div>
+                            <!-- end bubble effect -->
+                            <div class="row justify-content-center g-0 align-items-center w-100">
+                                <div class="col-xl-4 col-lg-8">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="px-3 py-3">
+                                                <div class="text-center">
+                                                    <h5 class="mb-0">Membership Application</h5>
+                                                    <p class="text-muted mt-2">Complete your membership application
+                                                    now.</p>
+                                                </div>
+		            <form class="mt-4 pt-2" method="POST" th:action="@{/applications/submit}">
+		        <!-- Display validation errors -->
+		        <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+		            <p>Please correct the following errors:</p>
+		            <ul>
+		                <li th:each="error : ${#fields.errors('*')}" th:text="${error}"></li>
+		            </ul>
+		        </div>
+		
+		        <!-- Display success message if needed -->
+		        <div th:if="${param.success}" class="alert alert-success">
+		            Registration successful. You can now log in.
+		        </div>
+		
+		        <!-- First Name -->
+		        <div class="form-floating form-floating-custom mb-3">
+		            <input type="text" class="form-control" id="input-first-name" name="firstName" placeholder="Enter First Name" required>
+		            <label for="input-first-name">First Name</label>
+		        </div>
+		
+		        <!-- Last Name -->
+		        <div class="form-floating form-floating-custom mb-3">
+		            <input type="text" class="form-control" id="input-last-name" name="lastName" placeholder="Enter Last Name" required>
+		            <label for="input-last-name">Last Name</label>
+		        </div>
+		
+		        <!-- Email -->
+		        <div class="form-floating form-floating-custom mb-3">
+		            <input type="email" class="form-control" id="input-email" name="email" placeholder="Enter Email" required>
+		            <label for="input-email">Email</label>
+		        </div>
+		
+		        <!-- Nationality Dropdown -->
+		        <div class="form-floating form-floating-custom mb-3">
+		            <select class="form-select" id="select-nationality" name="nationality" required>
+		                <option value="" disabled selected>Select Nationality</option>
+		                <option value="RDC">Congo RDC</option>
+		                <option value="Congo">Congo</option>
+		            </select>
+		            <label for="select-nationality">Nationality</label>
+		        </div>
+		
+		        <!-- Sex Dropdown -->
+		        <div class="form-floating form-floating-custom mb-3">
+		            <select class="form-select" id="select-sex" name="sex" required>
+		                <option value="" disabled selected>Select Sex</option>
+		                <option value="Male">Male</option>
+		                <option value="Female">Female</option>
+		            </select>
+		            <label for="select-sex">Sex</label>
+		        </div>
+		
+		        <!-- Sector Dropdown -->
+		        <div class="form-floating form-floating-custom mb-3">
+		            <select class="form-select" id="select-sector" name="sector" required>
+		                <option value="" disabled selected>Select Sector</option>
+		                <option value="Hospital">Hospital</option>
+		                <option value="Community Healthcare">Community Healthcare</option>
+		                <option value="Public Health">Public Health</option>
+		                <!-- Add more options for sectors here -->
+		            </select>
+		            <label for="select-sector">Sector</label>
+		        </div>
+		
+		        <!-- Organization Dropdown -->
+		        <div class="form-floating form-floating-custom mb-3">
+		            <select class="form-select" id="select-organization" name="organization" required>
+		                <option value="" disabled selected>Select Organization</option>
+		                <option value="NGO">NGO</option>
+		                <option value="School">School</option>
+		                <option value="University">University</option>
+		                <!-- Add more options for organizations here -->
+		            </select>
+		            <label for="select-organization">Organization</label>
+		        </div>
+		
+		        <!-- Position Dropdown -->
+		        <div class="form-floating form-floating-custom mb-3">
+		            <select class="form-select" id="select-position" name="position" required>
+		                <option value="" disabled selected>Select Position</option>
+		                <option value="Medical Doctor">Medical Doctor</option>
+		                <option value="Public Health Expert">Public Health Expert</option>
+		                <!-- Add more options for positions here -->
+		            </select>
+		            <label for="select-position">Position</label>
+		        </div>
+		
+		        <!-- Area of Expertise -->
+		        <div class="form-floating form-floating-custom mb-3">
+		            <input type="text" class="form-control" id="input-expertise" name="areaExpertise" placeholder="Enter Area of Expertise" required>
+		            <label for="input-expertise">Area of Expertise</label>
+		        </div>
+		
+		        <!-- Language Dropdown -->
+		        <div class="form-floating form-floating-custom mb-3">
+		            <select class="form-select" id="select-language" name="language" required>
+		                <option value="" disabled selected>Select Language</option>
+		                <option value="English">English</option>
+		                <option value="French">French</option>
+		                <option value="Portuguese">Portuguese</option>
+		                <!-- Add more options for languages here -->
+		            </select>
+		            <label for="select-language">Language</label>
+		        </div>
+		
+		        <!-- PheocExp Radio Buttons -->
+		        <div class="mb-3">
+		            <label class="form-label">Are you currently employed at a Public Health Emergency Operations Centre (PHEOC), or do you have prior experience working in a PHEOC?</label>
+		            <div class="form-check form-check-inline">
+		                <input class="form-check-input" type="radio" name="pheocExp" id="radio-yes" value="Yes" required>
+		                <label class="form-check-label" for="radio-yes">Yes</label>
+		            </div>
+		            <div class="form-check form-check-inline">
+		                <input class="form-check-input" type="radio" name="pheocExp" id="radio-no" value="No" required>
+		                <label class="form-check-label" for="radio-no">No</label>
+		            </div>
+		        </div>
+		
+		        <!-- Roster Radio Buttons -->
+		        <div class="mb-3">
+		            <label class="form-label">Are you a member of the roster staff or SURGE Team in your region?</label>
+		            <div class="form-check form-check-inline">
+		                <input class="form-check-input" type="radio" name="roster" id="radio-roster-yes" value="Yes" required>
+		                <label class="form-check-label" for="radio-roster-yes">Yes</label>
+		            </div>
+		            <div class="form-check form-check-inline">
+		                <input class="form-check-input" type="radio" name="roster" id="radio-roster-no" value="No" required>
+		                <label class="form-check-label" for="radio-roster-no">No</label>
+		            </div>
+		        </div>
+		
+		        <!-- Statement Text Area -->
+		        <div class="mb-3">
+		            <label class="form-label">Statement</label>
+		            <textarea class="form-control" id="textarea-statement" name="statement" rows="4" required></textarea>
+		        </div>
+		
+		        <div class="mt-3">
+		            <button class="btn btn-primary w-100" type="submit">Register</button>
+		        </div>
+		    </form><!-- end form -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container fluid -->
+        </div>
+        <!-- end authentication section -->
+
+        <!-- JAVASCRIPT -->
+        <script src="libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="libs/metismenujs/metismenujs.min.js"></script>
+        <script src="libs/simplebar/simplebar.min.js"></script>
+        <script src="libs/feather-icons/feather.min.js"></script>
+
+    </body>
+</html>

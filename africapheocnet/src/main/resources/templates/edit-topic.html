@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<body data-topbar="dark">
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+    <div class="main-content">
+        <div class="page-content">
+        <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                      				<div class="card">
+    <div class="card-header justify-content-between d-flex align-items-center">
+        <h4 class="card-title">Edit Topic</h4>
+    </div><!-- end card header -->
+    <div class="card-body">
+    	  <div id="alertBox" class="alert alert-warning alert-top-border alert-dismissible fade show" role="alert" style="display: none;">
+							    <i class="uil uil-exclamation-triangle font-size-16 text-warning me-2"></i>
+							   <span class="alert-message">A simple border warning alert</span>
+							    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+         <form id="editTopicForm" th:object="${topic}" method="post" enctype="multipart/form-data">
+		    <div class="mb-3">
+		        <label for="title" class="form-label">Title:</label>
+		        <input type="text" class="form-control" id="title" name="title" th:value="${topic.title}" required>
+		    </div>
+		    <div class="mb-3">
+		        <label for="content" class="form-label">Content:</label>
+		        <textarea class="form-control" id="content" name="content" th:text="${topic.content}" required></textarea>
+		    </div>
+		    <div class="mb-3" th:if="${topic.attachmentName}">
+		        <label for="currentAttachment" class="form-label">Current Attachment:</label>
+		        <input type="text" class="form-control" id="currentAttachment" name="currentAttachment" th:value="${topic.attachmentName}" readonly>
+		    </div>
+		    <div class="mb-3" th:unless="${topic.attachmentName}">
+		        <label for="attachment" class="form-label">Add Attachment:</label>
+		        <input type="file" class="form-control" id="attachment" name="attachment">
+		    </div>
+		    <div class="mb-3" th:if="${topic.attachmentName}">
+		        <label for="attachment" class="form-label">Update Attachment:</label>
+		        <input type="file" class="form-control" id="attachment" name="attachment">
+		    </div>
+		    <input type="hidden" id="id" name="id" th:value="${topic.id}">
+		    <div class="form-group">
+		        <button type="submit" class="btn btn-primary">Update Topic</button>
+		        <a href="javascript:history.back()" class="btn btn-secondary">Back</a>
+		    </div>
+		</form>
+
+          
+
+        </div>
+    </div>
+</div>
+                      				
+
+            	 </div>
+             </div>
+          </div>
+        </div>
+   
+    
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+    
+     <!-- JAVASCRIPT -->
+	<script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/libs/metismenujs/metismenujs.min.js}"></script>
+	<script th:src="@{/libs/simplebar/simplebar.min.js}"></script>
+	<script th:src="@{/libs/feather-icons/feather.min.js}"></script>
+	
+	
+	<!-- swiper js -->
+	<script th:src="@{/libs/swiper/swiper-bundle.min.js}"></script>
+	
+	
+	<script th:src="@{/js/app.js}"></script>
+</body>
+</html>

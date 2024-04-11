@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<head>
+ <meta name="_csrf" th:content="${_csrf.token}"/>
+ <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+<body data-topbar="dark">
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+    <div class="main-content">
+        <div class="page-content">
+        	<div class="container-fluid">
+                <div class="row">
+                <div class="col-lg-12">
+                 
+                </div>
+                    <div class="col-lg-12">
+                     <div class="card">
+    	<div class="card-header justify-content-between d-flex align-items-center">
+        <h4 class="card-title">PHEOC Regional Roster - Edit Trainer's details</h4>
+        </div>
+        <div class="card-body">
+        	<div class="mb-3">
+    <label for="addTrainer-firstname-input" class="form-label">First Name:</label>
+    <input type="text" class="form-control" id="addTrainer-firstname-input" name="firstName" th:value="${trainer.firstName}" required>
+</div>
+
+<div class="mb-3">
+    <label for="addTrainer-lastname-input" class="form-label">Last Name:</label>
+    <input type="text" class="form-control" id="addTrainer-lastname-input" name="lastName" th:value="${trainer.lastName}" required>
+</div>
+
+<div class="mb-3">
+    <label for="addTrainer-gender-input" class="form-label">Gender:</label>
+    <select class="form-select" id="addTrainer-gender-input" name="gender" required>
+        <option value="" selected disabled>Select Gender</option>
+        <option th:each="gen : ${T(net.pheocnetafr.africapheocnet.util.AutoFilledData).getGenderList()}" 
+                th:value="${gen}" th:text="${gen}"
+                th:selected="${gen == trainer.gender}"></option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="addTrainer-cohort-input" class="form-label">Cohort:</label>
+    <input type="text" class="form-control" id="addTrainer-cohort-input" name="cohort" th:value="${trainer.cohort}">
+</div>
+
+<div class="mb-3">
+    <label for="addTrainer-country-input" class="form-label">Country:</label>
+    <select class="form-select" id="addTrainer-country-input" name="country" required>
+    	<option value="" selected disabled>Select Country</option>
+        <option th:each="country : ${T(net.pheocnetafr.africapheocnet.util.AutoFilledData).getAllAfricanCountries()}" 
+                th:value="${country}" th:text="${country}"
+                th:selected="${country == trainer.country}"></option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="addTrainer-language-input" class="form-label">Language:</label>
+    <select class="form-select" id="addTrainer-language-input" name="language" required>
+        <option value="" selected disabled>Select Language</option>
+        <option th:each="lang : ${T(net.pheocnetafr.africapheocnet.util.AutoFilledData).getLanguageList()}" 
+                th:value="${lang}" th:text="${lang}"
+                th:selected="${lang == trainer.language}"></option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="addTrainer-organization-input" class="form-label">Organization:</label>
+    <select class="form-select" id="addTrainer-organization-input" name="organization" required>
+        <option value="" selected disabled>Select Organization</option>
+        <option th:each="org : ${T(net.pheocnetafr.africapheocnet.util.AutoFilledData).getOrganizationList()}" 
+                th:value="${org}" th:text="${org}"
+                th:selected="${org == trainer.organization}"></option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="addTrainer-position-input" class="form-label">Position:</label>
+    <input type="text" class="form-control" id="addTrainer-position-input" name="position" th:value="${trainer.position}">
+</div>
+
+<div class="mb-3">
+    <label for="addTrainer-email-input" class="form-label">Email:</label>
+    <input type="email" class="form-control" id="addTrainer-email-input" name="email" th:value="${trainer.email}" required>
+</div>
+
+<div class="mb-3">
+    <label for="addTrainer-telephone-input" class="form-label">Telephone:</label>
+    <input type="tel" class="form-control" id="addTrainer-telephone-input" name="telephone" th:value="${trainer.telephone}">
+</div>
+<div id="alertBox" class="alert alert-warning alert-top-border alert-dismissible fade show" role="alert" style="display: none;">
+				    <i class="uil uil-exclamation-triangle font-size-16 text-warning me-2"></i>
+				   <span class="alert-message">A simple border warning alert</span>
+				    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+
+<div class="mb-3">
+    <button type="button" class="btn btn-primary w-sm" onclick="submitUpdateTrainer()">Update</button>
+    <button type="button" class="btn btn-secondary w-sm" onclick="cancelUpdate()">Back</button>
+</div>
+    <script>
+    function cancelUpdate() {
+        
+        window.history.back();
+    }
+</script>
+    
+        
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+    
+     <!-- JAVASCRIPT -->
+	<script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/libs/metismenujs/metismenujs.min.js}"></script>
+	<script th:src="@{/libs/simplebar/simplebar.min.js}"></script>
+	<script th:src="@{/libs/feather-icons/feather.min.js}"></script>
+	
+	
+	
+	<script th:src="@{/js/app.js}"></script>
+</body>
+</html>

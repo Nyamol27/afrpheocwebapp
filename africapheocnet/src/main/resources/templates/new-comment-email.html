@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Comment Notification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+        }
+        strong {
+            color: #000;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        hr {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h2>New Comment on Forum Topic: <span th:text="${topicTitle}"></span></h2>
+    <p>
+        Dear Member,<br>
+        You are receiving this email because <strong><span th:text="${firstName}"></span></strong> has posted a new message in a topic that you are watching: <strong><span th:text="${topicTitle}"></span></strong>.
+    </p>
+    <p>
+        <strong>Poster Name:</strong> <span th:text="${firstName}"></span><br>
+        <strong>Category Name:</strong> <span th:text="${categoryName}"></span><br>
+    </p>
+    <hr>
+    <p>
+        <strong>Comment Content:</strong><br>
+        <span th:text="${commentContent}"></span>
+    </p>
+    <hr>
+    <p>
+        You can view the topic <a th:href="@{${topicLink}}">here</a>.
+    </p>
+    <p>
+        Warm regards,<br>
+        AFRICA PHEOC-NET
+    </p>
+    
+    <p>This is an automated email. Please do not reply. To manage your email subscriptions, visit <a href="https://pheocnet.afro.who.int/notifications/settings">this link</a>.</p>
+</body>
+</html>

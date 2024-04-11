@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<head>
+  <!-- Add Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/css/bootstrap.min.css">
+    
+    <!-- Add DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+
+    <!-- Add jQuery and DataTables JS -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.6/js/dataTables.bootstrap5.min.js"></script>
+    
+    <style>
+    	.author-details {
+    display: flex;
+    align-items: center;
+}
+
+.author-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #007bff; 
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+    .color-0 {
+    background-color: #ff9999; /* Red */
+}
+
+.color-1 {
+    background-color: #99ff99; /* Green */
+}
+
+.color-2 {
+    background-color: #9999ff; /* Blue */
+}
+
+.color-3 {
+    background-color: #ffff99; /* Yellow */
+}
+
+.color-4 {
+    background-color: #ff99ff; /* Purple */
+}
+    
+    </style>
+    
+</head>
+<body data-topbar="dark">
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+    <div class="main-content">
+        <div class="page-content">
+        	<div class="container-fluid">
+                <div class="row">
+                <div class="col-12">
+                	<div class="card"> 
+        <div class="col-md-11 d-flex justify-content-end align-items-center">
+    <div class="d-flex flex-wrap align-items-start gap-10 mb-10">
+            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newTopicModal">
+                <i class="uil uil-plus me-1"></i> Add New Topic
+            </button>
+        
+    </div>
+</div>
+        
+
+
+<div class="modal fade" id="newTopicModal" tabindex="-1" role="dialog" aria-labelledby="newTopicModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newTopicModalLabel">New Topic</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+			    <form id="addTopicForm">
+			        <div id="alertBox" class="alert alert-warning alert-top-border alert-dismissible fade show" role="alert" style="display: none;">
+					    <i class="uil uil-exclamation-triangle font-size-16 text-warning me-2"></i>
+					   <span class="alert-message">A simple border warning alert</span>
+					    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+			        <div class="mb-3">
+			            <label for="topicTitle" class="form-label">Title</label>
+			            <input type="text" class="form-control" id="topicTitle" placeholder="Enter topic title">
+			        </div>
+			        <div class="mb-3">
+			            <label for="topicContent" class="form-label">Content</label>
+			            <textarea class="form-control" id="topicContent" rows="5" placeholder="Enter topic content"></textarea>
+			        </div>
+			        <div class="mb-3">
+			            <label for="attachmentFile" class="form-label">Attachment</label>
+			            <input type="file" class="form-control" id="attachmentFile">
+			        </div>
+			    </form>
+			</div>
+
+            <div class="modal-footer">
+               <button type="button" class="btn btn-light w-sm" id="closeModalBtn">Close</button>
+                <button type="button" class="btn btn-primary w-sm" onclick="postTopic()">Post</button>
+            </div><!-- end modalfooter -->
+        </div><!-- end modal content -->
+    </div>
+</div>
+                	
+      
+                		
+                		<div class="card-body"> 
+			               <h4>Greetings and welcome to the discussion forum!</h4>
+			               <h6 class="card-subtitle text-muted">Engage in discussions on PHEOC, IMS, and public health emergencies in Africa. Pose questions and share trends in this field.</h6> <br>
+			              	<table class="hover" id="dbdata">
+							    <thead>
+							        <tr>
+							            <th>Topic</th>
+							            <th>Author</th>
+							            <th>Replies</th>
+							            <th>Likes</th>
+							            <th>Last Updated</th>
+							        </tr>
+							    </thead>
+					<tbody>
+    <tr th:each="topic, rowStat : ${topics}">
+        <td>
+            <!-- Icon for title -->
+            <i class="uil uil-file-alt"></i>
+            <a th:href="@{'/api/topic/view/' + ${topic.id}}" th:text="${topic.title}"></a>
+        </td>
+        <td>
+            <!-- Display the author's first name and last name, with a null check -->
+            <div class="author-details">
+                <div th:class="'author-icon color-' + ${rowStat.index % 5}">
+                    <!-- Author's initials within a round shape -->
+                    <span th:text="${topic.user != null ? topic.user.firstName.substring(0,1).toUpperCase() + topic.user.lastName.substring(0,1).toUpperCase() : 'U'}"></span>
+                </div>
+                <!-- Make the author's name bold -->
+                <strong>
+                    <span th:text="${topic.user != null ? topic.user.firstName + ' ' + topic.user.lastName : 'Unknown'}"></span>
+                </strong>
+            </div>
+        </td>
+        <td>
+            <!-- Icon for replies -->
+            <i class="uil uil-comment-alt"></i>
+            <span th:text="${topic.numComments}"></span>
+        </td>
+        <td>
+            <!-- Icon for likes -->
+            <i class="uil uil-heart"></i>
+            <span th:text="${topic.numLikes}"></span>
+        </td>
+        <td>
+            <!-- Icon for last updated -->
+            <i class="uil uil-clock"></i>
+            <span th:text="${#dates.format(topic.lastUpdated, 'dd-MM-yyyy HH:mm:ss')}"></span>
+        </td>
+    </tr>
+</tbody>
+					
+						
+							  
+							   
+							</table>
+			              	
+                		</div>
+                	
+                	</div>
+                
+                </div>
+               		
+        			
+        			</div>
+    </div>
+
+   
+                 
+    </div>
+    </div>
+   
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+    
+     <!-- JAVASCRIPT -->
+	<script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/libs/metismenujs/metismenujs.min.js}"></script>
+	<script th:src="@{/libs/simplebar/simplebar.min.js}"></script>
+	<script th:src="@{/libs/feather-icons/feather.min.js}"></script>
+	
+	
+	
+	<script th:src="@{/js/app.js}"></script>
+	<script>
+    $(document).ready(function() {
+        // Add event listener to the close button
+        $("#closeModalBtn").click(function() {
+            // Close the modal
+            $('#yourModalId').modal('hide');
+
+            // Refresh the page
+            location.reload();
+        });
+    });
+</script>
+	
+	
+	<script>
+  new DataTable('#dbdata');
+</script>
+</body>
+</html>

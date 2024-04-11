@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<head>
+ <meta name="_csrf" th:content="${_csrf.token}"/>
+ <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+<body data-topbar="dark">
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+    <div class="main-content">
+        <div class="page-content">
+        	<div class="container-fluid">
+                <div class="row">
+                <div class="col-lg-12">
+                 <div id="alertBox" class="alert alert-warning alert-top-border alert-dismissible fade show" role="alert" style="display: none;">
+				    <i class="uil uil-exclamation-triangle font-size-16 text-warning me-2"></i>
+				   <span class="alert-message">A simple border warning alert</span>
+				    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+                </div>
+                    <div class="col-lg-12">
+                     <div class="card">
+    	<div class="card-header justify-content-between d-flex align-items-center">
+        <h4 class="card-title">Edit User's details</h4>
+        </div>
+        <div class="card-body">
+    <form id="updateUserProfileForm">
+        <div class="mb-3">
+            <label for="addTrainer-firstname-input" class="form-label">First Name:</label>
+            <input type="text" class="form-control" id="addTrainer-firstname-input" name="firstName" th:value="${user.firstName}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="addTrainer-lastname-input" class="form-label">Last Name:</label>
+            <input type="text" class="form-control" id="addTrainer-lastname-input" name="lastName" th:value="${user.lastName}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="addTrainer-email-input" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="addTrainer-email-input" name="email" th:value="${user.email}" required>
+        </div>
+        
+
+        <div class="mb-3">
+            <button type="button" class="btn btn-primary w-sm" onclick="updateUserProfile()">Update</button>
+
+            <button type="button" class="btn btn-secondary w-sm" onclick="cancelUpdate()">Cancel</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function cancelUpdate() {
+        window.history.back();
+    }
+</script>
+        
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+    
+     <!-- JAVASCRIPT -->
+	<script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/libs/metismenujs/metismenujs.min.js}"></script>
+	<script th:src="@{/libs/simplebar/simplebar.min.js}"></script>
+	<script th:src="@{/libs/feather-icons/feather.min.js}"></script>
+	
+	
+	
+	<script th:src="@{/js/app.js}"></script>
+</body>
+</html>

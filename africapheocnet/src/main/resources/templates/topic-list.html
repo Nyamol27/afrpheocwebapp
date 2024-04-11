@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<head>
+    <!-- Add Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/css/bootstrap.min.css">
+    
+    <!-- Add DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+
+    <!-- Add jQuery and DataTables JS -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.6/js/dataTables.bootstrap5.min.js"></script>
+
+</head>
+<body data-topbar="dark">
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+   <div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+            
+                <div class="col-lg-12">
+    <div class="card">
+        <div class="card-header justify-content-between d-flex align-items-center">
+            <h4 class="card-title">Forum Management</h4>
+            	  <div class="dropdown">
+			        <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+					    <i class='bx bx-filter-alt'></i> Filter
+					</button>
+			        <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+			            <!-- Status filtering options -->
+			            <li class="dropdown-header">Status</li>
+			            <li><a class="dropdown-item"  onclick="filterByStatusAndCategory('Published', '')">Published</a></li>
+			            <li><a class="dropdown-item" onclick="filterByStatusAndCategory('Withdrawn', '')">Withdrawn</a></li>
+			           
+			
+			            <!-- Category filtering options -->
+			            <div class="dropdown-divider"></div>
+			            <li class="dropdown-header">Category</li>
+			            <li><a class="dropdown-item"  onclick="filterByStatusAndCategory('', 'GeneralDiscussion')">General Discussion</a></li>
+			            <li><a class="dropdown-item"  onclick="filterByStatusAndCategory('', 'PlansForum')">Plans Forum</a></li>
+			            <li><a class="dropdown-item"  onclick="filterByStatusAndCategory('', 'WorkForce')">Work Force</a></li>
+			            <li><a class="dropdown-item"  onclick="filterByStatusAndCategory('', 'IsForum')">Is Forum</a></li>
+			            <li><a class="dropdown-item"  onclick="filterByStatusAndCategory('', 'CentersForum')">Centers Forum</a></li>
+			            <li><a class="dropdown-item"  onclick="filterByStatusAndCategory('', 'ToT')">ToT</a></li>
+			            
+			            
+			            <!-- Clear filters option -->
+				        <div class="dropdown-divider"></div>
+				        <li><a class="dropdown-item" onclick="clearFilters()">Clear Filters</a></li>
+			        </ul>
+			    </div>
+        </div>
+
+
+        <div class="card-body">
+            <div id="alertBox" class="alert alert-warning alert-top-border alert-dismissible fade show" role="alert" style="display: none;">
+                <i class="uil uil-exclamation-triangle font-size-16 text-warning me-2"></i>
+                <span class="alert-message">A simple border warning alert</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            
+            <div class="table-responsive">
+           
+                <table class="hover" id="dbdata">
+          
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+              	<th><i class="bx bx-book"></i> Title</th>
+				<th><i class="bx bx-calendar"></i> Published on</th>
+				<th><i class="bx bx-calendar"></i> Last update</th>
+				<th><i class="bx bx-like"></i> Likes</th>
+				<th><i class="bx bx-user"></i>Author</th>
+				<th><i class="bx bx-category"></i> Category</th>
+				<th><i class="bx bx-info-circle"></i> Status</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+   <tbody>
+    	<tr th:each="topic, iterStat : ${topics}">
+        <td th:text="${iterStat.count}">...</td>
+        <td >
+        	<span >
+				    <i class="bx bx-show"></i>
+				    <a th:text="${topic.title}" th:href="@{/api/comments/list-topic/{topicId}(topicId=${topic.id})}" ></a>
+		</span>
+        
+        </td>
+        <td th:text="${topic.createdAt}">...</td>
+        <td th:text="${topic.updatedAt}">...</td>
+        <td th:text="${topic.numLikes}">...</td>
+        <td>
+    		<span  th:text="${topic.user != null ? topic.user.firstName + ' ' + topic.user.lastName : 'Unknown'}">...</span>
+		</td>
+
+        <!-- Use the index to access the category name -->
+        <td th:text="${categoryNames[__${iterStat.index}__]}">...</td>
+        <td>
+            <span th:text="${topic.status}" 
+                  th:class="${topic.status eq 'Published' ? 'badge rounded-pill badge-soft-primary' : 'badge rounded-pill badge-soft-warning'}"></span>
+        </td>
+   <td>
+    <div class="button-wrapper">
+        <div th:if="${topic.status eq 'Published'}">
+            <form id="withdrawForm" method="post" th:action="@{/api/topic/withdraw/{topicId}(topicId=${topic.id})}">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                <button type="submit" onclick="showAlert('Withdrawing topic...')">Withdraw</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="button-wrapper">
+        <div th:if="${topic.status eq 'Withdrawn'}">
+            <form id="publishForm" method="post" th:action="@{/api/topic/publish/{topicId}(topicId=${topic.id})}">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                <button type="submit" onclick="showAlert('Publishing topic...')">Publish</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="button-wrapper">
+        <form id="deleteForm" method="post" th:action="@{/api/topic/delete/{topicId}(topicId=${topic.id})}">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+            <button type="submit" onclick="showAlert('Deleting topic...')">Delete</button>
+        </form>
+    </div>
+</td>
+
+     
+    </tr>
+</tbody>
+
+        
+    </table>
+                
+
+            </div>
+        </div>
+        <!-- end card body -->
+    </div>
+    <!-- end card -->
+</div>
+<!-- end col-lg-12 -->
+                
+        </div>
+    </div>
+</div>
+</div>
+   
+    
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+    
+     <!-- JAVASCRIPT -->
+	<script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/libs/metismenujs/metismenujs.min.js}"></script>
+	<script th:src="@{/libs/simplebar/simplebar.min.js}"></script>
+	<script th:src="@{/libs/feather-icons/feather.min.js}"></script>
+	
+	
+	
+	<!-- swiper js -->
+	<script th:src="@{/libs/swiper/swiper-bundle.min.js}"></script>
+	<script th:src="@{/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js}"></script>
+	
+	<script th:src="@{/js/pages/email-editor.init.js}"></script>
+	
+	
+	<script th:src="@{/js/app.js}"></script>
+	
+	
+	<script>
+  new DataTable('#dbdata');
+</script>
+<script>
+    function filterByStatusAndCategory(status, category) {
+        var table = $('#dbdata').DataTable();
+        table.column(8).search(category); 
+        table.column(7).search(status);    
+        table.draw();
+    }
+
+    function clearFilters() {
+        var table = $('#dbdata').DataTable();
+        table.column(8).search('').draw(); 
+        table.column(7).search('').draw(); 
+    }
+
+    $(document).ready(function () {
+        new DataTable('#dbdata');
+    });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<head>
+    <!-- Add Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/css/bootstrap.min.css">
+    
+    <!-- Add DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+
+    <!-- Add jQuery and DataTables JS -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.6/js/dataTables.bootstrap5.min.js"></script>
+
+</head>
+<body data-topbar="dark">
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+   <div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+            
+                <div class="col-lg-12">
+                    <div class="card">
+                            <div class="card-header justify-content-between d-flex align-items-center">
+							    <h4 class="card-title">Feedback List</h4>
+							   <!-- Button to trigger modal -->
+<div class="col-md-6 d-flex justify-content-end align-items-center">
+    <div class="d-flex flex-wrap align-items-start gap-2 mb-3">
+    
+    <div>
+        <a href="/abuseLogs" class="btn btn-primary">
+            <i class="uil uil-error me-1"></i> Show Abuse Logs
+        </a>
+    </div>
+    <button type="button" class="btn btn-secondary w-sm" onclick="cancelUpdate()">Back</button>
+        <script>
+    function cancelUpdate() {
+        
+        window.history.back();
+    }
+</script>
+</div>
+    
+</div>
+
+
+
+						</div>
+						
+                        <div class="card-body">
+                         <div id="alertBox" class="alert alert-warning alert-top-border alert-dismissible fade show" role="alert" style="display: none;">
+								    <i class="uil uil-exclamation-triangle font-size-16 text-warning me-2"></i>
+								   <span class="alert-message">A simple border warning alert</span>
+								    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+						<div class="table-responsive" >
+                            <table class="hover" id="dbdata"  >
+    <thead>
+        <tr>
+            <th scope="col">Type</th>
+            <th scope="col">Feedback date</th>
+            <th scope="col">Rating</th>
+            <th scope="col">user</th>
+            <th scope="col">Action date</th>
+        </tr>
+    </thead>
+    <tbody>
+         <tr th:each="feedback : ${newFeedbackList}">
+        		<td>
+    
+			    	<span th:switch="${feedback.type}">
+			        <span th:case="'Compliment'"><i class="fas fa-smile"></i></span> 
+			        <span th:case="'Suggestion'"><i class="fas fa-lightbulb"></i></span> 
+			        <span th:case="'Complaint'"><i class="fas fa-exclamation-triangle"></i></span> 
+			        <span th:case="*"><i class="fas fa-info-circle"></i></span> 
+			        <span th:text="${feedback.type}"></span>
+			    </span>
+			</td>
+            <td>
+                <i class="mdi mdi-calendar me-1"></i>
+                <span th:text="${feedback.submissionDate}"></span>
+            </td>
+            <td th:text="${feedback.rating}">...</td>
+            <td th:text="${feedback.userEmail}">...</td>
+            <td th:text="${feedback.clearDate}">...</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+                            
+                        </div>
+                        <!-- end card body -->
+                    </div>
+                    <!-- end card -->
+                </div>
+                <!-- end col -->
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+   
+    
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+    
+     <!-- JAVASCRIPT -->
+	<script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/libs/metismenujs/metismenujs.min.js}"></script>
+	<script th:src="@{/libs/simplebar/simplebar.min.js}"></script>
+	<script th:src="@{/libs/feather-icons/feather.min.js}"></script>
+	
+	
+	
+	<!-- swiper js -->
+	<script th:src="@{/libs/swiper/swiper-bundle.min.js}"></script>
+	<script th:src="@{/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js}"></script>
+	
+	<script th:src="@{/js/pages/email-editor.init.js}"></script>
+	
+	
+	<script th:src="@{/js/app.js}"></script>
+	
+	
+	<script>
+  new DataTable('#dbdata');
+</script>
+</body>
+</html>

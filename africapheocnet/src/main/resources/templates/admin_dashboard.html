@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<head>
+<!-- jQuery library -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="libs/jsvectormap/css/jsvectormap.min.css" />
+
+</head>
+<body data-topbar="dark">
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Card for Country Map -->
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Country Map</h5>
+                                <div id="map" style="width: 800px; height: 350px"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                     <!-- Card for Area Chart - Enrollment -->
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Enrollment Overview</h5>
+                                <div id="enrollmentChart" style="height: 350px"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+                <div class="row">
+                	
+                <!-- Card for Donut Chart - Organization -->
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Organization Distribution</h5>
+                                <div id="organizationChart" data-colors='["--bs-primary"]' class="apex-charts"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                     <!-- Card for Bar Chart - Profession Distribution -->
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Profession Distribution</h5>
+                                <div id="professionChart" data-colors='["--bs-primary"]' class="apex-charts"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+
+                <div class="row">
+                    <!-- Card for Donut Chart - Projects -->
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Projects Overview</h5>
+                                <div id="projectsChart" class="chart-placeholder"></div>
+                            </div>
+                        </div>
+                    </div>
+					
+                   
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+    
+    <!-- JAVASCRIPT -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/libs/metismenujs/metismenujs.min.js"></script>
+    <script src="/libs/simplebar/simplebar.min.js"></script>
+    <script src="/libs/feather-icons/feather.min.js"></script>
+    
+    <!-- ApexCharts -->
+    <script src="/libs/apexcharts/apexcharts.min.js"></script>
+    <!-- JavaScript to render the map -->
+	<script src="libs/jsvectormap/js/jsvectormap.min.js"></script>
+	<script src="libs/jsvectormap/maps/world.js"></script>
+   
+    <!-- Inline JavaScript -->
+    <script th:inline="javascript">
+        // Wait for the DOM to be fully loaded
+        $(document).ready(function() {
+            // Data for organization chart
+            var organizationData = /*[[${organizationDistribution}]]*/ [];
+            console.log('Organization Data:', organizationData);
+            organizationData = organizationData.filter(item => item[0] !== null);
+            var organizationLabels = organizationData.map(item => item[0]);
+            var organizationValues = organizationData.map(item => item[1]);
+
+            // Data for profession chart
+            var professionData = /*[[${professionDistribution}]]*/ [];
+            console.log('Profession Data:', professionData);
+            professionData = professionData.filter(item => item[0] !== null);
+            var professionLabels = professionData.map(item => item[0]);
+            var professionValues = professionData.map(item => item[1]);
+
+            // Data for projects chart
+            var ongoingProjects = /*[[${ongoingProjects}]]*/ null;
+            var completedProjects = /*[[${completedProjects}]]*/ null;
+
+            // Data for enrollment chart
+            var enrollmentData = /*[[${enrollmentData}]]*/ [];
+            console.log('Enrollment Data:', enrollmentData);
+
+            // Initialize Organization Chart
+            var organizationChartOptions = {
+                series: organizationValues,
+                chart: {
+                    type: 'donut',
+                },
+                labels: organizationLabels,
+            };
+            var organizationChart = new ApexCharts(document.querySelector("#organizationChart"), organizationChartOptions);
+            organizationChart.render();
+
+            // Initialize Projects Chart
+            var projectsData = [ongoingProjects, completedProjects];
+            var projectsChartOptions = {
+                series: projectsData,
+                chart: {
+                    type: 'donut',
+                },
+                labels: ['Ongoing Projects', 'Completed Projects'],
+            };
+            var projectsChart = new ApexCharts(document.querySelector("#projectsChart"), projectsChartOptions);
+            projectsChart.render();
+
+            // Initialize Enrollment Chart
+            var enrollmentChartOptions = {
+                series: [{
+                    name: 'Enrollment',
+                    data: enrollmentData
+                }],
+                chart: {
+                    type: 'area',
+                    height: 200,
+                    toolbar: {
+                        show: false
+                    }
+                },
+                xaxis: {
+                    type: 'datetime'
+                },
+            };
+            var enrollmentChart = new ApexCharts(document.querySelector("#enrollmentChart"), enrollmentChartOptions);
+            enrollmentChart.render();
+
+            // Initialize Profession Chart
+            var professionChartOptions = {
+                series: professionValues,
+                chart: {
+                    type: 'donut',
+                    height: 200
+                },
+                
+                labels: professionLabels
+            };
+            var professionChart = new ApexCharts(document.querySelector("#professionChart"), professionChartOptions);
+            professionChart.render();
+				
+            
+           
+        });
+    </script>
+
+<script th:inline="javascript">
+    $(document).ready(function() {
+        var countryData = /*[[${countryMemberCount}]]*/ [];
+
+        console.log("Country Data:", countryData);
+
+        // Create an object to store country data
+        var countryValues = {};
+
+        // Populate the countryValues object with country names and their corresponding values
+        countryData.forEach(function(item) {
+            var countryName = item[0];
+            var value = item[1];
+            countryValues[countryName] = value;
+        });
+
+        // Define your color scale and legend title
+        var scale = {
+            // Define your color scale here
+            // You can set the same color for all countries or customize based on your needs
+            "low": "#ffc371",   // Color for countries with low member count
+            "medium": "#c79efd", // Color for countries with medium member count
+            "high": "#3ac47d"    // Color for countries with high member count
+        };
+
+        var map = new jsVectorMap({
+            selector: "#map",
+            map: "world", 
+            series: {
+                regions: [{
+                    values: countryValues,
+                    scale: scale,
+                    normalizeFunction: 'polynomial'
+                }]
+            }
+        });
+
+      
+    });
+</script>
+
+
+
+</body>
+</html>

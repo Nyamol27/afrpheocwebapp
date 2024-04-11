@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="frontend-header :: head"></th:block>
+<body class="custom-cursor">
+
+    <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div>
+
+    <div class="preloader">
+        <div class="preloader__image" style="background-image: url(assets/images/loader.png);"></div>
+    </div>
+    <!-- /.preloader -->
+    <div class="page-wrapper">
+        <div th:replace="frontend-topbar"></div>
+        <header th:replace="frontend-header :: main-header"></header>
+       
+		<section class="faq-one section-space">
+            <div class="container">
+                <div class="row gutter-y-50">
+                    <div class="col-xl-6 col-lg-6 wow fadeInLeft" data-wow-duration="1500ms" data-wow-delay="100ms">
+                        <div class="faq-one__image">
+                            <img src="assets/images/faq/faq-1-1.jpg" alt="faq-image">
+                        </div><!-- /.faq-one__image -->
+                    </div><!-- /.col-xl-6 col-lg-6 -->
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="faq-one__content">
+                            <div class="sec-title">
+
+                                <h6 class="sec-title__tagline @@extraClassName">Recently asked questions</h6><!-- /.sec-title__tagline -->
+
+                                <h3 class="sec-title__title">People Are Frequently Asking Some <span class="sec-title__title__inner">Questions</span></h3><!-- /.sec-title__title -->
+                            </div><!-- /.sec-title -->
+                            <p class="faq-one__text">PHEOCs Save lives...</p><!-- /.faq-one__text -->
+                            <div class="cleenhearts-accordion wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="100ms" data-grp-name="cleenhearts-accordion">
+                                <div class="accordion @@extraClassName">
+                                    <div class="accordion-title">
+                                        <h4>
+                                            What is the WHO African Emergency Operations Centres Network?
+                                            <span class="accordion-title__icon"></span><!-- /.accordion-title__icon -->
+                                        </h4>
+                                    </div><!-- /.accordian-title -->
+                                    <div class="accordion-content">
+                                        <div class="inner">
+                                            <p>The Network is a key regional platform enabling collaboration, communication, and the exchange of wide range of information. It also seeks to build and sustain national capacity to manage public health emergencies, act as a conduit for increased partnerships, and allow for targeted donations and funding. The ultimate aim is to allow all Member States of the WHO African Region to have Public Health Emergency Operations Centres with full capacity to coordinate the preparation for and response to public health emergencies. Members include the WHO AFRO Health Emergencies Programme (acting as the Network secretariat), 47 Member States, regional and international organizations, individual experts, and universities and institutes.</p>
+                                        </div><!-- /.accordian-content -->
+                                    </div>
+                                </div><!-- /.accordian-item -->
+                                <div class="accordion active">
+                                    <div class="accordion-title">
+                                        <h4>
+                                            Why are public health EOCs vital in emergency management?
+                                            <span class="accordion-title__icon"></span><!-- /.accordion-title__icon -->
+                                        </h4>
+                                    </div><!-- /.accordian-title -->
+                                    <div class="accordion-content">
+                                        <div class="inner">
+                                            <p>Every year, over 100 public health events are detected and responded to by WHO across all 47 Member States of the Region. Given this burden and the challenges faced, the availability of a strong national coordination mechanism engaged in the full emergency cycle is essential. Public health EOCs operate as a hub for coordinating the preparation for and response to emergencies and bring together a multidisciplinary and multisectoral team of experts using an Incident Management System.</p>
+                                        </div><!-- /.accordian-content -->
+                                    </div>
+                                </div><!-- /.accordian-item -->
+                                <div class="accordion @@extraClassName">
+                                    <div class="accordion-title">
+                                        <h4>
+                                            What are the core components of a public health EOC?
+                                            <span class="accordion-title__icon"></span><!-- /.accordion-title__icon -->
+                                        </h4>
+                                    </div><!-- /.accordian-title -->
+                                    <div class="accordion-content">
+                                        <div class="inner">
+                                            <p>There are four core components of a public health EOC:
+                                            	<ol>
+                                            		<li>Plans and procedures (Incident Action Plans, Incident Specific Plans, All-Hazard Emergency Operations Plans)</li>
+                                            		<li>Physical infrastructure ,Information and communication technology infrastructure</li>
+                                            		<li>Information systems and data standards</li>
+                                            		<li>Skilled and trained Human resources</li>
+                                            	</ol>
+                                            </p>
+                                            
+                                        </div><!-- /.accordian-content -->
+                                    </div>
+                                </div><!-- /.accordian-item -->
+                            </div>
+                        </div><!-- /.faq-one__content -->
+                    </div><!-- /.col-xl-6 col-lg-6 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section><!-- /.faq-one section-space -->
+
+        <section class="faq-page-inner section-space">
+            <div class="faq-page-inner__bg" style="background-image: url('assets/images/backgrounds/faq-inner-bg-1-1.png');"></div><!-- /.faq-page-inner__bg -->
+            <div class="container">
+                <div class="cleenhearts-accordion row gutter-y-10" data-grp-name="cleenhearts-accordion">
+                    <div class="col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+                        <div class="accordion @@extraClassName">
+                            <div class="accordion-title">
+                                <h4>
+                                    What is an Incident Management System (IMS)?
+                                    <span class="accordion-title__icon"></span><!-- /.accordion-title__icon -->
+                                </h4>
+                            </div><!-- /.accordian-title -->
+                            <div class="accordion-content">
+                                <div class="inner">
+                                    <p>An incident management system is an emergency management structure and set of protocols that provides an approach to guiding government agencies, the private sector, non-governmental organizations and other actors to work in a coordinated manner, primarily to respond to and mitigate the effects of all types of emergencies. The incident management system may also be utilized to support other aspects of emergency management, including preparedness and recovery. The PHEOC uses IMS as a coordination system in responding to public health emergency.</p>
+                                </div><!-- /.accordian-content -->
+                            </div>
+                        </div><!-- /.accordian-item -->
+                        <div class="accordion @@extraClassName">
+                            <div class="accordion-title">
+                                <h4>
+                                    How does the Network assist in the evaluation of public health PHEOC capacity?
+                                    <span class="accordion-title__icon"></span><!-- /.accordion-title__icon -->
+                                </h4>
+                            </div><!-- /.accordian-title -->
+                            <div class="accordion-content">
+                                <div class="inner">
+                                    <p>The Network supports orientation exercises, drills, table-top exercises, functional exercises and full-scale exercises, and regularly monitors progress using assessment checklist in the PHEOC framework. These determine the nature and extent of existing and required investment in building effective response capability and capacity.</p>
+                                </div><!-- /.accordian-content -->
+                            </div>
+                        </div><!-- /.accordian-item -->
+                        <div class="accordion @@extraClassName">
+                            <div class="accordion-title">
+                                <h4>
+                                    Through what work areas does the Network support public health EOCs in the Region?
+                                    <span class="accordion-title__icon"></span><!-- /.accordion-title__icon -->
+                                </h4>
+                            </div><!-- /.accordian-title -->
+                            <div class="accordion-content">
+                                <div class="inner">
+                                    <p>The Network assists Member States to plan and implement EOCs, evaluate EOC capacity and assist EOCs in the full emergency management cycle. It provides opportunities for sharing experiences, conducting research and publishing evidence, creating national and regional partnerships, and acting as a platform for financial support. The Network works through five focus areas:
+                                    <ol>
+                                    		<li>Implementing standards and promoting their adaptation based on country-context</li>
+                                    		<li>Capacity building and exercises</li>
+                                    		<li>Collaboration and partnerships</li>
+                                    		<li>Enhancing communication and the exchange of information; and</li>
+                                    		<li>Producing research and evidence</li>
+                                    </ol>
+                                    
+                                    </p>
+                                </div><!-- /.accordian-content -->
+                            </div>
+                        </div><!-- /.accordian-item -->
+                        <div class="accordion @@extraClassName">
+                            <div class="accordion-title">
+                                <h4>
+                                    How has the WHO African PHEOC Network provided support to PHEOCs?
+                                    <span class="accordion-title__icon"></span><!-- /.accordion-title__icon -->
+                                </h4>
+                            </div><!-- /.accordian-title -->
+                            <div class="accordion-content">
+                                <div class="inner">
+                                    <p>WHO in collaboration with partners has been very active in this respect in working across the African Region in many countries. Some activities include:
+                                    <ol>
+                                    	<li>Providing technical assistance to develop costed PHEOC implementation plans;</li>
+                                    	<li>Developing PHEOC plans and procedures;</li>
+                                    	<li>Supporting the setup of information system for PHEOCs to support decision making;</li>
+                                    	<li>Supporting the setup of PHEOC physical infrastructure and communication technology;</li>
+                                    	<li>Conducting training on basic and intermediate levels of PHEOC including PHEOC operations and management,Incident Management System etc.;</li>
+                                    	<li>Facilitating sharing of experiences; and</li>
+                                    	<li>Conducting advocacy and partnership activities to initiate and develop PHEOCs.</li>
+                                    
+                                    </ol>
+                                    
+                                    </p>
+                                </div><!-- /.accordian-content -->
+                            </div>
+                        </div><!-- /.accordian-item -->
+                    </div><!-- /.col-lg-6 -->
+                    <div class="col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="200ms">
+                        
+                        <div class="accordion active">
+                            <div class="accordion-title">
+                                <h4>
+                                    What successes has the WHO African EOC Network had so far?
+                                    <span class="accordion-title__icon"></span><!-- /.accordion-title__icon -->
+                                </h4>
+                            </div><!-- /.accordian-title -->
+                            <div class="accordion-content">
+                                <div class="inner">
+                                    <p>The Network has already made significant improvements in EOC capacity across the Region and looks forward to continued success. There have been tangible improvements in many countries. See on “Progress made on implementation of PHEOC in the African Region</p>
+                                </div><!-- /.accordian-content -->
+                            </div>
+                        </div><!-- /.accordian-item -->
+                        <div class="accordion @@extraClassName">
+                            <div class="accordion-title">
+                                <h4>
+                                    What role can partners and donors play in the Network?
+                                    <span class="accordion-title__icon"></span><!-- /.accordion-title__icon -->
+                                </h4>
+                            </div><!-- /.accordian-title -->
+                            <div class="accordion-content">
+                                <div class="inner">
+                                    <p>The Network encourages active participation of members in its activities. These activities support Member States in developing the four core components of a PHEOC, for example through the provision of technical support and funding, the sharing of experiences and best practices and the provision of trainings. Partners work alongside with WHO and member states in order to collectively reduce morbidity, mortality, and disability from health emergencies such as disease outbreaks and other public health emergencies</p>
+                                </div><!-- /.accordian-content -->
+                            </div>
+                        </div><!-- /.accordian-item -->
+                        <div class="accordion @@extraClassName">
+                            <div class="accordion-title">
+                                <h4>
+                                     How does the Network serve to facilitate and encourage communication and information exchange?
+                                    <span class="accordion-title__icon"></span><!-- /.accordion-title__icon -->
+                                </h4>
+                            </div><!-- /.accordian-title -->
+                            <div class="accordion-content">
+                                <div class="inner">
+                                    <p>The Network works closely with Member States and PHEOC partners. It provides technical assistance though meetings, workshops, training sessions, simulation exercises and other opportunities for learning and exchange. The Network website also includes a SharePoint platform for sharing information and a communication forum for posting comments and queries and giving feedback. The website also provides links to other resources related to the wider WHO Emergencies Programme and other public health EOC websites.</p>
+                                </div><!-- /.accordian-content -->
+                            </div>
+                        </div><!-- /.accordian-item -->
+                        <div class="accordion @@extraClassName">
+                            <div class="accordion-title">
+                                <h4>
+                                     How does the Network support the availability of research and evidence to assist public health EOCs?
+                                    <span class="accordion-title__icon"></span><!-- /.accordion-title__icon -->
+                                </h4>
+                            </div><!-- /.accordian-title -->
+                            <div class="accordion-content">
+                                <div class="inner">
+                                    <p>The Network envisages itself as a leading portal for the availability of cutting-edge research and evidence on developing and managing PHEOCs. It produces evidence-based standards, tools, guidelines, and other resources. The Network publishes articles, documents on best practices, and produces press releases, meeting reports and progress reports of EOC implementation. The WHO African EOC Network annual report will highlight public health EOC activities that have taken place throughout the year.</p>
+                                </div><!-- /.accordian-content -->
+                            </div>
+                        </div><!-- /.accordian-item -->
+                    </div><!-- /.col-lg-6 -->
+                </div>
+            </div><!-- /.container -->
+        </section><!-- /.faq-page-inner section-space -->
+
+        <div th:replace="frontend-footer"></div>
+    </div><!-- /.page-wrapper -->
+
+    <div th:replace="frontend-mobile-nav"></div>
+    <div th:replace="frontend-search-popup"></div>
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top">
+        <span class="scroll-to-top__text">back top</span>
+        <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
+    </a>
+
+    <div th:replace="frontend-sidebar"></div>
+	<script th:src="@{/assets/vendors/jquery/jquery-3.7.0.min.js}"></script>
+	<script th:src="@{/assets/vendors/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/assets/vendors/bootstrap-select/bootstrap-select.min.js}"></script>
+	<script th:src="@{/assets/vendors/jarallax/jarallax.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-ui/jquery-ui.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-appear/jquery.appear.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-validate/jquery.validate.min.js}"></script>
+	<script th:src="@{/assets/vendors/nouislider/nouislider.min.js}"></script>
+	<script th:src="@{/assets/vendors/tiny-slider/tiny-slider.js}"></script>
+	<script th:src="@{/assets/vendors/wnumb/wNumb.min.js}"></script>
+	<script th:src="@{/assets/vendors/swiper/js/swiper-bundle.min.js}"></script>
+	<script th:src="@{/assets/vendors/owl-carousel/js/owl.carousel.min.js}"></script>
+	<script th:src="@{/assets/vendors/wow/wow.js}"></script>
+	<script th:src="@{/assets/vendors/imagesloaded/imagesloaded.min.js}"></script>
+	<script th:src="@{/assets/vendors/isotope/isotope.js}"></script>
+	<script th:src="@{/assets/vendors/countdown/countdown.min.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-circleType/jquery.circleType.js}"></script>
+	<script th:src="@{/assets/vendors/jquery-lettering/jquery.lettering.min.js}"></script>
+	<!-- template js -->
+	<script th:src="@{/assets/js/cleenhearts.js}"></script>
+	
+</body>
+</html>

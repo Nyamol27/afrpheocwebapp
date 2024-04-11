@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<body data-topbar="dark">
+    <header th:replace="header :: page-topbar"></header>
+    <div th:replace="sidebar :: menu"></div>
+
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header justify-content-between d-flex align-items-center">
+                                <h4 class="card-title">Edit Trainee</h4>
+                            </div>
+                            <div class="card-body">
+                                <form id="editTraineeForm" th:object="${trainee}">
+                                    <!-- Alert box for displaying messages -->
+                                    <div id="alertBox" class="alert alert-warning alert-top-border alert-dismissible fade show" role="alert"
+                                        style="display: none;">
+                                        <i class="uil uil-exclamation-triangle font-size-16 text-warning me-2"></i>
+                                        <span class="alert-message">A simple border warning alert</span>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                    <!-- Form fields for trainee details -->
+                                    <div class="mb-3">
+                                        <label for="firstName" class="form-label">First Name:</label>
+                                        <input type="text" class="form-control" id="firstName" th:field="*{firstName}" name="firstName" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="lastName" class="form-label">Last Name:</label>
+                                        <input type="text" class="form-control" id="lastName" th:field="*{lastName}" name="lastName" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email:</label>
+                                        <input type="email" class="form-control" id="email" th:field="*{email}" name="email" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="phoneNumber" class="form-label">Phone Number:</label>
+                                        <input type="text" class="form-control" id="phoneNumber" th:field="*{phoneNumber}" name="phoneNumber" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="organization" class="form-label">Organization:</label>
+                                        <input type="text" class="form-control" id="organization" th:field="*{organization}" name="organization" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="position" class="form-label">Position:</label>
+                                        <input type="text" class="form-control" id="position" th:field="*{position}" name="position" required>
+                                    </div>
+                                    <div class="mb-3">
+									    <label for="moduleAttended" class="form-label">Module Attended:</label>
+									    <select class="form-select" id="moduleAttended" th:field="*{moduleAttended}" required>
+									        <option value="" disabled>Select Module Attended</option>
+									        <option th:each="m : ${Module}" th:value="${m}" th:text="${m}" th:selected="${m == trainee.moduleAttended}"></option>
+									    </select>
+									</div>
+                                    <div class="mb-3">
+                                        <label for="trainingDate" class="form-label">Training Date:</label>
+                                        <input type="date" class="form-control" id="trainingDate" th:field="*{trainingDate}" required>
+                                    </div>
+                                    <div class="mb-3">
+									    <label for="country" class="form-label">Country:</label>
+									    <select class="form-select" id="country" th:field="*{country}" required>
+									        <option value="" disabled>Select Country</option>
+									        <option th:each="c : ${countries}" th:value="${c}" th:text="${c}" th:selected="${c == trainee.country}"></option>
+									    </select>
+									</div>
+                                    <div class="mb-3">
+									    <label for="role" class="form-label">Role:</label>
+									    <select class="form-select" id="role" th:field="*{role}" required>
+									        <option value="" disabled>Select Role</option>
+									        <option th:each="r : ${roles}" th:value="${r}" th:text="${r}" th:selected="${r == trainee.role}"></option>
+									    </select>
+									</div>
+                                    <!-- Add other form fields for trainee details -->
+                                    <input type="hidden" th:field="*{id}" id = "trainee-id"> 
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-primary" onclick="updateTrainee()">Update Trainee</button>
+                                        <a href="javascript:history.back()" class="btn btn-secondary">Back</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer th:replace="footer :: footer-content"></footer>
+    <footer th:replace="rightbar :: right-bar"></footer>
+
+    <!-- Include JavaScript files -->
+    <script th:src="@{/libs/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <!-- Add other script includes -->
+</body>
+</html>
